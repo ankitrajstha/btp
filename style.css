@@ -204,6 +204,10 @@ main {
     margin-bottom: var(--spacing-5);
 }
 
+.highlights-container h4 {
+    margin-bottom: var(--spacing-1);
+}
+
 .highlights-container > div {
     width: 449.33px;
     height: 129px;
@@ -213,6 +217,38 @@ main {
     overflow: hidden;
     box-shadow: 0px 74px 21px rgba(222,222,222,0.000), 0px 47px 19px rgba(222,222,222,0.010), 0px 27px 16px rgba(222,222,222,0.030), 0px 12px 12px rgba(222,222,222,0.040), 0px 3px 7px rgba(222,222,222,0.050);
 }
+
+.project-hightlights-list,
+.sprint-hightlights-list,
+.milestones-list {
+    width: 417.33px;
+    height: 65px;
+    overflow: hidden;
+}
+
+.project-hightlights-list li,
+.sprint-hightlights-list li,
+.milestones-list li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-1);
+}
+
+.disc{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--primary-black);
+    display: inline-block;
+}
+
+.project-hightlights-list,
+.sprint-hightlights-list,
+.milestones-list > li {
+    font-size: var(--base-regular);
+}
+
 
 
 .chart-container {
@@ -228,3 +264,17 @@ main {
     background-color: var(--white);
     box-shadow: 0px 74px 21px rgba(222,222,222,0.000), 0px 47px 19px rgba(222,222,222,0.010), 0px 27px 16px rgba(222,222,222,0.030), 0px 12px 12px rgba(222,222,222,0.040), 0px 3px 7px rgba(222,222,222,0.050);
 }
+
+.title-capsule-container {
+    display: flex;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-1);
+}
+
+.title-capsule-container > span {
+    width: 60px; 
+    height: 24px; 
+    color: var(--g200); 
+    background-color: var(--neutral-color);
+}
+
