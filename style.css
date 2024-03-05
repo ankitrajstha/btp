@@ -220,7 +220,9 @@ main {
 
 .project-hightlights-list,
 .sprint-hightlights-list,
-.milestones-list {
+.milestones-list,
+.team-members-list,
+.resources-list {
     width: 417.33px;
     height: 65px;
     overflow: hidden;
@@ -235,6 +237,26 @@ main {
     margin-bottom: var(--spacing-1);
 }
 
+.resources-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-2);
+}
+
+.resources-icon-name-container {
+    display: flex;
+    gap: var(--spacing-2);
+}
+
+.resources-quantity-container {
+    height: 20px;
+    width: 24px;
+    border-radius: 100px;
+    background-color: var(--neutral-color);
+    text-align: center;
+}
+
 .disc{
     width: 10px;
     height: 10px;
@@ -245,11 +267,15 @@ main {
 
 .project-hightlights-list,
 .sprint-hightlights-list,
-.milestones-list > li {
+.milestones-list,
+.resources-list > li {
     font-size: var(--base-regular);
 }
 
-
+.technical-debt > p {
+    font-size: var(--base-regular);
+    color: var(--g200);
+}
 
 .chart-container {
     display: grid;
@@ -276,5 +302,20 @@ main {
     height: 24px; 
     color: var(--g200); 
     background-color: var(--neutral-color);
+}
+
+.team-members-list li {
+    display: flex;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-2);
+}
+
+.team-members-list .team-members-title {
+    font-size: var(--base-medium);
+}
+
+.team-members-list .team-members-subtitle {
+    font-size: var(--caption-regular);
+    color: var(--g100);
 }
 
