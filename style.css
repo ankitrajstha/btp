@@ -252,7 +252,8 @@ main {
     background-color: var(--critical-status);
 }
 
-.project-dropdown-options-container .project-dropdown-options > p {
+.project-dropdown-options-container .project-dropdown-options > p,
+.sprint-dropdown-options-container .sprint-dropdown-options > p {
     font-size: var(--base-regular);
 }
 
