@@ -52,7 +52,17 @@
     --spacing-9: 48px;
     --spacing-10: 56px;
 
+    --spacing-6-2: 26px;
+    --spacing-6-3: 28px;
 
+    --navbar-height: 100px;
+    --main-container-width: 1440px;
+
+    --component-width: 449.33px;
+
+    --border-radius-1: 4px;
+    --border-radius-2: 8px;
+    --border-radius-3: 16px;
 
 }
 
@@ -87,33 +97,33 @@ p {
 }
 
 main {
-    padding: 0 26px;
+    padding: 0 var(--spacing-4);
 }
 
 .main-container {
-    max-width: 1440px;
+    max-width: var(--main-container-width);
     margin: 0 auto;
 }
 
 .main-container nav {
-    height: 100px;
-    background-color: #ccc;
+    height: var(--navbar-height);
+    background-color: var(--white);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 26px;
+    padding: 0 var(--spacing-6-2);
 }
 
 
 .project-sprint-container {
     display: flex;
-    gap: 20px;
+    gap: var(--spacing-5);
     margin-top: var(--spacing-6);
-    margin-bottom: 28px;
+    margin-bottom: var(--spacing-6-3);
 }
 
 .project-sprint-container > div {
-    width: 449.33px;
+    width: var(--component-width);
 }
 
 .project-container,
@@ -130,7 +140,7 @@ main {
 
 .project-sprint-container .title-container {
     display: flex;
-    gap: 20px;
+    gap: var(--spacing-5);
     margin-bottom: var(--spacing-1);
 }
 
@@ -141,7 +151,7 @@ main {
 
 .status-capsule {
     width: 67px;
-    border-radius: 16px;
+    border-radius: var(--border-radius-3);
     font-size: var(--caption-regular);
     color: var(--white);
     display: flex;
@@ -161,7 +171,7 @@ main {
 .sprint-dropdown {
     height: 48px;
     background-color: transparent;
-    border-radius: 8px;
+    border-radius: var(--border-radius-2);
     border: 1px solid var(--g100);
     padding-left: var(--spacing-3);
     padding-right: var(--spacing-3);
@@ -181,9 +191,9 @@ main {
 
 .project-dropdown-options-container,
 .sprint-dropdown-options-container {
-    width: 449.33px;
+    width: var(--component-width);
     height: 196px;
-    border-radius: 8px;
+    border-radius: var(--border-radius-2);
     background-color: var(--white);
     padding: var(--spacing-4);
     box-shadow: 0px 74px 21px rgba(222,222,222,0.000), 0px 47px 19px rgba(222,222,222,0.010), 0px 27px 16px rgba(222,222,222,0.030), 0px 12px 12px rgba(222,222,222,0.040), 0px 3px 7px rgba(222,222,222,0.050);
@@ -210,7 +220,7 @@ main {
     border: 1px solid black;
     width: 417.33px;
     height: 40px;
-    border-radius: 4px;
+    border-radius: var(--border-radius-1);
     border: 2px solid var(--g100);
     display: flex;
     align-items: center;
@@ -241,7 +251,7 @@ main {
 .sprint-dropdown-options-container .sprint-dropdown-options > div {
     height: 18px;
     width: 18px;
-    border-radius: 4px;
+    border-radius: var(--border-radius-1);
 }
 
 .project-dropdown-options-container .project-dropdown-options > div {
@@ -277,8 +287,8 @@ main {
 
 .highlights-container {
     display: grid;
-    grid-template-columns: repeat(3,449.33px );
-    gap: 20px;
+    grid-template-columns: repeat(3, var(--component-width));
+    gap: var(--spacing-5);
     margin-bottom: var(--spacing-5);
 }
 
@@ -287,9 +297,9 @@ main {
 }
 
 .highlights-container > div {
-    width: 449.33px;
+    width: var(--component-width);
     height: 129px;
-    border-radius: 8px;
+    border-radius: var(--border-radius-2);
     background-color: var(--white);
     padding: var(--spacing-4);
     overflow: hidden;
@@ -358,13 +368,13 @@ main {
 .chart-container {
     display: grid;
     grid-template-columns: repeat(3,449.33px);
-    gap: 20px;
+    gap: var(--spacing-5);
 }
 
 .chart-container > div {
-    width: 449.33px;
+    width: var(--component-width);
     height: 216px;
-    border-radius: 8px;
+    border-radius: var(--border-radius-2);
     background-color: var(--white);
     box-shadow: 0px 74px 21px rgba(222,222,222,0.000), 0px 47px 19px rgba(222,222,222,0.010), 0px 27px 16px rgba(222,222,222,0.030), 0px 12px 12px rgba(222,222,222,0.040), 0px 3px 7px rgba(222,222,222,0.050);
 }
