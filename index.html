@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <!-- apex chart -->
+    <script src="js/charts.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts" defer></script>
+
     <title>BTP Dashboard Project</title>
   </head>
   <body>
@@ -196,7 +200,21 @@
 
         <div class="chart-container">
           <div class="upper-charts-container">
-            <div class="chart-component task-type"></div>
+            <!-- Chart for Task Type -->
+            <div class="chart-component task-type">
+              <div>
+                <label>Task Type</label>
+                <select id="chart-type">
+                  <option value="pie-outline">Pie Chart - Outline</option>
+                  <option value="pie-filled">Pie Chart - Filled</option>
+                  <option value="bar">Bar Diagram</option>
+                </select>
+              </div>
+              <div id="taskTypeChart">
+
+              </div>
+            </div>
+            
             <div class="chart-component task-status"></div>
             <div class="chart-component story-points"></div>
           </div>
