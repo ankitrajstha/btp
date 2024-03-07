@@ -1,0 +1,67 @@
+:root {
+  --primary-red: #be263b;
+  --primary-black: #252525;
+  --body-color: #fdfdfd;
+
+  /* status color */
+  --critical-status: #cc3333;
+  --on-track: #4eb011;
+  --caution: #e9e906;
+  --halt: #2f4858;
+
+  /* neutral color */
+  --neutral-color: #f8f8ff;
+  --white: #ffffff;
+
+  /* grey shades */
+  --g50: #e9e9e9;
+  --g75: #a6a6a6;
+  --g100: #818181;
+  --g200: #4a4a4a;
+  --g300: #252525;
+  --g400: #1a1a1a;
+  --g500: #171717;
+
+  --heading: 24px;
+  --label: 14px;
+  --caption-regular: 10px;
+  --caption-regualar-drop-down: 10px;
+  --caption-bold: 10px;
+  --title: 16px;
+  --base-regular: 12px;
+  --base-medium: 12px;
+
+  --font-weight-bold: 700;
+  --font-weight-semi-bold: 500;
+  --font-weight-normal: 400;
+
+  --line-height-high: 120%;
+  --line-height-medium: 24px;
+  --line-height-low: 20px;
+
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-7: 32px;
+  --spacing-8: 40px;
+  --spacing-9: 48px;
+  --spacing-10: 56px;
+
+  --spacing-6-2: 26px;
+  --spacing-6-3: 28px;
+
+  --navbar-height: 100px;
+  --main-container-width: 1440px;
+
+  --component-width: 449.33px;
+  --lower-chart-component-width: 684px;
+
+  --chart-component-height: 216px;
+
+  --border-radius-1: 4px;
+  --border-radius-2: 8px;
+  --border-radius-3: 16px;
+}

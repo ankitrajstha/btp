@@ -3,7 +3,206 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>BTP Dashboard Project</title>
   </head>
-  <body></body>
+  <body>
+    <div class="main-container">
+      <nav class="navbar"></nav>
+      <main>
+        <div class="project-sprint-container">
+          <div class="component-div project-container">
+            <div class="title-container">
+              <p>Project</p>
+              <span class="status-capsule project-status-pill">On Track</span>
+            </div>
+            <div name="projects" class="project-dropdown">
+              <p>SiteHawk Project</p>
+              <img src="./assets/chevron-down.png" alt="chevron" />
+            </div>
+            <!-- display this after adding click event on chevron -->
+            <div class="project-dropdown-options-container">
+              <div class="search-bar-container">
+                <img src="./assets/eye-glass.png" alt="eye-glass" />
+                <input
+                  type="search"
+                  class="search-input"
+                  placeholder="Search Project"
+                />
+              </div>
+              <div class="project-dropdown-options">
+                <div class="status-color"></div>
+                <p>Site Hawk Project</p>
+              </div>
+            </div>
+          </div>
+          <div class="component-div sprint-container">
+            <div class="title-container">
+              <p>Sprint</p>
+              <span class="status-capsule sprint-status-pill">Critical</span>
+            </div>
+            <div name="projects" class="sprint-dropdown">
+              <p>Sprint 11</p>
+              <img src="./assets/chevron-down.png" alt="chevron-down" />
+            </div>
+            <!-- display this after adding click event on chevron -->
+            <div class="sprint-dropdown-options-container">
+              <div class="search-bar-container">
+                <img src="./assets/eye-glass.png" alt="eye-glass" />
+                <input
+                  type="search"
+                  class="search-input"
+                  placeholder="Search Project"
+                />
+              </div>
+              <div class="sprint-dropdown-options">
+                <div class="status-color"></div>
+                <p>Site Hawk Project</p>
+              </div>
+            </div>
+          </div>
+          <div class="component-div sprint-duration-container">
+            <div class="title-container">
+              <p>Sprint Duration</p>
+            </div>
+            <div class="date-chart-container">
+              <p>24 Jan 2024 - 30 Sept 2024</p>
+              <div class="sprint-duration-chart-container">chart</div>
+            </div>
+          </div>
+        </div>
+        <div class="highlights-container">
+          <div class="highlight-component project-highlights">
+            <div class="project-highlights">
+              <h4>Project Highlights</h4>
+              <ul class="project-hightlights-list">
+                <li>
+                  <span class="disc"></span>
+                  <p>Line info 1</p>
+                </li>
+                <li>
+                  <span class="disc"></span>
+                  <p>Line info 1</p>
+                </li>
+                <li>
+                  <span class="disc"></span>
+                  <p>Line info 1</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="highlight-component sprint-highlights">
+            <h4>Sprint Highlights</h4>
+            <ul class="sprint-hightlights-list">
+              <li>
+                <span class="disc"></span>
+                <p>Line info 1</p>
+              </li>
+              <li>
+                <span class="disc"></span>
+                <p>Line info 1</p>
+              </li>
+              <li>
+                <span class="disc"></span>
+                <p>Line info 1</p>
+              </li>
+            </ul>
+          </div>
+          <div class="highlight-component milestones">
+            <div class="title-capsule-container">
+              <h4>Milestones</h4>
+              <span class="status-capsule">Project</span>
+            </div>
+            <ul class="milestones-list">
+              <li>
+                <span class="disc"></span>
+                <p>Line info 1</p>
+              </li>
+              <li>
+                <span class="disc"></span>
+                <p>Line info 1</p>
+              </li>
+              <li>
+                <span class="disc"></span>
+                <p>Line info 1</p>
+              </li>
+            </ul>
+          </div>
+          <div class="highlight-component technical-debt">
+            <div class="title-capsule-container">
+              <h4>Technical Debt</h4>
+              <span class="status-capsule">Project</span>
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
+              numquam consequuntur provident libero iure fuga perferendis
+              doloremque natus nulla repellat.
+            </p>
+          </div>
+          <div class="highlight-component resources">
+            <div class="title-capsule-container">
+              <h4>Resources</h4>
+              <span class="status-capsule">Project</span>
+            </div>
+            <ul class="resources-list">
+              <li>
+                <div class="resources-icon-name-container">
+                  <img src="./assets/developer.png" alt="developer" />
+                  <p>Developer</p>
+                </div>
+                <div class="resources-quantity-container">5</div>
+              </li>
+              <li>
+                <div class="resources-icon-name-container">
+                  <img src="./assets/qa.png" alt="QA" />
+                  <p>QA</p>
+                </div>
+                <div class="resources-quantity-container">1</div>
+              </li>
+              <li>
+                <div class="resources-icon-name-container">
+                  <img src="./assets/pm.png" alt="PM" />
+                  <p>PM</p>
+                </div>
+                <div class="resources-quantity-container">0</div>
+              </li>
+            </ul>
+          </div>
+          <div class="highlight-component team-members">
+            <div class="title-capsule-container">
+              <h4>Team Members <span>[4]</span></h4>
+              <span class="status-capsule">Sprint</span>
+            </div>
+            <ul class="team-members-list">
+              <li>
+                <img src="./assets/profile.png" alt="profile" />
+                <div class="team-members-title-container">
+                  <p class="team-members-title">John Doe</p>
+                  <p class="team-members-subtitle">QA Analyst</p>
+                </div>
+              </li>
+              <li>
+                <img src="./assets/profile.png" alt="profile" />
+                <div class="team-members-title-container">
+                  <p class="team-members-title">John Doe</p>
+                  <p class="team-members-subtitle">QA Analyst</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="chart-container">
+          <div class="upper-charts-container">
+            <div class="chart-component task-type"></div>
+            <div class="chart-component task-status"></div>
+            <div class="chart-component story-points"></div>
+          </div>
+          <div class="lower-charts-container">
+            <div class="chart-component log-hours-comparison"></div>
+            <div class="chart-component client-data"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
 </html>
