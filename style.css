@@ -3,207 +3,208 @@
 @import "./css/reset.css";
 @import "./css/base.css";
 
-
 .project-sprint-container {
-    display: flex;
-    gap: var(--spacing-5);
-    margin-top: var(--spacing-6);
-    margin-bottom: var(--spacing-6-3);
+  display: flex;
+  gap: var(--spacing-5);
+  margin-top: var(--spacing-6);
+  margin-bottom: var(--spacing-6-3);
 }
 
 .project-sprint-container > .component-div {
-    width: var(--component-width);
+  width: var(--component-width);
 }
 
 .project-container,
 .sprint-container,
 .sprint-duration-container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-container,
 .sprint-container {
-    position: relative;
+  position: relative;
 }
 
 .project-sprint-container .title-container {
-    display: flex;
-    gap: var(--spacing-5);
-    margin-bottom: var(--spacing-1);
+  display: flex;
+  gap: var(--spacing-5);
+  margin-bottom: var(--spacing-1);
 }
 
 .project-sprint-container .title-container p {
-    font-size: var(--label);
-    font-weight: var(--font-weight-bold);
+  font-size: var(--label);
+  font-weight: var(--font-weight-bold);
 }
 
 .project-status-pill {
-    background-color: var(--on-track);
+  background-color: var(--on-track);
 }
 
 .sprint-status-pill {
-    background-color: var(--critical-status);
+  background-color: var(--critical-status);
 }
 
 .project-dropdown,
 .sprint-dropdown {
-    height: 48px;
-    background-color: transparent;
-    border-radius: var(--border-radius-2);
-    border: 1px solid var(--g100);
-    padding-left: var(--spacing-3);
-    padding-right: var(--spacing-3);
+  height: 48px;
+  background-color: transparent;
+  border-radius: var(--border-radius-2);
+  border: 1px solid var(--g100);
+  padding-left: var(--spacing-3);
+  padding-right: var(--spacing-3);
 }
 
 .project-dropdown,
 .sprint-dropdown {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .project-dropdown > p,
 .sprint-dropdown > p {
-    font-size: var(--label);
+  font-size: var(--label);
 }
 
 .project-dropdown-options-container,
 .sprint-dropdown-options-container {
-    width: var(--component-width);
-    height: 196px;
-    border-radius: var(--border-radius-2);
-    background-color: var(--white);
-    padding: var(--spacing-4);
-    box-shadow: 0px 74px 21px rgba(222,222,222,0.000),
-                0px 47px 19px rgba(222,222,222,0.010), 
-                0px 27px 16px rgba(222,222,222,0.030), 
-                0px 12px 12px rgba(222,222,222,0.040), 
-                0px 3px 7px rgba(222,222,222,0.050);
+  width: var(--component-width);
+  height: 196px;
+  border-radius: var(--border-radius-2);
+  background-color: var(--white);
+  padding: var(--spacing-4);
+  box-shadow: 0px 74px 21px rgba(222, 222, 222, 0),
+    0px 47px 19px rgba(222, 222, 222, 0.01),
+    0px 27px 16px rgba(222, 222, 222, 0.03),
+    0px 12px 12px rgba(222, 222, 222, 0.04),
+    0px 3px 7px rgba(222, 222, 222, 0.05);
 }
 
 .project-dropdown-options-container,
 .sprint-dropdown-options-container {
-    position: absolute;
-    top: 75px;
-    left: 0;
+  position: absolute;
+  top: 75px;
+  left: 0;
 }
 
 .sprint-dropdown-options-container {
-    position: absolute;
+  position: absolute;
 }
 
 .project-dropdown-options-container .search-bar-container,
 .sprint-dropdown-options-container .search-bar-container {
-    border: 1px solid black;
-    width: 417.33px;
-    height: 40px;
-    border-radius: var(--border-radius-1);
-    border: 2px solid var(--g100);
-    display: flex;
-    align-items: center;
-    padding: var(--spacing-3) var(--spacing-2);
-    gap: var(--spacing-3);
-    margin-bottom: var(--spacing-4);
+  border: 1px solid var(--primary-black);
+  width: 417.33px;
+  height: 40px;
+  border-radius: var(--border-radius-1);
+  border: 2px solid var(--g100);
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-3) var(--spacing-2);
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-4);
 }
 
 .project-dropdown-options-container .search-bar-container .search-input,
 .sprint-dropdown-options-container .search-bar-container .search-input {
-    width: 417.33px;
-    height: 40px;
-    background-color: transparent;
-    border: none;
-    font-size: var(--caption-regualar-drop-down);
-    color: var(--g100);
-    outline: none;
+  width: 417.33px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  font-size: var(--caption-regualar-drop-down);
+  color: var(--g100);
+  outline: none;
 }
 
 .project-dropdown-options-container .project-dropdown-options,
 .sprint-dropdown-options-container .sprint-dropdown-options {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-4);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
 }
 
 .project-dropdown-options-container .project-dropdown-options > div,
 .sprint-dropdown-options-container .sprint-dropdown-options > div {
-    height: 18px;
-    width: 18px;
-    border-radius: var(--border-radius-1);
+  height: 18px;
+  width: 18px;
+  border-radius: var(--border-radius-1);
 }
 
 .project-dropdown-options-container .project-dropdown-options > div {
-    background-color: var(--on-track);
+  background-color: var(--on-track);
 }
 
 .sprint-dropdown-options-container .sprint-dropdown-options > div {
-    background-color: var(--critical-status);
+  background-color: var(--critical-status);
 }
 
 .project-dropdown-options-container .project-dropdown-options > p,
 .sprint-dropdown-options-container .sprint-dropdown-options > p {
-    font-size: var(--base-regular);
+  font-size: var(--base-regular);
 }
 
 .sprint-duration-container .date-chart-container {
-    display: flex;
-    gap: var(--spacing-3);
-    align-items: center;
-    height: 48px;
+  display: flex;
+  gap: var(--spacing-3);
+  align-items: center;
+  height: 48px;
 }
 
 .sprint-duration-container .date-chart-container p {
-    width: 229.33px;
-    color: var(--g100);
-    font-weight: var(--font-weight-semi-bold);
+  width: 229.33px;
+  color: var(--g100);
+  font-weight: var(--font-weight-semi-bold);
 }
 
-.sprint-duration-container .date-chart-container .sprint-duration-chart-container {
-    border: 1px solid green;
-    width: 208px;
+.sprint-duration-container
+  .date-chart-container
+  .sprint-duration-chart-container {
+  border: 1px solid var(--primary-black);
+  width: 208px;
 }
 
 .status-capsule {
-    width: 67px;
-    border-radius: var(--border-radius-3);
-    font-size: var(--caption-regular);
-    color: var(--white);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 67px;
+  border-radius: var(--border-radius-3);
+  font-size: var(--caption-regular);
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .project-status-pill {
-    background-color: var(--on-track);
+  background-color: var(--on-track);
 }
 
 .sprint-status-pill {
-    background-color: var(--critical-status);
+  background-color: var(--critical-status);
 }
 
 .highlights-container {
-    display: grid;
-    grid-template-columns: repeat(3, var(--component-width));
-    gap: var(--spacing-5);
-    margin-bottom: var(--spacing-5);
+  display: grid;
+  grid-template-columns: repeat(3, var(--component-width));
+  gap: var(--spacing-5);
+  margin-bottom: var(--spacing-5);
 }
 
 .highlights-container h4 {
-    margin-bottom: var(--spacing-1);
+  margin-bottom: var(--spacing-1);
 }
 
 .highlights-container > .highlight-component {
-    width: var(--component-width);
-    height: 129px;
-    border-radius: var(--border-radius-2);
-    background-color: var(--white);
-    padding: var(--spacing-4);
-    overflow: hidden;
-    box-shadow: 0px 74px 21px rgba(222,222,222,0.000),
-                0px 47px 19px rgba(222,222,222,0.010), 
-                0px 27px 16px rgba(222,222,222,0.030), 
-                0px 12px 12px rgba(222,222,222,0.040), 
-                0px 3px 7px rgba(222,222,222,0.050);
+  width: var(--component-width);
+  height: 129px;
+  border-radius: var(--border-radius-2);
+  background-color: var(--white);
+  padding: var(--spacing-4);
+  overflow: hidden;
+  box-shadow: 0px 74px 21px rgba(222, 222, 222, 0),
+    0px 47px 19px rgba(222, 222, 222, 0.01),
+    0px 27px 16px rgba(222, 222, 222, 0.03),
+    0px 12px 12px rgba(222, 222, 222, 0.04),
+    0px 3px 7px rgba(222, 222, 222, 0.05);
 }
 
 .project-hightlights-list,
@@ -211,120 +212,116 @@
 .milestones-list,
 .team-members-list,
 .resources-list {
-    width: 417.33px;
-    height: 65px;
-    overflow: hidden;
+  width: 417.33px;
+  height: 65px;
+  overflow: hidden;
 }
 
 .project-hightlights-list li,
 .sprint-hightlights-list li,
 .milestones-list li {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-2);
-    margin-bottom: var(--spacing-1);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-1);
 }
 
 .resources-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--spacing-2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-2);
 }
 
 .resources-icon-name-container {
-    display: flex;
-    gap: var(--spacing-2);
+  display: flex;
+  gap: var(--spacing-2);
 }
 
 .resources-quantity-container {
-    height: 20px;
-    width: 24px;
-    border-radius: 100px;
-    background-color: var(--neutral-color);
-    text-align: center;
+  height: 20px;
+  width: 24px;
+  border-radius: 100px;
+  background-color: var(--neutral-color);
+  text-align: center;
 }
 
 .project-hightlights-list,
 .sprint-hightlights-list,
 .milestones-list,
 .resources-list > li {
-    font-size: var(--base-regular);
+  font-size: var(--base-regular);
 }
 
 .technical-debt > p {
-    font-size: var(--base-regular);
-    color: var(--g200);
+  font-size: var(--base-regular);
+  color: var(--g200);
 }
 
 .team-members-list li {
-    display: flex;
-    gap: var(--spacing-2);
-    margin-bottom: var(--spacing-2);
+  display: flex;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-2);
 }
 
 .team-members-list .team-members-title {
-    font-size: var(--base-medium);
+  font-size: var(--base-medium);
 }
 
 .team-members-list .team-members-subtitle {
-    font-size: var(--caption-regular);
-    color: var(--g100);
+  font-size: var(--caption-regular);
+  color: var(--g100);
 }
 
 .chart-container .upper-charts-container {
-    display: grid;
-    grid-template-columns: repeat(3,449.33px);
-    gap: var(--spacing-5);
-    margin-bottom: var(--spacing-5);
+  display: grid;
+  grid-template-columns: repeat(3, 449.33px);
+  gap: var(--spacing-5);
+  margin-bottom: var(--spacing-5);
 }
 
 .chart-container .lower-charts-container {
-    display: grid;
-    grid-template-columns: repeat(3,684px);
-    gap: var(--spacing-5);
+  display: grid;
+  grid-template-columns: repeat(3, 684px);
+  gap: var(--spacing-5);
 }
 
 .chart-container .chart-component {
-    height: var(--chart-component-height);
-    border-radius: var(--border-radius-2);
-    background-color: var(--white);
-    box-shadow: 0px 74px 21px rgba(222,222,222,0.000),
-                0px 47px 19px rgba(222,222,222,0.010), 
-                0px 27px 16px rgba(222,222,222,0.030), 
-                0px 12px 12px rgba(222,222,222,0.040), 
-                0px 3px 7px rgba(222,222,222,0.050);
+  height: var(--chart-component-height);
+  border-radius: var(--border-radius-2);
+  background-color: var(--white);
+  box-shadow: 0px 74px 21px rgba(222, 222, 222, 0),
+    0px 47px 19px rgba(222, 222, 222, 0.01),
+    0px 27px 16px rgba(222, 222, 222, 0.03),
+    0px 12px 12px rgba(222, 222, 222, 0.04),
+    0px 3px 7px rgba(222, 222, 222, 0.05);
 }
 
-
 .chart-container .upper-charts-container > .chart-component {
-    width: var(--component-width);
+  width: var(--component-width);
 }
 
 .chart-container .lower-charts-container > .chart-component {
-    width: var(--lower-chart-component-width);
+  width: var(--lower-chart-component-width);
 }
 
-.disc{
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: var(--primary-black);
-    display: inline-block;
+.disc {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--primary-black);
+  display: inline-block;
 }
 
 .title-capsule-container {
-    display: flex;
-    gap: var(--spacing-2);
-    margin-bottom: var(--spacing-1);
+  display: flex;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-1);
 }
 
 .title-capsule-container > span {
-    width: 60px; 
-    height: 24px; 
-    color: var(--g200); 
-    background-color: var(--neutral-color);
+  width: 60px;
+  height: 24px;
+  color: var(--g200);
+  background-color: var(--neutral-color);
 }
-
-
-
