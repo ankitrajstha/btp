@@ -209,15 +209,15 @@
             <div class="chart-component task-type">
               <div>
                 <label>Task Type</label>
-                <select id="chart-type">
-                  <option value="pie-outline">Pie Chart - Outline</option>
-                  <option value="pie-filled">Pie Chart - Filled</option>
+                <!-- Select type of chart to display -->
+                <select id="chart-type" onchange="renderChart()">
+                  <option value="donut">Pie Chart - Outline</option>
+                  <option value="pie">Pie Chart - Filled</option>
                   <option value="bar">Bar Diagram</option>
                 </select>
               </div>
-              <div id="taskTypeChart">
-
-              </div>
+              <!-- Render chart for task type  -->
+              <div id="taskTypeChart"></div>
             </div>
             
             <div class="chart-component task-status"></div>
