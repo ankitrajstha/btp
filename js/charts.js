@@ -11,7 +11,7 @@ renderChart = () => {
         myChart.destroy();
     }
 
-    var chartSeries = [15,6, 25, 30, 9, 15]
+    var chartSeries = [15, 6, 25, 30, 9, 15] // Replace this with actual data from API later
 
     var chartLegend = {
         fontSize: '10px',
@@ -53,10 +53,11 @@ renderChart = () => {
         },
         legend: chartLegend,
         series: chartSeries,
-        labels: ['Bug Leakage', 'Task', 'Sub Task', 'Task Maintenance', 'Bug', 'Epic' ],
-
+        labels: ['Bug Leakage', 'Task', 'Sub Task', 'Task Maintenance', 'Bug', 'Epic'],
+        
+        // Configuration for bar chart, doesn't affect pie chart
         xaxis: {
-            categories: ['BL', 'Task', 'ST', 'TM', 'Bug', 'Epic' ], // X-axis labels
+            categories: ['BL', 'Task', 'ST', 'TM', 'Bug', 'Epic'], // X-axis labels
             labels: {
                 style: {
                     fontSize: '12px', // Adjust label font size if needed
@@ -64,6 +65,7 @@ renderChart = () => {
                 }
             }
         },
+        // Tooptip to show fullform of abbreviations when hover in bar chart
         tooltip: {
             enabled: true,
             x: {
