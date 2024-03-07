@@ -57,6 +57,9 @@
     --main-container-width: 1440px;
 
     --component-width: 449.33px;
+    --lower-chart-component-width: 684px;
+
+    --chart-component-height: 216px;
 
     --border-radius-1: 4px;
     --border-radius-2: 8px;
