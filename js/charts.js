@@ -75,21 +75,18 @@ const getChartConfig = (chartType, data, labels) => {
     return chartConfig;
 };
 
-const renderChart = (chartType, data, labels, container) => {
-    const chartConfig = getChartConfig(chartType, data, labels);
+const renderChart = (container, chartConfig) => {
     const chart = new ApexCharts(container, chartConfig);
     chart.render();
     return chart;
 };
 
-const updateChart = (myChart, chartContainer, selectedChartType, data, labels) => {
-    const chartType = selectedChartType.value;
-
+const updateChart = (myChart, chartContainer, chartType, data, labels) => {
     if (myChart) {
         myChart.destroy();
     }
-
-    myChart = renderChart(chartType, data, labels, chartContainer);
+    const chartConfig = getChartConfig(chartType, data, labels);
+    myChart = renderChart(chartContainer, chartConfig);
     return myChart
 };
 
@@ -110,9 +107,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Change graphs when another option is selected
     taskTypeChart = selectedChartType.addEventListener('change', function () {
-        updateChart(taskTypeChart, taskTypeContainer, selectedChartType, taskTypeData, taskTypelabels);
+        updateChart(taskTypeChart, taskTypeContainer, selectedChartType.value, taskTypeData, taskTypelabels);
     });
 
     // Intial chart render
-    taskTypeChart = updateChart(taskTypeChart, taskTypeContainer, selectedChartType, taskTypeData, taskTypelabels);
+    taskTypeChart = updateChart(taskTypeChart, taskTypeContainer, selectedChartType.value, taskTypeData, taskTypelabels);
 });
