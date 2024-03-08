@@ -1,7 +1,7 @@
 :root {
   --primary-red: #be263b;
   --primary-black: #252525;
-  --body-color: #f8f8f8;
+  --body-color: #f8f8ff;
 
   /* status color */
   --critical-status: #cc3333;
@@ -32,6 +32,7 @@
   --base-medium: 12px;
 
   --font-weight-bold: 700;
+  --font-weight-semi-bold-2: 600;
   --font-weight-semi-bold: 500;
   --font-weight-normal: 400;
 
