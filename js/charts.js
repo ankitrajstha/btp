@@ -25,7 +25,7 @@ const getChartConfig = (chartType, data, labels) => {
     };
 
     // Chart configuration for pie chart, outlined and filled
-    if(chartType !== 'bar'){
+    if (chartType !== 'bar') {
         chartConfig['plotOptions'] = {
             pie: {
                 offsetX: -65,
@@ -33,7 +33,7 @@ const getChartConfig = (chartType, data, labels) => {
                 customScale: 0.9,
             }
         }
-        chartConfig[labels]
+        chartConfig['labels'] = labels
     }
 
     // Addtional chart configuration for bar chart
