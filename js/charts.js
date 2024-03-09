@@ -71,8 +71,12 @@ const getChartConfig = (chartType, data, labels, inModal) => {
                 },
             },
         };
+        // Hamburger icon with download options in bar chart
+        chartConfig.chart['toolbar'] = {
+            show: false
+        };
     }
-    
+
     if (inModal && chartType !== 'bar') {
         chartConfig.chart.height = '100%'
         chartConfig.plotOptions.pie.customScale = 0.85
