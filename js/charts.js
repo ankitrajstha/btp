@@ -106,10 +106,47 @@ document.addEventListener("DOMContentLoaded", () => {
     const taskTypelabels = ['Bug Leakage', 'Task', 'Sub Task', 'Task Maintenance', 'Bug', 'Epic']; // Replace with actual data from API later
 
     // Change graphs when another option is selected
-    taskTypeChart = selectedChartType.addEventListener('change', function () {
-        updateChart(taskTypeChart, taskTypeContainer, selectedChartType.value, taskTypeData, taskTypelabels);
+    selectedChartType.addEventListener('change', function () {
+        taskTypeChart = updateChart(taskTypeChart, taskTypeContainer, selectedChartType.value, taskTypeData, taskTypelabels);
     });
 
     // Intial chart render
     taskTypeChart = updateChart(taskTypeChart, taskTypeContainer, selectedChartType.value, taskTypeData, taskTypelabels);
+    
+    // Charts inside modal 
+    // Modal apex chart objects
+    let taskTypeModalChart;
+
+    // Get modal open button and handle event
+    const openModalButton = document.getElementById("openTaskTypeModal");
+    openModalButton.addEventListener('click', () => {
+        openModal(taskTypeModalChart, 'taskTypeModal', 'taskTypeModalChart', selectedChartType.value, taskTypeData, taskTypelabels);
+    });
 });
+
+// Modal 
+const openModal = (myChart, modalId, chartModalContainerId, chartType, data, labels) => {
+    const modal = document.getElementById(modalId);
+    const chartContainer = document.getElementById(chartModalContainerId);
+    myChart = updateChart(myChart, chartContainer, chartType, data, labels);
+    
+    // Display modal
+    modal.style.display = "block";
+  
+    // Add event listener for chart type selector inside modal
+    const chartTypeSelector = modal.querySelector('select');
+    chartTypeSelector.addEventListener('change', () => {
+        myChart = updateChart(myChart, chartContainer, chartTypeSelector.value, data, labels);
+    });
+  
+    // Add event listener for closing the modal
+    const closeButton = modal.querySelector('.close');
+    closeButton.addEventListener('click', () => {
+      modal.style.display = "none";
+    });
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  };
