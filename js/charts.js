@@ -1,4 +1,4 @@
-const getChartConfig = (chartType, data, labels) => {
+const getChartConfig = (chartType, data, labels, inModal) => {
     // Initial configuration for all charts
     const chartConfig = {
         chart: {
@@ -72,6 +72,17 @@ const getChartConfig = (chartType, data, labels) => {
             },
         };
     }
+    
+    if (inModal && chartType !== 'bar') {
+        chartConfig.chart.height = '100%'
+        chartConfig.plotOptions.pie.customScale = 0.85
+        chartConfig.plotOptions.pie.offsetX = -60
+        chartConfig.legend.itemMargin.vertical = 2.5
+        chartConfig.legend.offsetY = 30
+    }
+    if (inModal && chartType === 'bar') {
+        chartConfig.chart.height = '90%'
+    }
     return chartConfig;
 };
 
@@ -81,11 +92,11 @@ const renderChart = (container, chartConfig) => {
     return chart;
 };
 
-const updateChart = (myChart, chartContainer, chartType, data, labels) => {
+const updateChart = (myChart, chartContainer, chartType, data, labels, inModal) => {
     if (myChart) {
         myChart.destroy();
     }
-    const chartConfig = getChartConfig(chartType, data, labels);
+    const chartConfig = getChartConfig(chartType, data, labels, inModal);
     myChart = renderChart(chartContainer, chartConfig);
     return myChart
 };
@@ -107,12 +118,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Change graphs when another option is selected
     selectedChartType.addEventListener('change', function () {
-        taskTypeChart = updateChart(taskTypeChart, taskTypeContainer, selectedChartType.value, taskTypeData, taskTypelabels);
+        taskTypeChart = updateChart(taskTypeChart, taskTypeContainer, selectedChartType.value, taskTypeData, taskTypelabels, false);
     });
 
     // Intial chart render
-    taskTypeChart = updateChart(taskTypeChart, taskTypeContainer, selectedChartType.value, taskTypeData, taskTypelabels);
-    
+    taskTypeChart = updateChart(taskTypeChart, taskTypeContainer, selectedChartType.value, taskTypeData, taskTypelabels, false);
+
     // Charts inside modal 
     // Modal apex chart objects
     let taskTypeModalChart;
@@ -128,25 +139,25 @@ document.addEventListener("DOMContentLoaded", () => {
 const openModal = (myChart, modalId, chartModalContainerId, chartType, data, labels) => {
     const modal = document.getElementById(modalId);
     const chartContainer = document.getElementById(chartModalContainerId);
-    myChart = updateChart(myChart, chartContainer, chartType, data, labels);
-    
+    myChart = updateChart(myChart, chartContainer, chartType, data, labels, true);
+
     // Display modal
     modal.style.display = "block";
-  
+
     // Add event listener for chart type selector inside modal
     const chartTypeSelector = modal.querySelector('select');
     chartTypeSelector.addEventListener('change', () => {
-        myChart = updateChart(myChart, chartContainer, chartTypeSelector.value, data, labels);
+        myChart = updateChart(myChart, chartContainer, chartTypeSelector.value, data, labels, true);
     });
-  
+
     // Add event listener for closing the modal
     const closeButton = modal.querySelector('.close');
     closeButton.addEventListener('click', () => {
-      modal.style.display = "none";
+        modal.style.display = "none";
     });
     window.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        modal.style.display = "none";
-      }
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
     });
-  };
+};
