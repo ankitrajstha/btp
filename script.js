@@ -4,15 +4,25 @@
 document.addEventListener('DOMContentLoaded', function () {
     const teammembers = document.getElementById('teammembers-slider');
     const profilecontainer = document.getElementById('profilecontainer');
+    const dimmedBackground = document.getElementById('dimmedBackground');
 
     profilecontainer.addEventListener('click', function () {
         if (teammembers.style.right === '0px') {
             teammembers.style.right = '-360px'; // Slide out
+            dimmedBackground.style.display = 'none';
         } else {
             teammembers.style.right = '0px'; // Slide in
+            dimmedBackground.style.display = 'block';
         }
     });
+
+    dimmedBackground.addEventListener('click', function() {
+        teammembers.style.right = '-360px'; // Slide out
+        dimmedBackground.style.display = 'none';
+    });
 });
+
+
 
 function changeSlide(index) {
     const items = document.querySelectorAll('.nav-slider-item');
