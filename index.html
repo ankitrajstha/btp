@@ -215,6 +215,23 @@
                   <option value="pie">Pie Chart - Filled</option>
                   <option value="bar">Bar Diagram</option>
                 </select>
+                <img src="assets/expand_icon.png" id="openTaskTypeModal" style="cursor: pointer;"/>
+                <!-- Modal -->
+                <div id="taskTypeModal" class="modal">
+                  <!-- Modal content -->
+                  <div class="modal-content">
+                    <img src="assets/icon_close.png" class="close"/>
+                    <label>Task Type</label>
+                    <!-- Select type of chart to display -->
+                    <select id="chart-type-1">
+                      <option value="donut">Pie Chart - Outline</option>
+                      <option value="pie">Pie Chart - Filled</option>
+                      <option value="bar">Bar Diagram</option>
+                    </select>
+                    <div id="taskTypeModalChart"></div>
+                  </div>
+                </div>
+
               </div>
               <!-- Render chart for task type  -->
               <div id="taskTypeChart"></div>
