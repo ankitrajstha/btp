@@ -72,11 +72,13 @@
             <div class="date-chart-container">
               <p>24 Jan 2024 - 30 Sept 2024</p>
               <div class="sprint-duration-chart-container">
-                <div>
-                  <div class="radial-chart-container">
-                    <div id="radial-chart-1"></div>
-                    <div id="radial-chart-1"></div>
-                  </div>
+                <div class="chart-container">
+                  <div id="chart"></div>
+                  <p>client Satisfaction</p>
+                </div>
+                <div class="chart-container">
+                  <div id="chart2"></div>
+                  <p>Team morale</p>
                 </div>
               </div>
             </div>
@@ -215,12 +217,16 @@
                   <option value="pie">Pie Chart - Filled</option>
                   <option value="bar">Bar Diagram</option>
                 </select>
-                <img src="assets/expand_icon.png" id="openTaskTypeModal" style="cursor: pointer;"/>
+                <img
+                  src="assets/expand_icon.png"
+                  id="openTaskTypeModal"
+                  style="cursor: pointer"
+                />
                 <!-- Modal -->
                 <div id="taskTypeModal" class="modal">
                   <!-- Modal content -->
                   <div class="modal-content">
-                    <img src="assets/icon_close.png" class="close"/>
+                    <img src="assets/icon_close.png" class="close" />
                     <label>Task Type</label>
                     <!-- Select type of chart to display -->
                     <select id="chart-type-1">
@@ -231,12 +237,11 @@
                     <div id="taskTypeModalChart"></div>
                   </div>
                 </div>
-
               </div>
               <!-- Render chart for task type  -->
               <div id="taskTypeChart"></div>
             </div>
-            
+
             <div class="chart-component task-status"></div>
             <div class="chart-component story-points"></div>
           </div>

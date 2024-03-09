@@ -161,7 +161,8 @@
 .sprint-duration-container
   .date-chart-container
   .sprint-duration-chart-container {
-  border: 1px solid var(--primary-black);
+  /* border: 1px solid var(--primary-black); */
+  display: flex;
   width: 208px;
 }
 
