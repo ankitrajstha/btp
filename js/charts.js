@@ -138,14 +138,14 @@ const getChartConfig = (chartType, data, labels, inModal) => {
     }
   }
 
-  if (inModal && chartType !== "bar") {
+  if (inModal && chartType !== "bar" && chartType !== 'line') {
     chartConfig.chart.height = "100%";
     chartConfig.plotOptions.pie.customScale = 0.85;
     chartConfig.plotOptions.pie.offsetX = -60;
     chartConfig.legend.itemMargin.vertical = 2.5;
     chartConfig.legend.offsetY = 30;
   }
-  if (inModal && chartType === "bar") {
+  if (inModal && (chartType === "bar" || chartType === 'line')) {
     chartConfig.chart.height = "90%";
   }
   return chartConfig;
@@ -188,6 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const selectedChartTypeTaskStatus = document.querySelector("#chart-type-2");
   const selectedChartTypeTaskStatusModal = document.querySelector("#chart-type-2-0");
   const selectedChartTypeStoryPoints = document.querySelector("#chart-type-3");
+  const selectedChartTypeStoryPointsModal = document.querySelector("#chart-type-3-0");
 
   // Chart data
   // Task type chart data
@@ -298,7 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
   createRadialBarChart("chart2", 80);
   // Charts inside modal
   // Modal apex chart objects
-  let taskTypeModalChart, taskStatusModalChart;
+  let taskTypeModalChart, taskStatusModalChart, storyPointsModalChart;
 
   // Get modal open button and handle event
   const openModalButton = document.getElementById("openTaskTypeModal");
@@ -321,6 +322,17 @@ document.addEventListener("DOMContentLoaded", () => {
       selectedChartTypeTaskStatusModal,
       taskStatusData,
       taskStatusLabels
+    );
+  });
+  const openModalButton3 = document.getElementById("openStoryPointsModal");
+  openModalButton3.addEventListener("click", () => {
+    openModal(
+      storyPointsModalChart,
+      "storyPointsModal",
+      "storyPointsModalChart",
+      selectedChartTypeStoryPointsModal,
+      storyPointsData,
+      storyPointsLabels
     );
   });
 });
