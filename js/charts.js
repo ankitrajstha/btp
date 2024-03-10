@@ -165,13 +165,17 @@ const updateChart = (
 
 document.addEventListener("DOMContentLoaded", () => {
   // Apex chart objects
-  let taskTypeChart;
+  let taskTypeChart, taskStatusChart;
 
   // Chart containers
   let taskTypeContainer = document.querySelector("#taskTypeChart");
+  let taskStatusContainer = document.querySelector("#taskStatusChart");
 
   // Selected chart type
-  const selectedChartType = document.querySelector("#chart-type-1");
+  const selectedChartTypeTaskType = document.querySelector("#chart-type-1");
+  const selectedChartTypeTaskTypeModal = document.querySelector("#chart-type-1-0");
+  const selectedChartTypeTaskStatus = document.querySelector("#chart-type-2");
+  const selectedChartTypeTaskStatusModal = document.querySelector("#chart-type-2-0");
 
   // Chart data
   // Task type chart data
@@ -186,11 +190,23 @@ document.addEventListener("DOMContentLoaded", () => {
   ]; // Replace with actual data from API later
 
   // Change graphs when another option is selected
-  selectedChartType.addEventListener("change", function () {
+  selectedChartTypeTaskType.addEventListener("change", function () {
+    selectedChartTypeTaskTypeModal.value = selectedChartTypeTaskType.value
     taskTypeChart = updateChart(
       taskTypeChart,
       taskTypeContainer,
-      selectedChartType.value,
+      selectedChartTypeTaskType.value,
+      taskTypeData,
+      taskTypelabels,
+      false
+    );
+  });
+  selectedChartTypeTaskStatus.addEventListener("change", function () {
+    selectedChartTypeTaskStatusModal.value = selectedChartTypeTaskStatus.value
+    taskStatusChart = updateChart(
+      taskStatusChart,
+      taskStatusContainer,
+      selectedChartTypeTaskStatus.value,
       taskTypeData,
       taskTypelabels,
       false
@@ -201,7 +217,15 @@ document.addEventListener("DOMContentLoaded", () => {
   taskTypeChart = updateChart(
     taskTypeChart,
     taskTypeContainer,
-    selectedChartType.value,
+    selectedChartTypeTaskType.value,
+    taskTypeData,
+    taskTypelabels,
+    false
+  );
+  taskStatusChart = updateChart(
+    taskStatusChart,
+    taskStatusContainer,
+    selectedChartTypeTaskStatus.value,
     taskTypeData,
     taskTypelabels,
     false
@@ -211,7 +235,7 @@ document.addEventListener("DOMContentLoaded", () => {
   createRadialBarChart("chart2", 80);
   // Charts inside modal
   // Modal apex chart objects
-  let taskTypeModalChart;
+  let taskTypeModalChart, taskStatusModalChart;
 
   // Get modal open button and handle event
   const openModalButton = document.getElementById("openTaskTypeModal");
@@ -220,7 +244,18 @@ document.addEventListener("DOMContentLoaded", () => {
       taskTypeModalChart,
       "taskTypeModal",
       "taskTypeModalChart",
-      selectedChartType.value,
+      selectedChartTypeTaskTypeModal,
+      taskTypeData,
+      taskTypelabels
+    );
+  });
+  const openModalButton2 = document.getElementById("openTaskStatusModal");
+  openModalButton2.addEventListener("click", () => {
+    openModal(
+      taskStatusModalChart,
+      "taskStatusModal",
+      "taskStatusModalChart",
+      selectedChartTypeTaskStatusModal,
       taskTypeData,
       taskTypelabels
     );
@@ -238,18 +273,18 @@ const openModal = (
 ) => {
   const modal = document.getElementById(modalId);
   const chartContainer = document.getElementById(chartModalContainerId);
-  myChart = updateChart(myChart, chartContainer, chartType, data, labels, true);
+  myChart = updateChart(myChart, chartContainer, chartType.value, data, labels, true);
 
   // Display modal
   modal.style.display = "block";
 
   // Add event listener for chart type selector inside modal
-  const chartTypeSelector = modal.querySelector("select");
-  chartTypeSelector.addEventListener("change", () => {
+  // const chartTypeSelector = modal.querySelector("select");
+  chartType.addEventListener("change", () => {
     myChart = updateChart(
       myChart,
       chartContainer,
-      chartTypeSelector.value,
+      chartType.value,
       data,
       labels,
       true
