@@ -222,21 +222,6 @@
                   id="openTaskTypeModal"
                   style="cursor: pointer"
                 />
-                <!-- Modal -->
-                <div id="taskTypeModal" class="modal">
-                  <!-- Modal content -->
-                  <div class="modal-content">
-                    <img src="assets/icon_close.png" class="close" />
-                    <label>Task Type</label>
-                    <!-- Select type of chart to display -->
-                    <select id="chart-type-1">
-                      <option value="donut">Pie Chart - Outline</option>
-                      <option value="pie">Pie Chart - Filled</option>
-                      <option value="bar">Bar Diagram</option>
-                    </select>
-                    <div id="taskTypeModalChart"></div>
-                  </div>
-                </div>
               </div>
               <!-- Render chart for task type  -->
               <div id="taskTypeChart"></div>
@@ -248,6 +233,24 @@
           <div class="lower-charts-container">
             <div class="chart-component log-hours-comparison"></div>
             <div class="chart-component client-data"></div>
+          </div>
+        </div>
+        <!-- MODALS -->
+        <!-- Task Type Chart Modal -->
+        <div id="taskTypeModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <div>
+              <label>Task Type</label>
+              <!-- Select type of chart to display -->
+              <select id="chart-type-1-0">
+                <option value="donut">Pie Chart - Outline</option>
+                <option value="pie">Pie Chart - Filled</option>
+                <option value="bar">Bar Diagram</option>
+              </select>
+              <img src="assets/icon_close.png" class="close" />
+            </div>
+            <div id="taskTypeModalChart"></div>
           </div>
         </div>
       </main>
