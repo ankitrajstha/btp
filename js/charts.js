@@ -165,14 +165,17 @@ const updateChart = (
 
 document.addEventListener("DOMContentLoaded", () => {
   // Apex chart objects
-  let taskTypeChart;
+  let taskTypeChart, taskStatusChart;
 
   // Chart containers
   let taskTypeContainer = document.querySelector("#taskTypeChart");
+  let taskStatusContainer = document.querySelector("#taskStatusChart");
 
   // Selected chart type
   const selectedChartTypeTaskType = document.querySelector("#chart-type-1");
   const selectedChartTypeTaskTypeModal = document.querySelector("#chart-type-1-0");
+  const selectedChartTypeTaskStatus = document.querySelector("#chart-type-2");
+  const selectedChartTypeTaskStatusModal = document.querySelector("#chart-type-2-0");
 
   // Chart data
   // Task type chart data
@@ -198,6 +201,17 @@ document.addEventListener("DOMContentLoaded", () => {
       false
     );
   });
+  selectedChartTypeTaskStatus.addEventListener("change", function () {
+    selectedChartTypeTaskStatusModal.value = selectedChartTypeTaskStatus.value
+    taskStatusChart = updateChart(
+      taskStatusChart,
+      taskStatusContainer,
+      selectedChartTypeTaskStatus.value,
+      taskTypeData,
+      taskTypelabels,
+      false
+    );
+  });
 
   // Intial chart render
   taskTypeChart = updateChart(
@@ -208,12 +222,20 @@ document.addEventListener("DOMContentLoaded", () => {
     taskTypelabels,
     false
   );
+  taskStatusChart = updateChart(
+    taskStatusChart,
+    taskStatusContainer,
+    selectedChartTypeTaskStatus.value,
+    taskTypeData,
+    taskTypelabels,
+    false
+  );
   //radial chart render
   createRadialBarChart("chart", 20);
   createRadialBarChart("chart2", 80);
   // Charts inside modal
   // Modal apex chart objects
-  let taskTypeModalChart;
+  let taskTypeModalChart, taskStatusModalChart;
 
   // Get modal open button and handle event
   const openModalButton = document.getElementById("openTaskTypeModal");
@@ -223,6 +245,17 @@ document.addEventListener("DOMContentLoaded", () => {
       "taskTypeModal",
       "taskTypeModalChart",
       selectedChartTypeTaskTypeModal,
+      taskTypeData,
+      taskTypelabels
+    );
+  });
+  const openModalButton2 = document.getElementById("openTaskStatusModal");
+  openModalButton2.addEventListener("click", () => {
+    openModal(
+      taskStatusModalChart,
+      "taskStatusModal",
+      "taskStatusModalChart",
+      selectedChartTypeTaskStatusModal,
       taskTypeData,
       taskTypelabels
     );

@@ -226,8 +226,25 @@
               <!-- Render chart for task type  -->
               <div id="taskTypeChart"></div>
             </div>
-
-            <div class="chart-component task-status"></div>
+            <!-- Chart for Task Status -->
+            <div class="chart-component task-status">
+              <div>
+                <label>Task Status</label>
+                <!-- Select type of chart to display -->
+                <select id="chart-type-2">
+                  <option value="donut">Pie Chart - Outline</option>
+                  <option value="pie">Pie Chart - Filled</option>
+                  <option value="bar">Bar Diagram</option>
+                </select>
+                <img
+                  src="assets/expand_icon.png"
+                  id="openTaskStatusModal"
+                  style="cursor: pointer"
+                />
+              </div>
+              <!-- Render chart for task status  -->
+              <div id="taskStatusChart"></div>
+            </div>
             <div class="chart-component story-points"></div>
           </div>
           <div class="lower-charts-container">
@@ -236,7 +253,7 @@
           </div>
         </div>
         <!-- MODALS -->
-        <!-- Task Type Chart Modal -->
+        <!-- Task type chart in Modal -->
         <div id="taskTypeModal" class="modal">
           <!-- Modal content -->
           <div class="modal-content">
@@ -251,6 +268,23 @@
               <img src="assets/icon_close.png" class="close" />
             </div>
             <div id="taskTypeModalChart"></div>
+          </div>
+        </div>
+        <!-- Task status chart in Modal -->
+        <div id="taskStatusModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <div>
+              <label>Task Status</label>
+              <!-- Select type of chart to display -->
+              <select id="chart-type-2-0">
+                <option value="donut">Pie Chart - Outline</option>
+                <option value="pie">Pie Chart - Filled</option>
+                <option value="bar">Bar Diagram</option>
+              </select>
+              <img src="assets/icon_close.png" class="close" />
+            </div>
+            <div id="taskStatusModalChart"></div>
           </div>
         </div>
       </main>
