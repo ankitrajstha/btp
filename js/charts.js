@@ -189,6 +189,17 @@ document.addEventListener("DOMContentLoaded", () => {
     "Epic",
   ]; // Replace with actual data from API later
 
+  // Task status chart data
+  const taskStatusData = [15, 6, 25, 30, 9, 15]; // Replace with actual data from API later
+  const taskStatusLabels = [
+    "Todo",
+    "In Progress",
+    "Awaiting Dev Review",
+    "In Review",
+    "Complete",
+    "Blocked",
+  ]; // Replace with actual data from API later
+
   // Change graphs when another option is selected
   selectedChartTypeTaskType.addEventListener("change", function () {
     selectedChartTypeTaskTypeModal.value = selectedChartTypeTaskType.value
@@ -207,8 +218,8 @@ document.addEventListener("DOMContentLoaded", () => {
       taskStatusChart,
       taskStatusContainer,
       selectedChartTypeTaskStatus.value,
-      taskTypeData,
-      taskTypelabels,
+      taskStatusData,
+      taskStatusLabels,
       false
     );
   });
@@ -226,8 +237,8 @@ document.addEventListener("DOMContentLoaded", () => {
     taskStatusChart,
     taskStatusContainer,
     selectedChartTypeTaskStatus.value,
-    taskTypeData,
-    taskTypelabels,
+    taskStatusData,
+    taskStatusLabels,
     false
   );
   //radial chart render
@@ -256,8 +267,8 @@ document.addEventListener("DOMContentLoaded", () => {
       "taskStatusModal",
       "taskStatusModalChart",
       selectedChartTypeTaskStatusModal,
-      taskTypeData,
-      taskTypelabels
+      taskStatusData,
+      taskStatusLabels
     );
   });
 });
