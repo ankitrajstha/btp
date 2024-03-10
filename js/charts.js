@@ -57,7 +57,13 @@ const getChartConfig = (chartType, data, labels, inModal) => {
       height: "192px",
       type: chartType,
     },
-    legend: {
+    series: chartType === "bar" ? [{ name: "Data", data }] : data,
+    labels: labels
+  };
+
+  // Chart configuration for pie chart, outlined and filled
+  if (chartType !== "bar" && chartType !== 'line') {
+    chartConfig['legend'] =  {
       fontSize: "10px",
       fontFamily: "Poppins",
       offsetX: -8,
@@ -72,11 +78,6 @@ const getChartConfig = (chartType, data, labels, inModal) => {
         offsetY: 3,
       },
     },
-    series: chartType === "bar" ? [{ name: "Data", data }] : data,
-  };
-
-  // Chart configuration for pie chart, outlined and filled
-  if (chartType !== "bar") {
     chartConfig["plotOptions"] = {
       pie: {
         offsetX: -65,
@@ -84,7 +85,6 @@ const getChartConfig = (chartType, data, labels, inModal) => {
         customScale: 0.9,
       },
     };
-    chartConfig["labels"] = labels;
   }
 
   // Addtional chart configuration for bar chart
@@ -128,6 +128,16 @@ const getChartConfig = (chartType, data, labels, inModal) => {
     };
   }
 
+  if (chartType === 'line') {
+    chartConfig.dataLabels = {
+      enabled: true,
+      enabledOnSeries: [1]
+    }
+    chartConfig.stroke = {
+      width: [0, 4]
+    }
+  }
+
   if (inModal && chartType !== "bar") {
     chartConfig.chart.height = "100%";
     chartConfig.plotOptions.pie.customScale = 0.85;
@@ -165,17 +175,19 @@ const updateChart = (
 
 document.addEventListener("DOMContentLoaded", () => {
   // Apex chart objects
-  let taskTypeChart, taskStatusChart;
+  let taskTypeChart, taskStatusChart, storyPointsChart;
 
   // Chart containers
   let taskTypeContainer = document.querySelector("#taskTypeChart");
   let taskStatusContainer = document.querySelector("#taskStatusChart");
+  let storyPointsContainer = document.querySelector("#storyPointsChart");
 
   // Selected chart type
   const selectedChartTypeTaskType = document.querySelector("#chart-type-1");
   const selectedChartTypeTaskTypeModal = document.querySelector("#chart-type-1-0");
   const selectedChartTypeTaskStatus = document.querySelector("#chart-type-2");
   const selectedChartTypeTaskStatusModal = document.querySelector("#chart-type-2-0");
+  const selectedChartTypeStoryPoints = document.querySelector("#chart-type-3");
 
   // Chart data
   // Task type chart data
@@ -198,6 +210,27 @@ document.addEventListener("DOMContentLoaded", () => {
     "In Review",
     "Complete",
     "Blocked",
+  ]; // Replace with actual data from API later
+
+  
+  // Story points chart data
+  const storyPointsData = [
+    {
+      name: 'Completed',
+      type: 'column',
+      data: [35, 45, 32, 30, 22]
+    }, 
+    {
+      name: 'Assigned',
+      type: 'line',
+      data: [45, 50, 35, 40, 25]
+    }]; // Replace with actual data from API later
+  const storyPointsLabels = [
+    'Ram',
+    'Shyam',
+    'Hari',
+    'Shiva',
+    'Sita'
   ]; // Replace with actual data from API later
 
   // Change graphs when another option is selected
@@ -223,6 +256,17 @@ document.addEventListener("DOMContentLoaded", () => {
       false
     );
   });
+  selectedChartTypeStoryPoints.addEventListener("change", function () {
+    // selectedChartTypeTaskStatusModal.value = selectedChartTypeTaskStatus.value
+    storyPointsChart = updateChart(
+      storyPointsChart,
+      storyPointsContainer,
+      selectedChartTypeStoryPoints.value,
+      storyPointsData,
+      storyPointsLabels,
+      false
+    );
+  });
 
   // Intial chart render
   taskTypeChart = updateChart(
@@ -239,6 +283,14 @@ document.addEventListener("DOMContentLoaded", () => {
     selectedChartTypeTaskStatus.value,
     taskStatusData,
     taskStatusLabels,
+    false
+  );
+  storyPointsChart = updateChart(
+    storyPointsChart,
+    storyPointsContainer,
+    selectedChartTypeStoryPoints.value,
+    storyPointsData,
+    storyPointsLabels,
     false
   );
   //radial chart render
