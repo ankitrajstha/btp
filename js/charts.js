@@ -171,7 +171,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let taskTypeContainer = document.querySelector("#taskTypeChart");
 
   // Selected chart type
-  const selectedChartType = document.querySelector("#chart-type-1");
+  const selectedChartTypeTaskType = document.querySelector("#chart-type-1");
+  const selectedChartTypeTaskTypeModal = document.querySelector("#chart-type-1-0");
 
   // Chart data
   // Task type chart data
@@ -186,11 +187,12 @@ document.addEventListener("DOMContentLoaded", () => {
   ]; // Replace with actual data from API later
 
   // Change graphs when another option is selected
-  selectedChartType.addEventListener("change", function () {
+  selectedChartTypeTaskType.addEventListener("change", function () {
+    selectedChartTypeTaskTypeModal.value = selectedChartTypeTaskType.value
     taskTypeChart = updateChart(
       taskTypeChart,
       taskTypeContainer,
-      selectedChartType.value,
+      selectedChartTypeTaskType.value,
       taskTypeData,
       taskTypelabels,
       false
@@ -201,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
   taskTypeChart = updateChart(
     taskTypeChart,
     taskTypeContainer,
-    selectedChartType.value,
+    selectedChartTypeTaskType.value,
     taskTypeData,
     taskTypelabels,
     false
@@ -220,7 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
       taskTypeModalChart,
       "taskTypeModal",
       "taskTypeModalChart",
-      selectedChartType.value,
+      selectedChartTypeTaskTypeModal,
       taskTypeData,
       taskTypelabels
     );
@@ -238,18 +240,18 @@ const openModal = (
 ) => {
   const modal = document.getElementById(modalId);
   const chartContainer = document.getElementById(chartModalContainerId);
-  myChart = updateChart(myChart, chartContainer, chartType, data, labels, true);
+  myChart = updateChart(myChart, chartContainer, chartType.value, data, labels, true);
 
   // Display modal
   modal.style.display = "block";
 
   // Add event listener for chart type selector inside modal
-  const chartTypeSelector = modal.querySelector("select");
-  chartTypeSelector.addEventListener("change", () => {
+  // const chartTypeSelector = modal.querySelector("select");
+  chartType.addEventListener("change", () => {
     myChart = updateChart(
       myChart,
       chartContainer,
-      chartTypeSelector.value,
+      chartType.value,
       data,
       labels,
       true
