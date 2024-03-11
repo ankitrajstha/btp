@@ -7,8 +7,8 @@
     <script type="module" src="./index.js" defer></script>
     <link rel="stylesheet" href="verticalbar.css">
   <title>BTP Dashboard Project</title>
-    <script src="index.js"></script>
-<script src="script.js"></script>
+    <script defer src="index.js"></script>
+<script defer src="script.js"></script>
 </head>
   <body>
     <header>
@@ -53,15 +53,15 @@
     <div class="team-members-slider" id="teammembers-slider">
       <h1>Project Team Members</h1>
       <div class="nav-slider-button-wrapper">
-      <div class="nav-slider-button"onclick="slideLeft(0)">&#60;</div>
+      <div class="nav-slider-button"onclick="slider('left');">&#60;</div>
       <div class="navbar-slider">
-          <div class="nav-slider-item selected" onclick="changeSlide(0)">All <span class="counter">9</span></div>
-          <div class="nav-slider-item" onclick="changeSlide(1)">Project Manager <span class="counter">2</span></div>
-          <div class="nav-slider-item" onclick="changeSlide(2)">Quality Assurance<span class="counter">2</span></div>
-
+          <div class="nav-slider-item selected" onclick="changeSlide(this)">All <span class="counter">9</span></div>
+          <div class="nav-slider-item" onclick="changeSlide(this)">Project Manager <span class="counter">2</span></div>
+          <div class="nav-slider-item" onclick="changeSlide(this)">Quality Assurance<span class="counter">5</span></div>
+          <div class="nav-slider-item" onclick="changeSlide(this)">Quality <span class="counter">3</span></div>
           <!-- Add more navigation items here -->
       </div>
-      <div class="nav-slider-button"onclick="slideRight(2)">&#62;</div>
+      <div class="nav-slider-button"onclick="slider('right');">&#62;</div>
   </div>
   <!-- list is is added dynamically from js -->
       <ul class="members-list">

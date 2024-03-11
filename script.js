@@ -24,39 +24,41 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-function changeSlide(index) {
-    const items = document.querySelectorAll('.nav-slider-item');
-    items.forEach((item, i) => {
-        if (i === index) {
-            item.classList.add('selected');
-        } else {
-            item.classList.remove('selected');
-        }
-    });
+function changeSlide(target) {
+    document.querySelector('.navbar-slider .selected').classList.remove('selected');
+    target.classList.add('selected')
 }
 
 // when < button is clicked
-function slideLeft(index) {
-    const items = document.querySelectorAll('.nav-slider-item');
-    items.forEach((item, i) => {
-        if (i === index) {
-            item.classList.add('selected');
-        } else {
-            item.classList.remove('selected');
-        }
-    });
 
-}
-//when > button is clicked
-function slideRight(index) {
-    const items = document.querySelectorAll('.nav-slider-item');
-    items.forEach((item, i) => {
-        if (i === index) {
-            item.classList.add('selected');
-        } else {
-            item.classList.remove('selected');
-        }
-    });
+function slider(direction) {
+    const parent = document.querySelector('.navbar-slider');
+    let current = parent.querySelector('.selected');
+    current.classList.remove('selected')
+    
+    if (direction === 'right') {
+        if (!current.nextElementSibling) {
+            current = parent.firstElementChild;
+            current.classList.add('selected');
+            current.scrollIntoView({ behavior: "smooth", inline: "start" });
+
+        } else
+        { current.nextElementSibling.classList.add('selected');
+        current.nextElementSibling.scrollIntoView({ behavior: "smooth", inline: "center" });}
+        
+    } else {
+        if (!current.previousElementSibling) {
+            current = parent.lastElementChild;
+            current.classList.add('selected');
+        current.scrollIntoView({ behavior: "smooth", inline: "start" });
+
+        } else
+        { current.previousElementSibling.classList.add('selected');
+        current.previousElementSibling.scrollIntoView({ behavior: "smooth", inline: "center" });}
+    
+    }
+
+   // current.scrollIntoView({ behavior: "auto", inline: "start" });
 }
 
 //adding list

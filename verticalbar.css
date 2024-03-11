@@ -6,24 +6,30 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    width: 295px;
+    width: 290px;
     height: 37px;
     flex-grow: 0;
-    gap: 28px;
+    gap: 17px;
 }
 
 .nav-slider-button {
     height: 18px;
     width: 18px;
+    padding-left:  18px;
+
+
 }
 
 /* Navigation bar styles */
 .navbar-slider {
     display: flex;
-    overflow-x: hidden;
     white-space: nowrap;
-    gap: 28px;
+    gap: 27px;
     padding: 10px;
+    overflow-x: auto;
+}
+.navbar-slider::-webkit-scrollbar{
+    display: none;
 }
 
 .nav-slider-item {
