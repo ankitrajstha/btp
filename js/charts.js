@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const selectedChartTypeTaskTypeModal = document.querySelector("#chart-type-1-0");
   let selectedChartTypeTaskStatus = 'donut';
   const selectedChartTypeTaskStatusModal = document.querySelector("#chart-type-2-0");
-  const selectedChartTypeStoryPoints = document.querySelector("#chart-type-3");
+  let selectedChartTypeStoryPoints = 'line';
   const selectedChartTypeStoryPointsModal = document.querySelector("#chart-type-3-0");
 
   // Chart data
@@ -295,16 +295,29 @@ document.addEventListener("DOMContentLoaded", () => {
     dropdownOptions2.style.display === "none";
   });
 
-  selectedChartTypeStoryPoints.addEventListener("change", function () {
-    // selectedChartTypeTaskStatusModal.value = selectedChartTypeTaskStatus.value
-    storyPointsChart = updateChart(
-      storyPointsChart,
-      storyPointsContainer,
-      selectedChartTypeStoryPoints.value,
-      storyPointsData,
-      storyPointsLabels,
-      false
-    );
+  const chartOption3 = document.querySelector("#chart-type-3");
+  const dropdownOptions3 = document.querySelector("#dropdownChartOptions3");
+  const selectedChartLabel3 = document.querySelector("#selectedChart3");
+
+  chartOption3.addEventListener("click", function () {
+    dropdownOptions3.style.display =
+      dropdownOptions3.style.display === "none" ? "block" : "none";
+  });
+  dropdownOptions3.addEventListener("click", function (event) {
+    if (event.target.tagName === "LI") {
+      const selectedOptionText = event.target.textContent.trim();
+      selectedChartTypeStoryPoints = event.target.getAttribute("data-value");
+      storyPointsChart = updateChart(
+        storyPointsChart,
+        storyPointsContainer,
+        selectedChartTypeStoryPoints,
+        storyPointsData,
+        storyPointsLabels,
+        false
+      );
+      selectedChartLabel3.textContent = selectedOptionText;
+    }
+    dropdownOptions3.style.display === "none";
   });
 
   // Intial chart render
@@ -327,7 +340,7 @@ document.addEventListener("DOMContentLoaded", () => {
   storyPointsChart = updateChart(
     storyPointsChart,
     storyPointsContainer,
-    selectedChartTypeStoryPoints.value,
+    selectedChartTypeStoryPoints,
     storyPointsData,
     storyPointsLabels,
     false
