@@ -32,7 +32,13 @@ resizableComponents.forEach(component => {
       prevWidth = width;
       prevHeight = height;
     }
-
-
+  });
+  component.addEventListener('dblclick', () => {
+    component.style.width = '449.33px';
+    component.style.height = '129px';
+    component.style.removeProperty('--base-font-size-h4');
+    component.style.removeProperty('--base-line-height-h4');
+    component.style.removeProperty('--base-font-size-paragraph');
+    component.style.removeProperty('--base-line-height-paragraph');
   });
 });
