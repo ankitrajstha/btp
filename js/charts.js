@@ -54,7 +54,7 @@ const getChartConfig = (chartType, data, labels, inModal) => {
   const chartConfig = {
     chart: {
       width: "100%",
-      height: "192px",
+      height: "100%",
       type: chartType,
     },
     legend: {
@@ -79,8 +79,8 @@ const getChartConfig = (chartType, data, labels, inModal) => {
   if (chartType !== "bar") {
     chartConfig["plotOptions"] = {
       pie: {
-        offsetX: -65,
-        offsetY: 5,
+        offsetX: -60,
+        offsetY: 8,
         customScale: 0.9,
       },
     };
@@ -173,9 +173,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Selected chart type
   const selectedChartTypeTaskType = document.querySelector("#chart-type-1");
-  const selectedChartTypeTaskTypeModal = document.querySelector("#chart-type-1-0");
+  const selectedChartTypeTaskTypeModal =
+    document.querySelector("#chart-type-1-0");
   const selectedChartTypeTaskStatus = document.querySelector("#chart-type-2");
-  const selectedChartTypeTaskStatusModal = document.querySelector("#chart-type-2-0");
+  const selectedChartTypeTaskStatusModal =
+    document.querySelector("#chart-type-2-0");
 
   // Chart data
   // Task type chart data
@@ -191,7 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Change graphs when another option is selected
   selectedChartTypeTaskType.addEventListener("change", function () {
-    selectedChartTypeTaskTypeModal.value = selectedChartTypeTaskType.value
+    selectedChartTypeTaskTypeModal.value = selectedChartTypeTaskType.value;
     taskTypeChart = updateChart(
       taskTypeChart,
       taskTypeContainer,
@@ -202,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   });
   selectedChartTypeTaskStatus.addEventListener("change", function () {
-    selectedChartTypeTaskStatusModal.value = selectedChartTypeTaskStatus.value
+    selectedChartTypeTaskStatusModal.value = selectedChartTypeTaskStatus.value;
     taskStatusChart = updateChart(
       taskStatusChart,
       taskStatusContainer,
@@ -217,7 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
   taskTypeChart = updateChart(
     taskTypeChart,
     taskTypeContainer,
-    selectedChartTypeTaskType.value,
+    "pie",
     taskTypeData,
     taskTypelabels,
     false
@@ -249,17 +251,17 @@ document.addEventListener("DOMContentLoaded", () => {
       taskTypelabels
     );
   });
-  const openModalButton2 = document.getElementById("openTaskStatusModal");
-  openModalButton2.addEventListener("click", () => {
-    openModal(
-      taskStatusModalChart,
-      "taskStatusModal",
-      "taskStatusModalChart",
-      selectedChartTypeTaskStatusModal,
-      taskTypeData,
-      taskTypelabels
-    );
-  });
+  // const openModalButton2 = document.getElementById("openTaskStatusModal");
+  // openModalButton2.addEventListener("click", () => {
+  //   openModal(
+  //     taskStatusModalChart,
+  //     "taskStatusModal",
+  //     "taskStatusModalChart",
+  //     selectedChartTypeTaskStatusModal,
+  //     taskTypeData,
+  //     taskTypelabels
+  //   );
+  // });
 });
 
 // Modal
@@ -273,7 +275,14 @@ const openModal = (
 ) => {
   const modal = document.getElementById(modalId);
   const chartContainer = document.getElementById(chartModalContainerId);
-  myChart = updateChart(myChart, chartContainer, chartType.value, data, labels, true);
+  myChart = updateChart(
+    myChart,
+    chartContainer,
+    chartType.value,
+    data,
+    labels,
+    true
+  );
 
   // Display modal
   modal.style.display = "block";
@@ -302,3 +311,21 @@ const openModal = (
     }
   });
 };
+
+const chartOption = document.querySelector(".select-chart");
+const dropdownOptions = document.querySelector(".dropdown-chart-options");
+const selectedChartLabel = document.querySelector(".selected-chart");
+
+chartOption.addEventListener("click", function () {
+  dropdownOptions.style.display =
+    dropdownOptions.style.display === "none" ? "block" : "none";
+});
+dropdownOptions.addEventListener("click", function (event) {
+  if (event.target.tagName === "LI") {
+    const selectedOptionText = event.target.textContent.trim();
+    console.log(event.target.getAttribute("data-value"));
+
+    selectedChartLabel.textContent = selectedOptionText;
+    dropdownOptions.style.display = "none";
+  }
+});

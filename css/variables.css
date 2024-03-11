@@ -1,7 +1,7 @@
 :root {
   --primary-red: #be263b;
   --primary-black: #252525;
-  --body-color: #fdfdfd;
+  --body-color: #f8f8ff;
 
   /* status color */
   --critical-status: #cc3333;

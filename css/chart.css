@@ -20,7 +20,7 @@
   transform: translate(-50%, -50%);
   background-color: #ffffff;
   margin: auto;
-  padding: 1.25rem;
+  padding: var(--spacing-7);
   border: 1px solid #888;
   width: 636.12px;
   height: 449px;
@@ -53,4 +53,60 @@
   position: absolute;
   right: -3px;
   bottom: -2px;
+}
+
+.chart-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chart-nav-select {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8.5px;
+}
+.select-chart {
+  width: 140px;
+  height: 30.19px;
+  padding: 0 12.08px;
+  border: 1px solid var(--g200);
+  border-radius: 8.05px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.selected-chart {
+  font-size: 10px;
+  cursor: pointer;
+}
+.dropdown-chart-options {
+  display: none;
+  width: 160px;
+  height: 104px;
+  padding: 4px 0;
+  background: #ffffff;
+  font-size: 12px;
+  box-shadow: 0px 74px 21px 0px #dedede00;
+  border-radius: var(--spacing-2);
+  position: absolute;
+  bottom: -105px;
+  left: -10px;
+  z-index: 10;
+}
+
+.dropdown-chart-options li {
+  padding: 6px 12px;
+  width: 160px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.chart-head {
+  font-size: 16px;
+  font-weight: 600;
 }
