@@ -57,7 +57,13 @@ const getChartConfig = (chartType, data, labels, inModal) => {
       height: "100%",
       type: chartType,
     },
-    legend: {
+    series: chartType === "bar" ? [{ name: "Data", data }] : data,
+    labels: labels
+  };
+
+  // Chart configuration for pie chart, outlined and filled
+  if (chartType !== "bar" && chartType !== 'line') {
+    chartConfig['legend'] =  {
       fontSize: "10px",
       fontFamily: "Poppins",
       offsetX: -8,
@@ -72,11 +78,6 @@ const getChartConfig = (chartType, data, labels, inModal) => {
         offsetY: 3,
       },
     },
-    series: chartType === "bar" ? [{ name: "Data", data }] : data,
-  };
-
-  // Chart configuration for pie chart, outlined and filled
-  if (chartType !== "bar") {
     chartConfig["plotOptions"] = {
       pie: {
         offsetX: -60,
@@ -84,7 +85,6 @@ const getChartConfig = (chartType, data, labels, inModal) => {
         customScale: 0.9,
       },
     };
-    chartConfig["labels"] = labels;
   }
 
   // Addtional chart configuration for bar chart
@@ -128,14 +128,24 @@ const getChartConfig = (chartType, data, labels, inModal) => {
     };
   }
 
-  if (inModal && chartType !== "bar") {
+  if (chartType === 'line') {
+    chartConfig.dataLabels = {
+      enabled: true,
+      enabledOnSeries: [1]
+    }
+    chartConfig.stroke = {
+      width: [0, 4]
+    }
+  }
+
+  if (inModal && chartType !== "bar" && chartType !== 'line') {
     chartConfig.chart.height = "100%";
     chartConfig.plotOptions.pie.customScale = 0.85;
     chartConfig.plotOptions.pie.offsetX = -60;
     chartConfig.legend.itemMargin.vertical = 2.5;
     chartConfig.legend.offsetY = 30;
   }
-  if (inModal && chartType === "bar") {
+  if (inModal && (chartType === "bar" || chartType === 'line')) {
     chartConfig.chart.height = "90%";
   }
   return chartConfig;
@@ -165,19 +175,21 @@ const updateChart = (
 
 document.addEventListener("DOMContentLoaded", () => {
   // Apex chart objects
-  let taskTypeChart, taskStatusChart;
+  let taskTypeChart, taskStatusChart, storyPointsChart;
 
   // Chart containers
   let taskTypeContainer = document.querySelector("#taskTypeChart");
   let taskStatusContainer = document.querySelector("#taskStatusChart");
+  let storyPointsContainer = document.querySelector("#storyPointsChart");
 
   // Selected chart type
   const selectedChartTypeTaskType = document.querySelector("#chart-type-1");
   const selectedChartTypeTaskTypeModal =
     document.querySelector("#chart-type-1-0");
   const selectedChartTypeTaskStatus = document.querySelector("#chart-type-2");
-  const selectedChartTypeTaskStatusModal =
-    document.querySelector("#chart-type-2-0");
+  const selectedChartTypeTaskStatusModal = document.querySelector("#chart-type-2-0");
+  const selectedChartTypeStoryPoints = document.querySelector("#chart-type-3");
+  const selectedChartTypeStoryPointsModal = document.querySelector("#chart-type-3-0");
 
   // Chart data
   // Task type chart data
@@ -189,6 +201,38 @@ document.addEventListener("DOMContentLoaded", () => {
     "Task Maintenance",
     "Bug",
     "Epic",
+  ]; // Replace with actual data from API later
+
+  // Task status chart data
+  const taskStatusData = [15, 6, 25, 30, 9, 15]; // Replace with actual data from API later
+  const taskStatusLabels = [
+    "Todo",
+    "In Progress",
+    "Awaiting Dev Review",
+    "In Review",
+    "Complete",
+    "Blocked",
+  ]; // Replace with actual data from API later
+
+  
+  // Story points chart data
+  const storyPointsData = [
+    {
+      name: 'Completed',
+      type: 'column',
+      data: [35, 45, 32, 30, 22]
+    }, 
+    {
+      name: 'Assigned',
+      type: 'line',
+      data: [45, 50, 35, 40, 25]
+    }]; // Replace with actual data from API later
+  const storyPointsLabels = [
+    'Ram',
+    'Shyam',
+    'Hari',
+    'Shiva',
+    'Sita'
   ]; // Replace with actual data from API later
 
   // Change graphs when another option is selected
@@ -209,8 +253,19 @@ document.addEventListener("DOMContentLoaded", () => {
       taskStatusChart,
       taskStatusContainer,
       selectedChartTypeTaskStatus.value,
-      taskTypeData,
-      taskTypelabels,
+      taskStatusData,
+      taskStatusLabels,
+      false
+    );
+  });
+  selectedChartTypeStoryPoints.addEventListener("change", function () {
+    // selectedChartTypeTaskStatusModal.value = selectedChartTypeTaskStatus.value
+    storyPointsChart = updateChart(
+      storyPointsChart,
+      storyPointsContainer,
+      selectedChartTypeStoryPoints.value,
+      storyPointsData,
+      storyPointsLabels,
       false
     );
   });
@@ -228,8 +283,16 @@ document.addEventListener("DOMContentLoaded", () => {
     taskStatusChart,
     taskStatusContainer,
     selectedChartTypeTaskStatus.value,
-    taskTypeData,
-    taskTypelabels,
+    taskStatusData,
+    taskStatusLabels,
+    false
+  );
+  storyPointsChart = updateChart(
+    storyPointsChart,
+    storyPointsContainer,
+    selectedChartTypeStoryPoints.value,
+    storyPointsData,
+    storyPointsLabels,
     false
   );
   //radial chart render
@@ -237,7 +300,7 @@ document.addEventListener("DOMContentLoaded", () => {
   createRadialBarChart("chart2", 80);
   // Charts inside modal
   // Modal apex chart objects
-  let taskTypeModalChart, taskStatusModalChart;
+  let taskTypeModalChart, taskStatusModalChart, storyPointsModalChart;
 
   // Get modal open button and handle event
   const openModalButton = document.getElementById("openTaskTypeModal");
@@ -251,17 +314,28 @@ document.addEventListener("DOMContentLoaded", () => {
       taskTypelabels
     );
   });
-  // const openModalButton2 = document.getElementById("openTaskStatusModal");
-  // openModalButton2.addEventListener("click", () => {
-  //   openModal(
-  //     taskStatusModalChart,
-  //     "taskStatusModal",
-  //     "taskStatusModalChart",
-  //     selectedChartTypeTaskStatusModal,
-  //     taskTypeData,
-  //     taskTypelabels
-  //   );
-  // });
+  const openModalButton2 = document.getElementById("openTaskStatusModal");
+  openModalButton2.addEventListener("click", () => {
+    openModal(
+      taskStatusModalChart,
+      "taskStatusModal",
+      "taskStatusModalChart",
+      selectedChartTypeTaskStatusModal,
+      taskStatusData,
+      taskStatusLabels
+    );
+  });
+  const openModalButton3 = document.getElementById("openStoryPointsModal");
+  openModalButton3.addEventListener("click", () => {
+    openModal(
+      storyPointsModalChart,
+      "storyPointsModal",
+      "storyPointsModalChart",
+      selectedChartTypeStoryPointsModal,
+      storyPointsData,
+      storyPointsLabels
+    );
+  });
 });
 
 // Modal
