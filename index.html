@@ -356,15 +356,47 @@
         <div id="taskTypeModal" class="modal">
           <!-- Modal content -->
           <div class="modal-content">
-            <div>
-              <label>Task Type</label>
+            <div class="chart-nav">
+              <label class="chart-head">Task Type</label>
               <!-- Select type of chart to display -->
-              <select id="chart-type-1-0">
-                <option value="donut">Pie Chart - Outline</option>
-                <option value="pie">Pie Chart - Filled</option>
-                <option value="bar">Bar Diagram</option>
-              </select>
-              <img src="assets/icon_close.png" class="close" />
+              <div class="chart-nav-select">
+                <div class="select-chart" id="chart-type-1-0">
+                  <label class="selected-chart" id="selectedChart-0">Pie Chart - Outline</label>
+                  <img
+                    src="assets/chevron-down.svg"
+                    alt="dropdown"
+                    class="selected-chart-chevron"
+                  />
+                  <div class="dropdown-chart-options" id="dropdownChartOptions-0">
+                    <ul>
+                      <li data-value="donut">
+                        <img
+                          src="assets/ion_pie-chart-outline.svg"
+                          alt="pie chart Outline"
+                        />
+                        Pie Chart - Outline
+                      </li>
+                      <li data-value="pie">
+                        <img
+                          src="assets/ion_pie-chart.svg"
+                          alt="pie chart Filled"
+                        />
+                        Pie Chart - Filled
+                      </li>
+                      <li data-value="bar">
+                        <img src="assets/bi_bar-chart.svg" alt="Bar Chart" />
+                        Bar Chart
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <img
+                  src="assets/icon_close.png"
+                  id="openTaskTypeModal"
+                  style="cursor: pointer"
+                  class="close"
+                />
+              </div>
             </div>
             <div id="taskTypeModalChart"></div>
           </div>

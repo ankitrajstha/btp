@@ -149,11 +149,15 @@ const getChartConfig = (chartType, data, labels, inModal) => {
   }
 
   if (inModal && chartType !== "bar" && chartType !== 'line') {
+    chartConfig.dataLabels.style.fontSize = '20px'
     chartConfig.chart.height = "100%";
-    chartConfig.plotOptions.pie.customScale = 0.85;
-    chartConfig.plotOptions.pie.offsetX = -60;
-    chartConfig.legend.itemMargin.vertical = 2.5;
-    chartConfig.legend.offsetY = 30;
+    chartConfig.plotOptions.pie.customScale = 0.95;
+    chartConfig.plotOptions.pie.offsetX = -40;
+    chartConfig.plotOptions.pie.offsetY = -5;
+    chartConfig.legend.itemMargin.vertical = 2.55;
+    chartConfig.legend.offsetY = 10;
+    chartConfig.legend.offsetX = -30;
+    chartConfig.legend.fontSize = '12px'
   }
   if (inModal && (chartType === "bar" || chartType === 'line')) {
     chartConfig.chart.height = "90%";
@@ -353,6 +357,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Modal apex chart objects
   let taskTypeModalChart, taskStatusModalChart, storyPointsModalChart;
 
+  const chartOptionModal = document.querySelector("#chart-type-1-0");
+  const dropdownOptionsModal = document.querySelector("#dropdownChartOptions-0");
+  const selectedChartLabelModal = document.querySelector("#selectedChart-0");
   // Get modal open button and handle event
   const openModalButton = document.getElementById("openTaskTypeModal");
   openModalButton.addEventListener("click", () => {
@@ -360,9 +367,12 @@ document.addEventListener("DOMContentLoaded", () => {
       taskTypeModalChart,
       "taskTypeModal",
       "taskTypeModalChart",
-      selectedChartTypeTaskTypeModal,
+      'donut',
       taskTypeData,
-      taskTypelabels
+      taskTypelabels,
+      chartOptionModal,
+      dropdownOptionsModal,
+      selectedChartLabelModal
     );
   });
   const openModalButton2 = document.getElementById("openTaskStatusModal");
@@ -396,14 +406,17 @@ const openModal = (
   chartModalContainerId,
   chartType,
   data,
-  labels
+  labels,
+  chartOptionModal,
+  dropdownOptionsModal,
+  selectedChartLabelModal
 ) => {
   const modal = document.getElementById(modalId);
   const chartContainer = document.getElementById(chartModalContainerId);
   myChart = updateChart(
     myChart,
     chartContainer,
-    chartType.value,
+    chartType,
     data,
     labels,
     true
@@ -413,15 +426,25 @@ const openModal = (
   modal.style.display = "block";
 
   // Add event listener for chart type selector inside modal
-  chartType.addEventListener("change", () => {
-    myChart = updateChart(
-      myChart,
-      chartContainer,
-      chartType.value,
-      data,
-      labels,
-      true
-    );
+  chartOptionModal.addEventListener("click", function () {
+    dropdownOptionsModal.style.display =
+      dropdownOptionsModal.style.display === "none" ? "block" : "none";
+  });
+  dropdownOptionsModal.addEventListener("click", function (event) {
+    if (event.target.tagName === "LI") {
+      const selectedOptionTextModal = event.target.textContent.trim();
+      chartType = event.target.getAttribute("data-value");
+      myChart = updateChart(
+        myChart,
+        chartContainer,
+        chartType,
+        data,
+        labels,
+        true
+      );
+      selectedChartLabelModal.textContent = selectedOptionTextModal;
+    }
+    dropdownOptionsModal.style.display === "none";
   });
 
   // Add event listener for closing the modal
