@@ -54,7 +54,7 @@ const getChartConfig = (chartType, data, labels, inModal) => {
   const chartConfig = {
     chart: {
       width: "100%",
-      height: "100%",
+      // height: "100%",
       type: chartType,
     },
     series: chartType === "bar" ? [{ name: "Data", data }] : data,
@@ -63,11 +63,11 @@ const getChartConfig = (chartType, data, labels, inModal) => {
 
   // Chart configuration for pie chart, outlined and filled
   if (chartType !== "bar" && chartType !== 'line') {
-    chartConfig['legend'] =  {
+    chartConfig['legend'] = {
       fontSize: "10px",
       fontFamily: "Poppins",
-      offsetX: -8,
-      offsetY: 15,
+      offsetX: -2,
+      offsetY: -2,
       itemMargin: {
         vertical: -1,
       },
@@ -78,17 +78,19 @@ const getChartConfig = (chartType, data, labels, inModal) => {
         offsetY: 3,
       },
     },
-    chartConfig["plotOptions"] = {
-      pie: {
-        offsetX: -60,
-        offsetY: 8,
-        customScale: 0.9,
-      },
-    };
+      chartConfig["plotOptions"] = {
+        pie: {
+          offsetX: -55,
+          offsetY: -30,
+          customScale: 0.75,
+          donut: {
+            size: 65
+          }
+        },
+      };
   }
-
   // Addtional chart configuration for bar chart
-  if (chartType === "bar") {
+  if (chartType === "bar" || chartType == 'line') {
     // Shorten labels for bar chart by taking the initals of long words
     var newLabels = {};
     labels.forEach((label) => {
@@ -103,6 +105,7 @@ const getChartConfig = (chartType, data, labels, inModal) => {
       }
     });
     labels = Object.keys(newLabels);
+    chartConfig.chart.height = '90%'
     // X-axis labels for bar charts with custom styling
     chartConfig["xaxis"] = {
       categories: labels,
@@ -126,9 +129,6 @@ const getChartConfig = (chartType, data, labels, inModal) => {
     chartConfig.chart["toolbar"] = {
       show: false,
     };
-  }
-
-  if (chartType === 'line') {
     chartConfig.dataLabels = {
       enabled: true,
       enabledOnSeries: [1]
@@ -183,10 +183,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let storyPointsContainer = document.querySelector("#storyPointsChart");
 
   // Selected chart type
-  const selectedChartTypeTaskType = document.querySelector("#chart-type-1");
-  const selectedChartTypeTaskTypeModal =
-    document.querySelector("#chart-type-1-0");
-  const selectedChartTypeTaskStatus = document.querySelector("#chart-type-2");
+  let selectedChartTypeTaskType = 'donut';
+  const selectedChartTypeTaskTypeModal = document.querySelector("#chart-type-1-0");
+  let selectedChartTypeTaskStatus = 'donut';
   const selectedChartTypeTaskStatusModal = document.querySelector("#chart-type-2-0");
   const selectedChartTypeStoryPoints = document.querySelector("#chart-type-3");
   const selectedChartTypeStoryPointsModal = document.querySelector("#chart-type-3-0");
@@ -214,14 +213,14 @@ document.addEventListener("DOMContentLoaded", () => {
     "Blocked",
   ]; // Replace with actual data from API later
 
-  
+
   // Story points chart data
   const storyPointsData = [
     {
       name: 'Completed',
       type: 'column',
       data: [35, 45, 32, 30, 22]
-    }, 
+    },
     {
       name: 'Assigned',
       type: 'line',
@@ -236,28 +235,56 @@ document.addEventListener("DOMContentLoaded", () => {
   ]; // Replace with actual data from API later
 
   // Change graphs when another option is selected
-  selectedChartTypeTaskType.addEventListener("change", function () {
-    selectedChartTypeTaskTypeModal.value = selectedChartTypeTaskType.value;
-    taskTypeChart = updateChart(
-      taskTypeChart,
-      taskTypeContainer,
-      selectedChartTypeTaskType.value,
-      taskTypeData,
-      taskTypelabels,
-      false
-    );
+  const chartOption = document.querySelector("#chart-type-1");
+  const dropdownOptions = document.querySelector("#dropdownChartOptions");
+  const selectedChartLabel = document.querySelector("#selectedChart");
+
+  chartOption.addEventListener("click", function () {
+    dropdownOptions.style.display =
+      dropdownOptions.style.display === "none" ? "block" : "none";
   });
-  selectedChartTypeTaskStatus.addEventListener("change", function () {
-    selectedChartTypeTaskStatusModal.value = selectedChartTypeTaskStatus.value;
-    taskStatusChart = updateChart(
-      taskStatusChart,
-      taskStatusContainer,
-      selectedChartTypeTaskStatus.value,
-      taskStatusData,
-      taskStatusLabels,
-      false
-    );
+  dropdownOptions.addEventListener("click", function (event) {
+    if (event.target.tagName === "LI") {
+      const selectedOptionText = event.target.textContent.trim();
+      selectedChartTypeTaskType = event.target.getAttribute("data-value");
+      taskTypeChart = updateChart(
+        taskTypeChart,
+        taskTypeContainer,
+        selectedChartTypeTaskType,
+        taskTypeData,
+        taskTypelabels,
+        false
+      );
+      selectedChartLabel.textContent = selectedOptionText;
+      dropdownOptions.style.display === "none";
+    }
   });
+
+  const chartOption2 = document.querySelector("#chart-type-2");
+  const dropdownOptions2 = document.querySelector("#dropdownChartOptions2");
+  const selectedChartLabel2 = document.querySelector("#selectedChart2");
+
+  chartOption2.addEventListener("click", function () {
+    dropdownOptions2.style.display =
+      dropdownOptions2.style.display === "none" ? "block" : "none";
+  });
+  dropdownOptions2.addEventListener("click", function (event) {
+    if (event.target.tagName === "LI") {
+      const selectedOptionText = event.target.textContent.trim();
+      selectedChartTypeTaskStatus = event.target.getAttribute("data-value");
+      taskStatusChart = updateChart(
+        taskStatusChart,
+        taskStatusContainer,
+        selectedChartTypeTaskStatus,
+        taskStatusData,
+        taskStatusLabels,
+        false
+      );
+      selectedChartLabel2.textContent = selectedOptionText;
+    }
+    dropdownOptions2.style.display === "none";
+  });
+
   selectedChartTypeStoryPoints.addEventListener("change", function () {
     // selectedChartTypeTaskStatusModal.value = selectedChartTypeTaskStatus.value
     storyPointsChart = updateChart(
@@ -274,7 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
   taskTypeChart = updateChart(
     taskTypeChart,
     taskTypeContainer,
-    "pie",
+    selectedChartTypeTaskType,
     taskTypeData,
     taskTypelabels,
     false
@@ -282,7 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
   taskStatusChart = updateChart(
     taskStatusChart,
     taskStatusContainer,
-    selectedChartTypeTaskStatus.value,
+    selectedChartTypeTaskStatus,
     taskStatusData,
     taskStatusLabels,
     false
@@ -298,6 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //radial chart render
   createRadialBarChart("chart", 20);
   createRadialBarChart("chart2", 80);
+
   // Charts inside modal
   // Modal apex chart objects
   let taskTypeModalChart, taskStatusModalChart, storyPointsModalChart;
@@ -362,7 +390,6 @@ const openModal = (
   modal.style.display = "block";
 
   // Add event listener for chart type selector inside modal
-  // const chartTypeSelector = modal.querySelector("select");
   chartType.addEventListener("change", () => {
     myChart = updateChart(
       myChart,
@@ -386,20 +413,3 @@ const openModal = (
   });
 };
 
-const chartOption = document.querySelector(".select-chart");
-const dropdownOptions = document.querySelector(".dropdown-chart-options");
-const selectedChartLabel = document.querySelector(".selected-chart");
-
-chartOption.addEventListener("click", function () {
-  dropdownOptions.style.display =
-    dropdownOptions.style.display === "none" ? "block" : "none";
-});
-dropdownOptions.addEventListener("click", function (event) {
-  if (event.target.tagName === "LI") {
-    const selectedOptionText = event.target.textContent.trim();
-    console.log(event.target.getAttribute("data-value"));
-
-    selectedChartLabel.textContent = selectedOptionText;
-    dropdownOptions.style.display = "none";
-  }
-});
