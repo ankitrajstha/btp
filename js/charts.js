@@ -63,6 +63,16 @@ const getChartConfig = (chartType, data, labels, inModal) => {
 
   // Chart configuration for pie chart, outlined and filled
   if (chartType !== "bar" && chartType !== 'line') {
+    chartConfig['dataLabels'] = {
+      style: {
+        fontSize: '10px',
+        fontFamily: "Poppins",
+        fontWeight: '400',
+      },
+      dropShadow: {
+        enabled: false,
+      }
+    }
     chartConfig['legend'] = {
       fontSize: "10px",
       fontFamily: "Poppins",
