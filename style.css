@@ -376,6 +376,26 @@
   box-sizing: border-box;
 }
 
+.highlight-component .project-highlights,
+.highlight-component .sprint-highlights,
+.highlight-component .milestone-highlights,
+.highlight-component .resource-highlights,
+.highlight-component .member-highlights {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.project-hightlights-list,
+.sprint-hightlights-list,
+.milestones-list,
+.resources-list,
+.team-members-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+
 .chart-container .upper-charts-container {
   display: flex;
   flex-wrap: wrap;
