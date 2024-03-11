@@ -64,4 +64,9 @@
   --border-radius-1: 4px;
   --border-radius-2: 8px;
   --border-radius-3: 16px;
+
+  --base-font-size-h4: 16px;
+  --base-font-size-paragraph: 12px;
+  --base-line-height-h4: 24px;
+  --base-line-height-paragraph: 20px;
 }
