@@ -232,19 +232,21 @@ const updateChart = (
 
 document.addEventListener("DOMContentLoaded", () => {
   // Apex chart objects
-  let taskTypeChart, taskStatusChart, storyPointsChart, logHoursChart;
+  let taskTypeChart, taskStatusChart, storyPointsChart, logHoursChart, clientDataChart;
 
   // Chart containers
   let taskTypeContainer = document.querySelector("#taskTypeChart");
   let taskStatusContainer = document.querySelector("#taskStatusChart");
   let storyPointsContainer = document.querySelector("#storyPointsChart");
   let logHoursContainer = document.querySelector("#logHoursChart");
+  let clientDataContainer = document.querySelector("#clientDataChart");
 
   // Selected chart type
-  let selectedChartTypeTaskType, selectedChartTypeTaskStatus, selectedChartTypeStoryPoints, selectedChartTypeLogHours;
+  let selectedChartTypeTaskType, selectedChartTypeTaskStatus, selectedChartTypeStoryPoints, selectedChartTypeLogHours, selectedChartTypeClientData;
   let selectedChartTypeTaskStatusModal, selectedChartTypeTaskTypeModal, selectedChartTypeStoryPointsModal;
   selectedChartTypeTaskType = selectedChartTypeTaskStatus = selectedChartTypeTaskTypeModal = selectedChartTypeTaskStatusModal = 'donut';
   selectedChartTypeStoryPoints = selectedChartTypeStoryPointsModal = selectedChartTypeLogHours = 'line';
+  selectedChartTypeClientData = 'bar';
   // Chart data
   // Task type chart data 
   const taskTypeData = [15, 6, 25, 30, 9, 15]; // Replace with actual data from API later
@@ -316,6 +318,16 @@ document.addEventListener("DOMContentLoaded", () => {
     'Hari',
     'Shiva',
     'Sita'
+  ]; // Replace with actual data from API later
+
+
+  // Client Data chart data
+  const clientDataData = [3.1, 2.3, 10.1, 4]; // Replace with actual data from API later
+  const clientDataLabels = [
+    "CS Support",
+    "Dev Support",
+    "Client Call",
+    "Site Visit"
   ]; // Replace with actual data from API later
 
   // Change graphs when another option is selected
@@ -422,6 +434,14 @@ document.addEventListener("DOMContentLoaded", () => {
     selectedChartTypeLogHours,
     logHoursData,
     logHoursLabels,
+    false
+  );
+  clientDataChart = updateChart(
+    clientDataChart,
+    clientDataContainer,
+    selectedChartTypeClientData,
+    clientDataData,
+    clientDataLabels,
     false
   );
   //radial chart render
