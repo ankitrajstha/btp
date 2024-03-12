@@ -450,7 +450,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Charts inside modal
   // Modal apex chart objects
-  let taskTypeModalChart, taskStatusModalChart, storyPointsModalChart, logHoursModalChart;
+  let taskTypeModalChart, taskStatusModalChart, storyPointsModalChart, logHoursModalChart, clientDataModalChart;
 
   const chartOptionModal = document.querySelector("#chart-type-1-0");
   const dropdownOptionsModal = document.querySelector("#dropdownChartOptions-0");
@@ -515,6 +515,20 @@ document.addEventListener("DOMContentLoaded", () => {
       selectedChartTypeLogHours,
       logHoursData,
       logHoursLabels,
+      null,
+      null,
+      null
+    );
+  });
+  const openModalButton5 = document.getElementById("openClientDataModal");
+  openModalButton5.addEventListener("click", () => {
+    openModal(
+      clientDataModalChart,
+      "clientDataModal",
+      "clientDataModalChart",
+      selectedChartTypeClientData,
+      clientDataData,
+      clientDataLabels,
       null,
       null,
       null
