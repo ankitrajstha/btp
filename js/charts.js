@@ -430,7 +430,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Charts inside modal
   // Modal apex chart objects
-  let taskTypeModalChart, taskStatusModalChart, storyPointsModalChart;
+  let taskTypeModalChart, taskStatusModalChart, storyPointsModalChart, logHoursModalChart;
 
   const chartOptionModal = document.querySelector("#chart-type-1-0");
   const dropdownOptionsModal = document.querySelector("#dropdownChartOptions-0");
@@ -486,6 +486,20 @@ document.addEventListener("DOMContentLoaded", () => {
       selectedChartLabelModal3
     );
   });
+  const openModalButton4 = document.getElementById("openLogHoursModal");
+  openModalButton4.addEventListener("click", () => {
+    openModal(
+      logHoursModalChart,
+      "logHoursModal",
+      "logHoursModalChart",
+      selectedChartTypeLogHours,
+      logHoursData,
+      logHoursLabels,
+      null,
+      null,
+      null
+    );
+  });
 });
 
 // Modal
@@ -515,25 +529,27 @@ const openModal = (
   modal.style.display = "block";
 
   // Add event listener for chart type selector inside modal
-  chartOptionModal.addEventListener("click", function () {
-    dropdownOptionsModal.classList.toggle('dropdown-chart-options-visibility');
-  });
-  dropdownOptionsModal.addEventListener("click", function (event) {
-    if (event.target.tagName === "LI") {
-      const selectedOptionTextModal = event.target.textContent.trim();
-      chartType = event.target.getAttribute("data-value");
-      myChart = updateChart(
-        myChart,
-        chartContainer,
-        chartType,
-        data,
-        labels,
-        true
-      );
-      selectedChartLabelModal.textContent = selectedOptionTextModal;
-    }
-    dropdownOptionsModal.style.display === "none";
-  });
+  if (chartOptionModal){
+    chartOptionModal.addEventListener("click", function () {
+      dropdownOptionsModal.classList.toggle('dropdown-chart-options-visibility');
+    });
+    dropdownOptionsModal.addEventListener("click", function (event) {
+      if (event.target.tagName === "LI") {
+        const selectedOptionTextModal = event.target.textContent.trim();
+        chartType = event.target.getAttribute("data-value");
+        myChart = updateChart(
+          myChart,
+          chartContainer,
+          chartType,
+          data,
+          labels,
+          true
+        );
+        selectedChartLabelModal.textContent = selectedOptionTextModal;
+      }
+      dropdownOptionsModal.style.display === "none";
+    });
+  }
 
   // Add event listener for closing the modal
   const closeButton = modal.querySelector(".close");
