@@ -292,7 +292,7 @@
                   </div>
                   <img
                     src="assets/Expand Icon.svg"
-                    id="openTaskTypeModal"
+                    id="openTaskStatusModal"
                     style="cursor: pointer"
                   />
                 </div>
@@ -337,7 +337,7 @@
                   </div>
                   <img
                     src="assets/Expand Icon.svg"
-                    id="openTaskTypeModal"
+                    id="openStoryPointsModal"
                     style="cursor: pointer"
                   />
                 </div>
@@ -392,7 +392,6 @@
                 </div>
                 <img
                   src="assets/icon_close.png"
-                  id="openTaskTypeModal"
                   style="cursor: pointer"
                   class="close"
                 />
@@ -405,15 +404,46 @@
         <div id="taskStatusModal" class="modal">
           <!-- Modal content -->
           <div class="modal-content">
-            <div>
-              <label>Task Status</label>
+            <div class="chart-nav">
+              <label class="chart-head">Task Status</label>
               <!-- Select type of chart to display -->
-              <select id="chart-type-2-0">
-                <option value="donut">Pie Chart - Outline</option>
-                <option value="pie">Pie Chart - Filled</option>
-                <option value="bar">Bar Diagram</option>
-              </select>
-              <img src="assets/icon_close.png" class="close" />
+              <div class="chart-nav-select">
+                <div class="select-chart" id="chart-type-2-0">
+                  <label class="selected-chart" id="selectedChart2-0">Pie Chart - Outline</label>
+                  <img
+                    src="assets/chevron-down.svg"
+                    alt="dropdown"
+                    class="selected-chart-chevron"
+                  />
+                  <div class="dropdown-chart-options" id="dropdownChartOptions2-0">
+                    <ul>
+                      <li data-value="donut">
+                        <img
+                          src="assets/ion_pie-chart-outline.svg"
+                          alt="pie chart Outline"
+                        />
+                        Pie Chart - Outline
+                      </li>
+                      <li data-value="pie">
+                        <img
+                          src="assets/ion_pie-chart.svg"
+                          alt="pie chart Filled"
+                        />
+                        Pie Chart - Filled
+                      </li>
+                      <li data-value="bar">
+                        <img src="assets/bi_bar-chart.svg" alt="Bar Chart" />
+                        Bar Chart
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <img
+                  src="assets/icon_close.png"
+                  style="cursor: pointer"
+                  class="close"
+                />
+              </div>
             </div>
             <div id="taskStatusModalChart"></div>
           </div>
@@ -422,15 +452,46 @@
         <div id="storyPointsModal" class="modal">
           <!-- Modal content -->
           <div class="modal-content">
-            <div>
-              <label>Task Status</label>
+            <div class="chart-nav">
+              <label class="chart-head">Story Points</label>
               <!-- Select type of chart to display -->
-              <select id="chart-type-3-0">
-                <option value="line">Bar-Line Diagram </option>
-                <option value="line">Pie Chart - Filled</option>
-                <option value="line">Bar Diagram</option>
-              </select>
-              <img src="assets/icon_close.png" class="close" />
+              <div class="chart-nav-select">
+                <div class="select-chart" id="chart-type-3-0">
+                  <label class="selected-chart" id="selectedChart3-0">Bar - Line Diagram</label>
+                  <img
+                    src="assets/chevron-down.svg"
+                    alt="dropdown"
+                    class="selected-chart-chevron"
+                  />
+                  <div class="dropdown-chart-options" id="dropdownChartOptions3-0">
+                    <ul>
+                      <li data-value="line">
+                        <img src="assets/bi_bar-chart.svg" alt="Bar Chart" />
+                        Bar - Line Diagram
+                      </li>
+                      <li data-value="donut">
+                        <img
+                          src="assets/ion_pie-chart-outline.svg"
+                          alt="pie chart Outline"
+                        />
+                        Pie Chart - Outline
+                      </li>
+                      <li data-value="pie">
+                        <img
+                          src="assets/ion_pie-chart.svg"
+                          alt="pie chart Filled"
+                        />
+                        Pie Chart - Filled
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <img
+                  src="assets/icon_close.png"
+                  style="cursor: pointer"
+                  class="close"
+                />
+              </div>
             </div>
             <div id="storyPointsModalChart"></div>
           </div>

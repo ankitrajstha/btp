@@ -197,13 +197,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let storyPointsContainer = document.querySelector("#storyPointsChart");
 
   // Selected chart type
-  let selectedChartTypeTaskType = 'donut';
-  const selectedChartTypeTaskTypeModal = document.querySelector("#chart-type-1-0");
-  let selectedChartTypeTaskStatus = 'donut';
-  const selectedChartTypeTaskStatusModal = document.querySelector("#chart-type-2-0");
-  let selectedChartTypeStoryPoints = 'line';
-  const selectedChartTypeStoryPointsModal = document.querySelector("#chart-type-3-0");
-
+  let selectedChartTypeTaskType, selectedChartTypeTaskStatus, selectedChartTypeStoryPoints;
+  let selectedChartTypeTaskStatusModal, selectedChartTypeTaskTypeModal, selectedChartTypeStoryPointsModal;
+  selectedChartTypeTaskType = selectedChartTypeTaskStatus = selectedChartTypeTaskTypeModal = selectedChartTypeTaskStatusModal = 'donut';
+  selectedChartTypeStoryPoints = selectedChartTypeStoryPointsModal = 'line';
   // Chart data
   // Task type chart data
   const taskTypeData = [15, 6, 25, 30, 9, 15]; // Replace with actual data from API later
@@ -260,7 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
   dropdownOptions.addEventListener("click", function (event) {
     if (event.target.tagName === "LI") {
       const selectedOptionText = event.target.textContent.trim();
-      selectedChartTypeTaskType = event.target.getAttribute("data-value");
+      selectedChartTypeTaskType = selectedChartTypeTaskTypeModal = event.target.getAttribute("data-value");
       taskTypeChart = updateChart(
         taskTypeChart,
         taskTypeContainer,
@@ -269,7 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
         taskTypelabels,
         false
       );
-      selectedChartLabel.textContent = selectedOptionText;
+      selectedChartLabel.textContent = selectedChartLabelModal.textContent = selectedOptionText;
       dropdownOptions.style.display === "none";
     }
   });
@@ -285,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
   dropdownOptions2.addEventListener("click", function (event) {
     if (event.target.tagName === "LI") {
       const selectedOptionText = event.target.textContent.trim();
-      selectedChartTypeTaskStatus = event.target.getAttribute("data-value");
+      selectedChartTypeTaskStatus = selectedChartTypeTaskStatusModal = event.target.getAttribute("data-value");
       taskStatusChart = updateChart(
         taskStatusChart,
         taskStatusContainer,
@@ -294,7 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
         taskStatusLabels,
         false
       );
-      selectedChartLabel2.textContent = selectedOptionText;
+      selectedChartLabel2.textContent = selectedChartLabelModal2.textContent = selectedOptionText;
     }
     dropdownOptions2.style.display === "none";
   });
@@ -310,7 +307,7 @@ document.addEventListener("DOMContentLoaded", () => {
   dropdownOptions3.addEventListener("click", function (event) {
     if (event.target.tagName === "LI") {
       const selectedOptionText = event.target.textContent.trim();
-      selectedChartTypeStoryPoints = event.target.getAttribute("data-value");
+      selectedChartTypeStoryPoints = selectedChartTypeStoryPointsModal = event.target.getAttribute("data-value");
       storyPointsChart = updateChart(
         storyPointsChart,
         storyPointsContainer,
@@ -319,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
         storyPointsLabels,
         false
       );
-      selectedChartLabel3.textContent = selectedOptionText;
+      selectedChartLabel3.textContent = selectedChartLabelModal3.textContent = selectedOptionText;
     }
     dropdownOptions3.style.display === "none";
   });
@@ -360,6 +357,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const chartOptionModal = document.querySelector("#chart-type-1-0");
   const dropdownOptionsModal = document.querySelector("#dropdownChartOptions-0");
   const selectedChartLabelModal = document.querySelector("#selectedChart-0");
+
+  const chartOptionModal2 = document.querySelector("#chart-type-2-0");
+  const dropdownOptionsModal2 = document.querySelector("#dropdownChartOptions2-0");
+  const selectedChartLabelModal2 = document.querySelector("#selectedChart2-0");
+
+  const chartOptionModal3 = document.querySelector("#chart-type-3-0");
+  const dropdownOptionsModal3 = document.querySelector("#dropdownChartOptions3-0");
+  const selectedChartLabelModal3 = document.querySelector("#selectedChart3-0");
   // Get modal open button and handle event
   const openModalButton = document.getElementById("openTaskTypeModal");
   openModalButton.addEventListener("click", () => {
@@ -367,7 +372,7 @@ document.addEventListener("DOMContentLoaded", () => {
       taskTypeModalChart,
       "taskTypeModal",
       "taskTypeModalChart",
-      'donut',
+      selectedChartTypeTaskTypeModal,
       taskTypeData,
       taskTypelabels,
       chartOptionModal,
@@ -383,7 +388,10 @@ document.addEventListener("DOMContentLoaded", () => {
       "taskStatusModalChart",
       selectedChartTypeTaskStatusModal,
       taskStatusData,
-      taskStatusLabels
+      taskStatusLabels,
+      chartOptionModal2,
+      dropdownOptionsModal2,
+      selectedChartLabelModal2
     );
   });
   const openModalButton3 = document.getElementById("openStoryPointsModal");
@@ -394,7 +402,10 @@ document.addEventListener("DOMContentLoaded", () => {
       "storyPointsModalChart",
       selectedChartTypeStoryPointsModal,
       storyPointsData,
-      storyPointsLabels
+      storyPointsLabels,
+      chartOptionModal3,
+      dropdownOptionsModal3,
+      selectedChartLabelModal3
     );
   });
 });
