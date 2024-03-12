@@ -251,8 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const selectedChartLabel = document.querySelector("#selectedChart");
 
   chartOption.addEventListener("click", function () {
-    dropdownOptions.style.display =
-      dropdownOptions.style.display === "none" ? "block" : "none";
+    dropdownOptions.classList.toggle('dropdown-chart-options-visibility');
   });
   dropdownOptions.addEventListener("click", function (event) {
     if (event.target.tagName === "LI") {
@@ -276,8 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const selectedChartLabel2 = document.querySelector("#selectedChart2");
 
   chartOption2.addEventListener("click", function () {
-    dropdownOptions2.style.display =
-      dropdownOptions2.style.display === "none" ? "block" : "none";
+    dropdownOptions2.classList.toggle('dropdown-chart-options-visibility');
   });
   dropdownOptions2.addEventListener("click", function (event) {
     if (event.target.tagName === "LI") {
@@ -301,8 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const selectedChartLabel3 = document.querySelector("#selectedChart3");
 
   chartOption3.addEventListener("click", function () {
-    dropdownOptions3.style.display =
-      dropdownOptions3.style.display === "none" ? "block" : "none";
+    dropdownOptions3.classList.toggle('dropdown-chart-options-visibility');
   });
   dropdownOptions3.addEventListener("click", function (event) {
     if (event.target.tagName === "LI") {
@@ -438,8 +435,7 @@ const openModal = (
 
   // Add event listener for chart type selector inside modal
   chartOptionModal.addEventListener("click", function () {
-    dropdownOptionsModal.style.display =
-      dropdownOptionsModal.style.display === "none" ? "block" : "none";
+    dropdownOptionsModal.classList.toggle('dropdown-chart-options-visibility');
   });
   dropdownOptionsModal.addEventListener("click", function (event) {
     if (event.target.tagName === "LI") {

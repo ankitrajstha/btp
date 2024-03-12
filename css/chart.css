@@ -84,6 +84,10 @@
 }
 .dropdown-chart-options {
   display: none;
+}
+
+.dropdown-chart-options-visibility{
+  display: block;
   width: 160px;
   height: 104px;
   padding: 4px 0;
