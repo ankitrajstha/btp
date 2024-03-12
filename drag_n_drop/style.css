@@ -1,0 +1,4 @@
+.sortable-ghost {
+  background-color: var(--g50) !important;
+  border: 1px dashed var(--g75);
+}
