@@ -57,6 +57,10 @@ const getChartConfig = (chartType, data, labels, inModal) => {
       // height: "100%",
       type: chartType,
     },
+    legend: {
+      fontSize: "10px",
+      fontFamily: "Poppins",
+    },
     series: chartType === "bar" ? [{ name: "Data", data }] : data,
     labels: labels
   };
@@ -117,12 +121,17 @@ const getChartConfig = (chartType, data, labels, inModal) => {
     labels = Object.keys(newLabels);
     chartConfig.chart.height = '90%'
     // X-axis labels for bar charts with custom styling
+    let colorArray = []
+    labels.forEach(e => {
+      colorArray.push('#ACACAC')
+    })
     chartConfig["xaxis"] = {
       categories: labels,
       labels: {
         style: {
           fontSize: "12px",
           fontFamily: "Poppins",
+          colors: colorArray
         },
       },
     };
@@ -141,11 +150,45 @@ const getChartConfig = (chartType, data, labels, inModal) => {
     };
     chartConfig.dataLabels = {
       enabled: true,
-      enabledOnSeries: [1]
+      enabledOnSeries: [1],
     }
     chartConfig.stroke = {
       width: [0, 4]
     }
+    chartConfig.legend = {
+      itemMargin: {
+        horizontal: 25,
+      },
+      markers: {
+        width: 14,
+        height: 14,
+        offsetX: -5,
+        radius:'4px'
+      },
+    }
+    if (data.length > 2) {
+      chartConfig.stroke = {
+        width: [2, 0, 0, 0]
+      }
+      chartConfig.dataLabels = {
+        enabled: true,
+        enabledOnSeries: [1, 2, 3],
+      }
+      chartConfig.dataLabels['offsetY'] = -7
+      chartConfig.dataLabels['style'] = {
+        fontSize: '9px',
+        fontFamily: 'Poppins',
+        fontWeight: 400,
+        colors: ['#2B2B2B']
+      }
+      chartConfig.dataLabels['background'] = {
+        enabled: false
+      }
+      chartConfig.dataLabels['dropShadow'] = {
+        enabled: false,
+      }
+    }
+
   }
 
   if (inModal && chartType !== "bar" && chartType !== 'line') {
@@ -189,20 +232,21 @@ const updateChart = (
 
 document.addEventListener("DOMContentLoaded", () => {
   // Apex chart objects
-  let taskTypeChart, taskStatusChart, storyPointsChart;
+  let taskTypeChart, taskStatusChart, storyPointsChart, logHoursChart;
 
   // Chart containers
   let taskTypeContainer = document.querySelector("#taskTypeChart");
   let taskStatusContainer = document.querySelector("#taskStatusChart");
   let storyPointsContainer = document.querySelector("#storyPointsChart");
+  let logHoursContainer = document.querySelector("#logHoursChart");
 
   // Selected chart type
-  let selectedChartTypeTaskType, selectedChartTypeTaskStatus, selectedChartTypeStoryPoints;
+  let selectedChartTypeTaskType, selectedChartTypeTaskStatus, selectedChartTypeStoryPoints, selectedChartTypeLogHours;
   let selectedChartTypeTaskStatusModal, selectedChartTypeTaskTypeModal, selectedChartTypeStoryPointsModal;
   selectedChartTypeTaskType = selectedChartTypeTaskStatus = selectedChartTypeTaskTypeModal = selectedChartTypeTaskStatusModal = 'donut';
-  selectedChartTypeStoryPoints = selectedChartTypeStoryPointsModal = 'line';
+  selectedChartTypeStoryPoints = selectedChartTypeStoryPointsModal = selectedChartTypeLogHours = 'line';
   // Chart data
-  // Task type chart data
+  // Task type chart data 
   const taskTypeData = [15, 6, 25, 30, 9, 15]; // Replace with actual data from API later
   const taskTypelabels = [
     "Bug Leakage",
@@ -224,7 +268,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "Blocked",
   ]; // Replace with actual data from API later
 
-
   // Story points chart data
   const storyPointsData = [
     {
@@ -238,6 +281,36 @@ document.addEventListener("DOMContentLoaded", () => {
       data: [45, 50, 35, 40, 25]
     }]; // Replace with actual data from API later
   const storyPointsLabels = [
+    'Ram',
+    'Shyam',
+    'Hari',
+    'Shiva',
+    'Sita'
+  ]; // Replace with actual data from API later
+
+  // Log houts chart data
+  const logHoursData = [
+    {
+      name: 'Billable Hours',
+      type: 'line',
+      data: [60, 55, 60, 58, 52]
+    },
+    {
+      name: 'Available Hours',
+      type: 'column',
+      data: [38, 38, 28, 40, 21]
+    },
+    {
+      name: 'Estimated Hours',
+      type: 'column',
+      data: [38, 48, 36, 40, 21]
+    },
+    {
+      name: 'Logged Hours',
+      type: 'column',
+      data: [13, 22, 30, 19, 15]
+    }]; // Replace with actual data from API later
+  const logHoursLabels = [
     'Ram',
     'Shyam',
     'Hari',
@@ -341,6 +414,14 @@ document.addEventListener("DOMContentLoaded", () => {
     selectedChartTypeStoryPoints,
     storyPointsData,
     storyPointsLabels,
+    false
+  );
+  logHoursChart = updateChart(
+    logHoursChart,
+    logHoursContainer,
+    selectedChartTypeLogHours,
+    logHoursData,
+    logHoursLabels,
     false
   );
   //radial chart render

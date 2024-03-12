@@ -347,7 +347,20 @@
             </div>
           </div>
           <div class="lower-charts-container">
-            <div class="chart-component log-hours-comparison"></div>
+            <div class="chart-component log-hours-comparison">
+              <div class="chart-nav">
+                <label class="chart-head">Log Hours Comparison</label>
+                <!-- Select type of chart to display -->
+                <div class="chart-nav-select">
+                  <img
+                    src="assets/Expand Icon.svg"
+                    id="openLogHoursModal"
+                    style="cursor: pointer"
+                  />
+                </div>
+              </div>
+              <div id="logHoursChart"></div>
+            </div>
             <div class="chart-component client-data"></div>
           </div>
         </div>
