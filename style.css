@@ -358,11 +358,11 @@
 
 .highlight-component.resizable {
   /* Normal width is 449.33px */
-  min-width: 200px;
-  max-width: 1347.99px;
+  min-width: 400px;
+  max-width: 900px;
   /* Normal height is 129px */
   min-height: 129px;
-  max-height: 387px;
+  max-height: 260px;
 }
 
 
@@ -392,8 +392,10 @@
 .milestones-list,
 .resources-list,
 .team-members-list {
-  flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 
