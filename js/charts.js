@@ -379,30 +379,6 @@ document.addEventListener("DOMContentLoaded", () => {
     dropdownOptions2.style.display === "none";
   });
 
-  const chartOption3 = document.querySelector("#chart-type-3");
-  const dropdownOptions3 = document.querySelector("#dropdownChartOptions3");
-  const selectedChartLabel3 = document.querySelector("#selectedChart3");
-
-  chartOption3.addEventListener("click", function () {
-    dropdownOptions3.classList.toggle('dropdown-chart-options-visibility');
-  });
-  dropdownOptions3.addEventListener("click", function (event) {
-    if (event.target.tagName === "LI") {
-      const selectedOptionText = event.target.textContent.trim();
-      selectedChartTypeStoryPoints = selectedChartTypeStoryPointsModal = event.target.getAttribute("data-value");
-      storyPointsChart = updateChart(
-        storyPointsChart,
-        storyPointsContainer,
-        selectedChartTypeStoryPoints,
-        storyPointsData,
-        storyPointsLabels,
-        false
-      );
-      selectedChartLabel3.textContent = selectedChartLabelModal3.textContent = selectedOptionText;
-    }
-    dropdownOptions3.style.display === "none";
-  });
-
   // Intial chart render
   taskTypeChart = updateChart(
     taskTypeChart,
