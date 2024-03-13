@@ -99,6 +99,8 @@
   bottom: -105px;
   left: -10px;
   z-index: 10;
+  overflow: hidden;
+  border:1px solid var(--g50)
 }
 
 .dropdown-chart-options li {
@@ -108,6 +110,10 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-2);
+}
+
+.dropdown-chart-options li:hover{
+  background-color: #f8f8ff;
 }
 
 .chart-head {
