@@ -68,58 +68,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Selected chart type
   let selectedChartTypeTaskType, selectedChartTypeTaskStatus, selectedChartTypeStoryPoints, selectedChartTypeLogHours, selectedChartTypeClientData;
   let selectedChartTypeTaskStatusModal, selectedChartTypeTaskTypeModal, selectedChartTypeStoryPointsModal;
+
+  // Initialize chart type value
   selectedChartTypeTaskType = selectedChartTypeTaskStatus = selectedChartTypeTaskTypeModal = selectedChartTypeTaskStatusModal = 'donut';
   selectedChartTypeStoryPoints = selectedChartTypeStoryPointsModal = selectedChartTypeLogHours = 'line';
   selectedChartTypeClientData = 'bar';
-
-  // Change graphs when another option is selected
-  const chartOption = document.querySelector("#chart-type-1");
-  const dropdownOptions = document.querySelector("#dropdownChartOptions");
-  const selectedChartLabel = document.querySelector("#selectedChart");
-
-  chartOption.addEventListener("click", function () {
-    dropdownOptions.classList.toggle('dropdown-chart-options-visibility');
-  });
-  dropdownOptions.addEventListener("click", function (event) {
-    if (event.target.tagName === "LI") {
-      const selectedOptionText = event.target.textContent.trim();
-      selectedChartTypeTaskType = selectedChartTypeTaskTypeModal = event.target.getAttribute("data-value");
-      taskTypeChart = updateChart(
-        taskTypeChart,
-        taskTypeContainer,
-        selectedChartTypeTaskType,
-        taskTypeData,
-        taskTypelabels,
-        false
-      );
-      selectedChartLabel.textContent = selectedChartLabelModal.textContent = selectedOptionText;
-      dropdownOptions.style.display === "none";
-    }
-  });
-
-  const chartOption2 = document.querySelector("#chart-type-2");
-  const dropdownOptions2 = document.querySelector("#dropdownChartOptions2");
-  const selectedChartLabel2 = document.querySelector("#selectedChart2");
-
-  chartOption2.addEventListener("click", function () {
-    dropdownOptions2.classList.toggle('dropdown-chart-options-visibility');
-  });
-  dropdownOptions2.addEventListener("click", function (event) {
-    if (event.target.tagName === "LI") {
-      const selectedOptionText = event.target.textContent.trim();
-      selectedChartTypeTaskStatus = selectedChartTypeTaskStatusModal = event.target.getAttribute("data-value");
-      taskStatusChart = updateChart(
-        taskStatusChart,
-        taskStatusContainer,
-        selectedChartTypeTaskStatus,
-        taskStatusData,
-        taskStatusLabels,
-        false
-      );
-      selectedChartLabel2.textContent = selectedChartLabelModal2.textContent = selectedOptionText;
-    }
-    dropdownOptions2.style.display === "none";
-  });
 
   // Intial chart render
   taskTypeChart = updateChart(
@@ -166,10 +119,61 @@ document.addEventListener("DOMContentLoaded", () => {
   createRadialBarChart("chart", 20);
   createRadialBarChart("chart2", 80);
 
+  // Change graphs when another option is selected
+  // Ids for handling dropwdown event
+  const chartOption = document.querySelector("#chart-type-1");
+  const dropdownOptions = document.querySelector("#dropdownChartOptions");
+  const selectedChartLabel = document.querySelector("#selectedChart");
+
+  const chartOption2 = document.querySelector("#chart-type-2");
+  const dropdownOptions2 = document.querySelector("#dropdownChartOptions2");
+  const selectedChartLabel2 = document.querySelector("#selectedChart2");
+
+  chartOption.addEventListener("click", function () {
+    dropdownOptions.classList.toggle('dropdown-chart-options-visibility');
+  });
+  dropdownOptions.addEventListener("click", function (event) {
+    if (event.target.tagName === "LI") {
+      const selectedOptionText = event.target.textContent.trim();
+      selectedChartTypeTaskType = selectedChartTypeTaskTypeModal = event.target.getAttribute("data-value");
+      taskTypeChart = updateChart(
+        taskTypeChart,
+        taskTypeContainer,
+        selectedChartTypeTaskType,
+        taskTypeData,
+        taskTypelabels,
+        false
+      );
+      selectedChartLabel.textContent = selectedChartLabelModal.textContent = selectedOptionText;
+      dropdownOptions.style.display === "none";
+    }
+  });
+
+  chartOption2.addEventListener("click", function () {
+    dropdownOptions2.classList.toggle('dropdown-chart-options-visibility');
+  });
+  dropdownOptions2.addEventListener("click", function (event) {
+    if (event.target.tagName === "LI") {
+      const selectedOptionText = event.target.textContent.trim();
+      selectedChartTypeTaskStatus = selectedChartTypeTaskStatusModal = event.target.getAttribute("data-value");
+      taskStatusChart = updateChart(
+        taskStatusChart,
+        taskStatusContainer,
+        selectedChartTypeTaskStatus,
+        taskStatusData,
+        taskStatusLabels,
+        false
+      );
+      selectedChartLabel2.textContent = selectedChartLabelModal2.textContent = selectedOptionText;
+    }
+    dropdownOptions2.style.display === "none";
+  });
+
   // Charts inside modal
   // Modal apex chart objects
   let taskTypeModalChart, taskStatusModalChart, storyPointsModalChart, logHoursModalChart, clientDataModalChart;
 
+  // Ids for handling dropdown inside modal
   const chartOptionModal = document.querySelector("#chart-type-1-0");
   const dropdownOptionsModal = document.querySelector("#dropdownChartOptions-0");
   const selectedChartLabelModal = document.querySelector("#selectedChart-0");
@@ -178,9 +182,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const dropdownOptionsModal2 = document.querySelector("#dropdownChartOptions2-0");
   const selectedChartLabelModal2 = document.querySelector("#selectedChart2-0");
 
-  const chartOptionModal3 = document.querySelector("#chart-type-3-0");
-  const dropdownOptionsModal3 = document.querySelector("#dropdownChartOptions3-0");
-  const selectedChartLabelModal3 = document.querySelector("#selectedChart3-0");
   // Get modal open button and handle event
   const openModalButton = document.getElementById("openTaskTypeModal");
   openModalButton.addEventListener("click", () => {
@@ -219,9 +220,9 @@ document.addEventListener("DOMContentLoaded", () => {
       selectedChartTypeStoryPointsModal,
       storyPointsData,
       storyPointsLabels,
-      chartOptionModal3,
-      dropdownOptionsModal3,
-      selectedChartLabelModal3
+      null,
+      null,
+      null
     );
   });
   const openModalButton4 = document.getElementById("openLogHoursModal");
