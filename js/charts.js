@@ -1,7 +1,12 @@
-import { taskTypeData, taskTypelabels, taskStatusData, 
-  taskStatusLabels, storyPointsData, storyPointsLabels, 
-  logHoursData, logHoursLabels, clientDataData, clientDataLabels 
+import {
+  taskTypeData, taskTypelabels, taskStatusData,
+  taskStatusLabels, storyPointsData, storyPointsLabels,
+  logHoursData, logHoursLabels, clientDataData, clientDataLabels
 } from "./static/apiData.js";
+import {
+  taskTypeContainer, taskStatusContainer, storyPointsContainer,
+  logHoursContainer, clientDataContainer
+} from "./static/chartContainers.js"
 
 const createRadialBarChart = (elementId, series) => {
   const chartElement = document.getElementById(elementId);
@@ -168,7 +173,7 @@ const getChartConfig = (chartType, data, labels, inModal) => {
         width: 14,
         height: 14,
         offsetX: -5,
-        radius:'4px'
+        radius: '4px'
       },
     }
     if (data.length > 2) {
@@ -238,13 +243,6 @@ const updateChart = (
 document.addEventListener("DOMContentLoaded", () => {
   // Apex chart objects
   let taskTypeChart, taskStatusChart, storyPointsChart, logHoursChart, clientDataChart;
-
-  // Chart containers
-  let taskTypeContainer = document.querySelector("#taskTypeChart");
-  let taskStatusContainer = document.querySelector("#taskStatusChart");
-  let storyPointsContainer = document.querySelector("#storyPointsChart");
-  let logHoursContainer = document.querySelector("#logHoursChart");
-  let clientDataContainer = document.querySelector("#clientDataChart");
 
   // Selected chart type
   let selectedChartTypeTaskType, selectedChartTypeTaskStatus, selectedChartTypeStoryPoints, selectedChartTypeLogHours, selectedChartTypeClientData;
@@ -462,7 +460,7 @@ const openModal = (
   modal.style.display = "block";
 
   // Add event listener for chart type selector inside modal
-  if (chartOptionModal){
+  if (chartOptionModal) {
     chartOptionModal.addEventListener("click", function () {
       dropdownOptionsModal.classList.toggle('dropdown-chart-options-visibility');
     });
