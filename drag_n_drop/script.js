@@ -18,6 +18,7 @@ const commonOptions = {
   fallbackTolerance: 3, // So that we can select items on mobile
   animation: 150,
   ghostClass: 'sortable-ghost', // Class name for the drop placeholder
+  group: 'highlights-charts-container',
   //store the current sorting order
   store: {
     get: (sortable) => {
@@ -31,15 +32,6 @@ const commonOptions = {
   },
 };
 
-const sortableHighlights = Sortable.create(highlightsContainer, {
-  ...commonOptions,
-  group: "highlights-container", //group is used to store the same localKeyStorage across multiple sortable lists.
-});
-const sortableUpperCharts = Sortable.create(upperChartsContainer, {
-  ...commonOptions,
-  group: "upperchart-container",
-});
-const sortableLowerCharts = Sortable.create(lowerChartsContainer, {
-  ...commonOptions,
-  group: "lowerchart-container",
-});
+const sortableHighlights = Sortable.create(highlightsContainer, commonOptions);
+const sortableUpperCharts = Sortable.create(upperChartsContainer, commonOptions);
+const sortableLowerCharts = Sortable.create(lowerChartsContainer, commonOptions);
