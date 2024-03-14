@@ -27,6 +27,7 @@ resizableComponents.forEach(component => {
       // const newFontSizeParagraph = baseFontSizeParagraph * ratio;
       // const newLineHeightParagraph = baseLineHeightParagrpah * ratio;
       if (technicalDebtParagraph && ratio > 1.3) {
+        console.log("para sizing")
         const newFontSizeParagraph = baseFontSizeParagraph * (ratio - 0.3);
         const newLineHeightParagraph = baseLineHeightParagrpah * (ratio - 0.3);
         technicalDebtParagraph.style.fontSize = `${newFontSizeParagraph}px`;
