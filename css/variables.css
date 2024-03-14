@@ -1,7 +1,7 @@
 :root {
   --primary-red: #be263b;
   --primary-black: #252525;
-  --body-color: #fdfdfd;
+  --body-color: #f8f8f8;
 
   /* status color */
   --critical-status: #cc3333;
@@ -64,4 +64,9 @@
   --border-radius-1: 4px;
   --border-radius-2: 8px;
   --border-radius-3: 16px;
+
+  --base-font-size-h4: 16px;
+  --base-font-size-paragraph: 12px;
+  --base-line-height-h4: 24px;
+  --base-line-height-paragraph: 20px;
 }
