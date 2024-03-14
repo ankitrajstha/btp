@@ -9,7 +9,28 @@ const baseFontSizeParagraph = 12;
 const baseLineHeightParagrpah = 20;
 const technicalDebtParagraph = document.querySelector('.technical-debt-content');
 
-resizableComponents.forEach(component => {
+// When page realoads update the dimension based on {height, width} value in localStorage
+const updateComponentDimensions = (component, width, height) => {
+  component.style.width = `${width}px`;
+  component.style.height = `${height}px`;
+};
+
+resizableComponents.forEach((component, index) => {
+  const localStorageKey = `resizable-${index + 1}`;
+
+  // Check if dimensions are stored in local storage
+  const storedDimensions = localStorage.getItem(localStorageKey);
+  if (storedDimensions) {
+    const { width, height } = JSON.parse(storedDimensions);
+    updateComponentDimensions(component, width, height);
+  }
+
+  component.addEventListener('mouseup', () => {
+    const { offsetWidth, offsetHeight } = component;
+    console.log(component, offsetHeight, offsetWidth)
+    localStorage.setItem(localStorageKey, JSON.stringify({ width: offsetWidth, height: offsetHeight }));
+  });
+
   let prevWidth = component.offsetWidth;
   let prevHeight = component.offsetHeight;
   component.addEventListener('mousemove', () => {
@@ -46,6 +67,8 @@ resizableComponents.forEach(component => {
     }
   });
   component.addEventListener('dblclick', () => {
+    // Remove stored dimensions from local storage
+    localStorage.removeItem(localStorageKey);
     component.style.width = `${baseWidth}px`;
     component.style.height = `${baseHeight}px`;
     component.style.removeProperty('--base-font-size-h4');
@@ -56,3 +79,5 @@ resizableComponents.forEach(component => {
     // component.style.removeProperty('--base-line-height-paragraph');
   });
 });
+
+localStorage.setItem('name', 'Prajanya')
