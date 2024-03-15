@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <script type="module" src="./index.js" defer></script>
-    <link rel="stylesheet" href="verticalbar.css">
+    <link rel="stylesheet" href="verticalbar.css" />
   <title>BTP Dashboard Project</title>
     <script defer src="index.js"></script>
 <script defer src="script.js"></script>
@@ -53,31 +53,30 @@
     <div class="team-members-slider" id="teammembers-slider">
       <h1>Project Team Members</h1>
       <div class="nav-slider-button-wrapper">
-      <div class="nav-slider-button"onclick="slider('left');">&#60;</div>
-      <div class="navbar-slider">
-          <div class="nav-slider-item selected" onclick="changeSlide(this)">All <span class="counter">9</span></div>
-          <div class="nav-slider-item" onclick="changeSlide(this)">Project Manager <span class="counter">2</span></div>
-          <div class="nav-slider-item" onclick="changeSlide(this)">Quality Assurance<span class="counter">5</span></div>
-          <div class="nav-slider-item" onclick="changeSlide(this)">Quality <span class="counter">3</span></div>
-          <!-- Add more navigation items here -->
-      </div>
-      <div class="nav-slider-button"onclick="slider('right');">&#62;</div>
-  </div>
-  <!-- list is is added dynamically from js -->
-      <ul class="members-list">
-          <!-- Repeat this list item for each team member with their respective details -->
-          <!-- <li >
-             <div><img src="images/profiles.jpg" alt="Member Image"></div> 
-              <div class="nav-slider-name">
-              <p>John Doe</p>
-              <span>Associate Project Manager</span>
+        <div class="nav-slider-button" onclick="slider('left');">&#60;</div>
+        <div class="navbar-slider">
+          <div class="nav-slider-item selected" onclick="changeSlide(this)">
+            All <span class="counter">9</span>
           </div>
-      </li> --> 
-      </ul>
-  </div>
-<!-- Dim when slider slides in -->
-  <div class="dimmedBackground" id="dimmedBackground"></div> 
-  
+          <div class="nav-slider-item" onclick="changeSlide(this)">
+            Project Manager <span class="counter">2</span>
+          </div>
+          <div class="nav-slider-item" onclick="changeSlide(this)">
+            Quality Assurance<span class="counter">5</span>
+          </div>
+          <div class="nav-slider-item" onclick="changeSlide(this)">
+            Quality <span class="counter">3</span>
+          </div>
+          <!-- Add more navigation items here -->
+        </div>
+        <div class="nav-slider-button" onclick="slider('right');">&#62;</div>
+      </div>
+      <!-- list is is added dynamically from js -->
+      <ul class="members-list"></ul>
+    </div>
+    <!-- Dim when slider slides in -->
+    <div class="dimmedBackground" id="dimmedBackground"></div>
+
     <main>
         <div class="project-sprint-container">
           <div class="component-div project-container">
