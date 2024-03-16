@@ -1,17 +1,17 @@
 // Chart data
 // Task type chart data 
-const taskTypeData = [15, 6, 25, 30, 9, 15]; // Replace with actual data from API later
+const taskTypeData = [15, 9, 25, 30, 15, 6]; // Replace with actual data from API later
 const taskTypelabels = [
-    "Bug Leakage",
     "Task",
     "Sub Task",
     "Task Maintenance",
     "Bug",
     "Epic",
+    "Bug Leakage",
 ]; // Replace with actual data from API later
 
 // Task status chart data
-const taskStatusData = [15, 6, 25, 30, 9, 15]; // Replace with actual data from API later
+const taskStatusData = [15, 9, 25, 30, 15, 6]; // Replace with actual data from API later
 const taskStatusLabels = [
     "Todo",
     "In Progress",
