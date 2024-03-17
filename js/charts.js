@@ -2,6 +2,7 @@ import renderTaskTypeChart from "./charts/taskType/renderTaskTypeChart.js";
 import rederTaskStatusChart from "./charts/taskStatus/renderTaskStatusChart.js"
 import renderStoryPoints from "./charts/storyPoints/renderStoryPointsChart.js"
 import renderLogHours from "./charts/logHours/renderLogHoursChart.js"
+import renderClientData from "./charts/clientData/renderClientDataChart.js"
 import {
   taskTypeData, taskTypelabels, taskStatusData,
   taskStatusLabels, storyPointsData, storyPointsLabels,
@@ -65,6 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
   rederTaskStatusChart(taskStatusData, taskStatusLabels);
   renderStoryPoints(storyPointsData, storyPointsLabels);
   renderLogHours(logHoursData, logHoursLabels);
+  renderClientData(clientDataData,clientDataLabels);
   // //radial chart render
   createRadialBarChart("chart", 20);
   createRadialBarChart("chart2", 80);
