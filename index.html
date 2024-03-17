@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <!-- apex chart -->
   <script type="module" src="js/charts.js" defer></script>
-  <script src="js/apiDataRender.js" defer></script>
+  <script type="module" src="js/apiDataRender.js" defer></script>
   <script src="index.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/apexcharts" defer></script>
 
@@ -22,10 +22,10 @@
         <div class="component-div project-container">
           <div class="title-container">
             <p>Project</p>
-            <span class="status-capsule project-status-pill">On Track</span>
+            <span class="status-capsule project-status-pill"></span>
           </div>
           <div name="projects" class="project-dropdown">
-            <p>SiteHawk Project</p>
+            <p></p>
             <img src="./assets/chevron-down.png" alt="chevron" />
           </div>
           <!-- display this after adding click event on chevron -->
@@ -34,29 +34,16 @@
               <img src="./assets/eye-glass.png" alt="eye-glass" />
               <input type="search" class="search-input" placeholder="Search Project" />
             </div>
-            <div class="project-dropdown-options">
-              <div class="project-dropdown-option">
-                <div class="status-color"></div>
-                <p>Site Hawk Project</p>
-              </div>
-              <div class="project-dropdown-option">
-                <div class="status-color"></div>
-                <p>Site Hawk Project</p>
-              </div>
-              <div class="project-dropdown-option">
-                <div class="status-color"></div>
-                <p>Site Hawk Project</p>
-              </div>
-            </div>
+            <div class="project-dropdown-options"></div>
           </div>
         </div>
         <div class="component-div sprint-container">
           <div class="title-container">
             <p>Sprint</p>
-            <span class="status-capsule sprint-status-pill">Critical</span>
+            <span class="status-capsule sprint-status-pill"></span>
           </div>
           <div name="projects" class="sprint-dropdown">
-            <p>Sprint 11</p>
+            <!-- <p></p> -->
             <img src="./assets/chevron-down.png" alt="chevron-down" />
           </div>
           <!-- display this after adding click event on chevron -->
@@ -65,20 +52,7 @@
               <img src="./assets/eye-glass.png" alt="eye-glass" />
               <input type="search" class="search-input" placeholder="Search Project" />
             </div>
-            <div class="sprint-dropdown-options">
-              <div class="sprint-dropdown-option">
-                <div class="status-color"></div>
-                <p>Site Hawk Project</p>
-              </div>
-              <div class="sprint-dropdown-option">
-                <div class="status-color"></div>
-                <p>Site Hawk Project</p>
-              </div>
-              <div class="sprint-dropdown-option">
-                <div class="status-color"></div>
-                <p>Site Hawk Project</p>
-              </div>
-            </div>
+            <div class="sprint-dropdown-options"></div>
           </div>
         </div>
         <div class="component-div sprint-duration-container">

@@ -6,6 +6,7 @@ async function getData() {
         let res = await fetch("https://run.mocky.io/v3/546328f9-af1a-479d-ab48-e34c57343b03");
         let data = await res.json();
 
+        const projects = data.projects
         const clientSatisfaction = data.projects[0].sprints[0].client_satisfaction;
         const teamMorale = data.projects[0].sprints[0].team_morale;
 
@@ -90,7 +91,7 @@ async function getData() {
         ]; // Replace with actual data from API later
 
         return {
-            clientSatisfaction, teamMorale,
+            projects, clientSatisfaction, teamMorale,
             taskTypeData, taskTypelabels, taskStatusData,
             taskStatusLabels, storyPointsData, storyPointsLabels,
             logHoursData, logHoursLabels, clientDataData, clientDataLabels
