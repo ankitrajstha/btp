@@ -1,4 +1,5 @@
 import renderTaskTypeChart from "./charts/taskType/renderTaskTypeChart.js";
+import rederTaskStatusChart from "./charts/taskStatus/renderTaskStatusChart.js"
 import {
   taskTypeData, taskTypelabels, taskStatusData,
   taskStatusLabels, storyPointsData, storyPointsLabels,
@@ -59,6 +60,7 @@ const createRadialBarChart = (elementId, series) => {
 document.addEventListener("DOMContentLoaded", () => {
   // Intial chart render
   renderTaskTypeChart(taskTypeData, taskTypelabels);
+  rederTaskStatusChart(taskStatusData, taskStatusLabels);
   // //radial chart render
   createRadialBarChart("chart", 20);
   createRadialBarChart("chart2", 80);
