@@ -1,64 +1,62 @@
-import updateChart from "./render.js";
-
 // Modal
 const openModal = (
-    myChart,
-    modalId,
-    chartModalContainerId,
+    modal,
     chartType,
-    data,
-    labels,
+    selectedOptionText,
     chartOptionModal,
     dropdownOptionsModal,
-    selectedChartLabelModal
+    selectedChartLabelModal,
+    callback
 ) => {
-    const modal = document.getElementById(modalId);
-    const chartContainer = document.getElementById(chartModalContainerId);
-    myChart = updateChart(
-        myChart,
-        chartContainer,
-        chartType,
-        data,
-        labels,
-        true
-    );
+    if (dropdownOptionsModal) {
+        selectedChartLabelModal.textContent = selectedOptionText;
+    }
 
     // Display modal
     modal.style.display = "block";
 
-    // Add event listener for chart type selector inside modal
-    if (chartOptionModal) {
-        chartOptionModal.addEventListener("click", function () {
-            dropdownOptionsModal.classList.toggle('dropdown-chart-options-visibility');
-        });
-        dropdownOptionsModal.addEventListener("click", function (event) {
-            if (event.target.tagName === "LI") {
-                const selectedOptionTextModal = event.target.textContent.trim();
-                chartType = event.target.getAttribute("data-value");
-                myChart = updateChart(
-                    myChart,
-                    chartContainer,
-                    chartType,
-                    data,
-                    labels,
-                    true
-                );
-                selectedChartLabelModal.textContent = selectedOptionTextModal;
-            }
-            dropdownOptionsModal.style.display === "none";
-        });
-    }
+    // handle event for chart type selector 
+    const handleDropdown = () => {
+        dropdownOptionsModal.classList.toggle('dropdown-chart-options-visibility');
+    };
+    const handleDropdownOptionClick = (event) => {
+        if (event.target.tagName === "LI") {
+            const selectedOptionTextModal = event.target.textContent.trim();
+            chartType = event.target.getAttribute("data-value");
 
-    // Add event listener for closing the modal
+            selectedChartLabelModal.textContent = selectedOptionTextModal;
+
+            if (typeof callback === 'function') {
+                callback(chartType);
+            }
+        }
+    };
+
+    // Handle event listener for closing the modal
     const closeButton = modal.querySelector(".close");
     closeButton.addEventListener("click", () => {
         modal.style.display = "none";
+        if (dropdownOptionsModal) {
+            dropdownOptionsModal.removeEventListener("click", handleDropdownOptionClick);
+            chartOptionModal.removeEventListener("click", handleDropdown);
+        }
     });
     window.addEventListener("click", (event) => {
         if (event.target === modal) {
             modal.style.display = "none";
+            if (dropdownOptionsModal) {
+                dropdownOptionsModal.removeEventListener("click", handleDropdownOptionClick);
+                chartOptionModal.removeEventListener("click", handleDropdown);
+            }
+        }
+        if (dropdownOptionsModal && event.target !== chartOptionModal && event.target !== selectedChartLabelModal && event.target !== dropdownOptionsModal) {
+            dropdownOptionsModal.classList.remove('dropdown-chart-options-visibility');
         }
     });
+    if (dropdownOptionsModal) {
+        dropdownOptionsModal.addEventListener("click", handleDropdownOptionClick);
+        chartOptionModal.addEventListener("click", handleDropdown);
+    }
 };
 
 export default openModal;
