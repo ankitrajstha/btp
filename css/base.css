@@ -2,7 +2,6 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: var(--body-color);
   color: var(--primary-black);
-  overflow: hidden;
   padding: 0;
   margin: 0;
 }

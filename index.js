@@ -80,4 +80,4 @@ resizableComponents.forEach((component, index) => {
   });
 });
 
-localStorage.setItem('name', 'Prajanya')
+
