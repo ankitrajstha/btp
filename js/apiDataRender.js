@@ -69,6 +69,7 @@ getData().then(data => {
         });
     }
 
+    // Function to render technical debt
     function renderTechnicalDebt(container, content) {
         const containerElement = document.querySelector(container)
         containerElement.innerHTML = content;
@@ -91,6 +92,8 @@ getData().then(data => {
 
     // Function to handle project click
     function handleProjectClick(e) {
+
+        // Get project id and identify the clicked project
         const projectId = parseInt(e.target.dataset.attrId);
         const clickedProject = data.projects.find(project => project.id === projectId);
 
@@ -150,14 +153,23 @@ getData().then(data => {
 
         // Render Technical debt
         renderTechnicalDebt(".technical-debt > p", clickedProject.technical_debt);
+
+        // Render Resources
+        let resorcesContainer = document.querySelectorAll(".resources-quantity-container");
+        for(let i=0; i < Object.entries(clickedProject.resources).length; i++) {
+            resorcesContainer[i].innerHTML = Object.entries(clickedProject.resources)[i][1];
+        }
+
     }
 
     // Function to handle sprint click
     function handleSprintClick(e) {
+
+        // Get sprint id and identify the selected sprint
         const sprintId = parseInt(e.target.dataset.attrId);
         const clickedSprint = data.projects.flatMap(project => project.sprints).find(sprint => sprint.id === sprintId);
 
-
+        // Update status color of the sprint pill
         let sprintPill = document.querySelector('.sprint-status-pill');
         let sprintPillstatus = clickedSprint['status'];
         statuscolor(sprintPill, sprintPillstatus);
@@ -165,15 +177,13 @@ getData().then(data => {
         //update sprint name in dropdown
         document.querySelector(".sprint-dropdown > p").innerHTML = clickedSprint.name;
 
-
         // Update sprint duration
         document.querySelector(".date-chart-container > p").innerHTML = `${clickedSprint.start_date} to ${clickedSprint.end_date}`;
 
         // Render sprint highlights
-        // Update sprint description and use sprint highlights after api is updated
-        // Currently sprint highlights array is not present so description is passed as an array
-        renderHighlights(".sprint-hightlights-list", [clickedSprint.description], createListItem);
+        renderHighlights(".sprint-hightlights-list", clickedSprint.description, createListItem);
 
+        // Update Charts based on selected sprint
         updateCharts(clickedSprint);
     }
 
