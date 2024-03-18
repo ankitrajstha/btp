@@ -90,6 +90,50 @@ getData().then(data => {
         statusel.innerText = text;
     }
 
+    // Function to render team members
+    function renderTeamMembers(teamMembers) {
+        const teamMembersList = document.querySelector('.team-members-list');
+
+        // Clear previous content
+        teamMembersList.innerHTML = '';
+
+        teamMembers.forEach(member => {
+            // Create list item for each team member
+            const listItem = document.createElement('li');
+
+            // Create image element
+            const img = document.createElement('img');
+            img.src = member.image;
+            img.alt = 'profile';
+            img.height = "33";
+            img.width = "33";
+            img.style.borderRadius = "50%";
+            listItem.appendChild(img);
+
+            // Create container for member title and subtitle
+            const titleContainer = document.createElement('div');
+            titleContainer.classList.add('team-members-title-container');
+
+            // Create member title (name)
+            const title = document.createElement('p');
+            title.classList.add('team-members-title');
+            title.textContent = member.name;
+            titleContainer.appendChild(title);
+
+            // Create member subtitle (designation)
+            const subtitle = document.createElement('p');
+            subtitle.classList.add('team-members-subtitle');
+            subtitle.textContent = member.designation;
+            titleContainer.appendChild(subtitle);
+
+            // Append title container to list item
+            listItem.appendChild(titleContainer);
+
+            // Append list item to the team members list
+            teamMembersList.appendChild(listItem);
+        });
+    }
+
     // Function to handle project click
     function handleProjectClick(e) {
 
@@ -156,10 +200,9 @@ getData().then(data => {
 
         // Render Resources
         let resorcesContainer = document.querySelectorAll(".resources-quantity-container");
-        for(let i=0; i < Object.entries(clickedProject.resources).length; i++) {
+        for (let i = 0; i < Object.entries(clickedProject.resources).length; i++) {
             resorcesContainer[i].innerHTML = Object.entries(clickedProject.resources)[i][1];
         }
-
     }
 
     // Function to handle sprint click
@@ -183,6 +226,10 @@ getData().then(data => {
         // Render sprint highlights
         renderHighlights(".sprint-hightlights-list", clickedSprint.description, createListItem);
 
+        // Render Team Members
+        renderTeamMembers(clickedSprint.team_members);
+        document.querySelector(".team-members h4 > span").innerHTML = `[${clickedSprint.team_members.length}]`;
+
         // Update Charts based on selected sprint
         updateCharts(clickedSprint);
     }
@@ -194,6 +241,7 @@ getData().then(data => {
         document.querySelector(".project-dropdown-options").appendChild(projectElement);
     });
 
+    console.log(projects)
     // Initial call to render default data
     handleProjectClick({ target: { dataset: { attrId: projects[0].id } } })
     handleSprintClick({ target: { dataset: { attrId: projects[0].sprints[0].id } } })
