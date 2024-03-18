@@ -5,101 +5,78 @@ import renderLogHoursChart from "./charts/logHours/renderLogHoursChart.js";
 import renderClientDataChart from "./charts/clientData/renderClientDataChart.js";
 import renderRadialBarChart from "./charts/radialBarChart/renderRadialBarChart.js";
 
-let r1, r2, taskTypeChart, taskStatusChart, storyPointsChart, logHoursChart, clientDataChart;
+// Global variables to store chart instances
+let clientSatisfactionChart, teamMoraleChart, 
+  taskTypeChart, taskStatusChart, storyPointsChart, 
+  logHoursChart, clientDataChart;
+
+// Function to update all charts
 function updateCharts(sprint) {
-  // document.addEventListener("DOMContentLoaded", () => {
-    
-  let taskTypeDataObj = {}
-  let taskStatusDataObj = {}
+
+  // Data objects to hold chart data
+  let taskTypeDataObj = {};
+  let taskStatusDataObj = {};
   let storyPointsData = [
-    {
-      name: 'Completed',
-      type: 'column',
-      data: []
-    },
-    {
-      name: 'Assigned',
-      type: 'line',
-      data: []
-    }];
-
+    { name: 'Completed', type: 'column', data: [] },
+    { name: 'Assigned', type: 'line', data: [] }
+  ];
   let logHoursData = [
-    {
-      name: 'Billable Hours',
-      type: 'line',
-      data: []
-    },
-    {
-      name: 'Available Hours',
-      type: 'column',
-      data: []
-    },
-    {
-      name: 'Estimated Hours',
-      type: 'column',
-      data: []
-    },
-    {
-      name: 'Logged Hours',
-      type: 'column',
-      data: []
-    }];
-
+    { name: 'Billable Hours', type: 'line', data: [] },
+    { name: 'Available Hours', type: 'column', data: [] },
+    { name: 'Estimated Hours', type: 'column', data: [] },
+    { name: 'Logged Hours', type: 'column', data: [] }
+  ];
+  let taskTypeData = [];
+  let taskTypelabels = [];
+  let taskStatusData = [];
+  let taskStatusLabels = [];
+  let storyPointsLabels = [];
   let logHoursLabels = [];
+  let clientDataData = [];
+  let clientDataLabels = [];
 
-  let taskTypeData = []
-  let taskTypelabels = []
-
-  let taskStatusData = []
-  let taskStatusLabels = []
-
-  let storyPointsLabels = []
-
-  let clientDataData = []
-  let clientDataLabels = []
-
+  // Counting total task type and status data
   for (let item of sprint.tasks) {
-    if (taskTypeDataObj.hasOwnProperty(item.type)) taskTypeDataObj[item.type]++;
-    else taskTypeDataObj[item.type] = 1;
+    taskTypeDataObj[item.type] = (taskTypeDataObj[item.type] || 0) + 1;
+    taskStatusDataObj[item.status] = (taskStatusDataObj[item.status] || 0) + 1;
   }
 
+  // Extracting task type data and labels
   for (let [type, data] of Object.entries(taskTypeDataObj)) {
-    taskTypeData.push(data)
+    taskTypeData.push(data);
     taskTypelabels.push(type);
   }
 
-  for (let item of sprint.tasks) {
-    if (taskStatusDataObj.hasOwnProperty(item.status)) taskStatusDataObj[item.status]++;
-    else taskStatusDataObj[item.status] = 1;
-  }
-
+  // Extracting task status data and labels
   for (let [status, data] of Object.entries(taskStatusDataObj)) {
-    taskStatusData.push(data)
+    taskStatusData.push(data);
     taskStatusLabels.push(status);
   }
 
+  // Extracting story points and log hours data
   for (let member of sprint.team_members) {
-    storyPointsLabels.push(member.name)
-    logHoursLabels.push(member.name)
-    for (let i = 0; i < member.story_points.length; i++) {
-      storyPointsData[i]["data"].push(member.story_points[i]);
-    }
-    for (let i = 1; i < Object.keys(member.logs).length; i++) {
-      logHoursData[i - 1]["data"].push(Object.entries(member.logs)[i][1])
+    storyPointsLabels.push(member.name);
+    logHoursLabels.push(member.name);
+    member.story_points.forEach((points, i) => {
+      storyPointsData[i].data.push(points);
+    });
+    Object.values(member.logs).slice(1).forEach((value, i) => {
+      logHoursData[i].data.push(value);
+    });
+  }
+
+  // Extracting client data
+  for (let [label, data] of Object.entries(sprint.client_data)) {
+    if (label !== "client_data_id") {
+      clientDataData.push(data);
+      clientDataLabels.push(label);
     }
   }
 
-  for(let [label, data] of Object.entries(sprint.client_data))
-  {
-      if(label !== "client_data_id") {
-        clientDataData.push(data);
-        clientDataLabels.push(label)
-      }
-  }
-
-  if (r1) {
-    r1.destroy();
-    r2.destroy();
+  // Destroy existing charts if they exist
+  if (clientSatisfactionChart) {
+    clientSatisfactionChart.destroy();
+    teamMoraleChart.destroy();
     taskTypeChart.destroy();
     taskStatusChart.destroy();
     storyPointsChart.destroy();
@@ -107,16 +84,16 @@ function updateCharts(sprint) {
     clientDataChart.destroy();
   }
 
-  // Intial chart render
+  // Render initial charts
   taskTypeChart = renderTaskTypeChart(taskTypeData, taskTypelabels);
   taskStatusChart = renderTaskStatusChart(taskStatusData, taskStatusLabels);
   storyPointsChart = renderStoryPointsChart(storyPointsData, storyPointsLabels);
   logHoursChart = renderLogHoursChart(logHoursData, logHoursLabels);
   clientDataChart = renderClientDataChart(clientDataData, clientDataLabels);
 
-  // Radial chart render
-  r1 = renderRadialBarChart('chart', sprint.client_satisfaction);
-  r2 = renderRadialBarChart('chart2', sprint.team_morale);
-  // });
+  // Render radial charts
+  clientSatisfactionChart = renderRadialBarChart('chart', sprint.client_satisfaction);
+  teamMoraleChart = renderRadialBarChart('chart2', sprint.team_morale);
 }
+
 export default updateCharts;
