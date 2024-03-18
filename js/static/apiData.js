@@ -1,9 +1,8 @@
 // Chart data
 // Task type chart data 
-
 async function getData() {
     try {
-        let res = await fetch("https://run.mocky.io/v3/546328f9-af1a-479d-ab48-e34c57343b03");
+        let res = await fetch("https://run.mocky.io/v3/2a8c32f5-7774-489c-8c93-eada1e6442c2");
         let data = await res.json();
 
         const projects = data.projects
@@ -96,7 +95,8 @@ async function getData() {
             taskStatusLabels, storyPointsData, storyPointsLabels,
             logHoursData, logHoursLabels, clientDataData, clientDataLabels
         };
-    } catch (err) {
+    } 
+    catch (err) {
         console.log(err);
     }
 }

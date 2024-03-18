@@ -48,6 +48,7 @@ const getChartConfig = (chartType, data, labels, inModal) => {
                     offsetX: inModal ? -40 : -55,
                     offsetY: inModal ? -5 : -30,
                     customScale: inModal ? 0.95 : 0.75,
+                    size: 2,
                     donut: {
                         size: 65
                     }

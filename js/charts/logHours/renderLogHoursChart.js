@@ -42,6 +42,7 @@ const renderLogHoursChart = (logHoursData, logHoursLabels) => {
             }
         );
     });
+    return logHoursChart;
 }
 
 export default renderLogHoursChart;

@@ -43,6 +43,7 @@ const renderClientDataChart = (clientDataData, clientDataLabels) => {
             }
         );
     });
+    return clientDataChart;
 }
 
 export default renderClientDataChart;

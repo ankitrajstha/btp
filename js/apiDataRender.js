@@ -1,4 +1,5 @@
 import getData from "./static/apiData.js";
+import updateCharts from "./charts.js";
 
 function toggleDropdown(dropdownSelector, optionsContainerSelector) {
     document.querySelector(dropdownSelector).addEventListener('click', (e) => {
@@ -50,6 +51,7 @@ getData().then(data => {
         const statusColorDiv = createColoredDiv(item.status === 'critical' ? '#cc3333' :
             item.status === 'on track' ? '#4eb011' :
                 item.status === 'caution' ? '#e9e906' : '#2f4858');
+        statusColorDiv.setAttribute("data-attr-id", item.id);
         const nameParagraph = createParagraph(item.name, item.id);
         elementDiv.appendChild(statusColorDiv);
         elementDiv.appendChild(nameParagraph);
@@ -98,7 +100,19 @@ getData().then(data => {
         statuscolor(projectPill, projectPillstatus);
 
         // Update project dropdown
-        document.querySelector(".project-dropdown > p").innerHTML = clickedProject.name;
+        // Select Sprint dropdown
+        const projectDropdown = document.querySelector(".project-dropdown");
+
+        // Remove existing project paragraph
+        const existingProjectParagraph = projectDropdown.querySelector("p");
+        if (existingProjectParagraph) {
+            projectDropdown.removeChild(existingProjectParagraph);
+        }
+
+        // Create and insert new project paragraph
+        const selectedProject = createParagraph(clickedProject.name, clickedProject.id);
+        let chevronDownImg = projectDropdown.querySelector("img");
+        projectDropdown.insertBefore(selectedProject, chevronDownImg);
 
         // Update sprint dropdown
         // Select Sprint dropdown
@@ -112,7 +126,7 @@ getData().then(data => {
 
         // Create and insert new sprint paragraph
         const selectedSprint = createParagraph(clickedProject.sprints[0].name, clickedProject.sprints[0].id);
-        const chevronDown = sprintDropdown.querySelector("img");
+        let chevronDown = sprintDropdown.querySelector("img");
         sprintDropdown.insertBefore(selectedSprint, chevronDown);
 
         // Remove existing sprint options
@@ -138,10 +152,6 @@ getData().then(data => {
         renderTechnicalDebt(".technical-debt > p", clickedProject.technical_debt);
     }
 
-    // Create barchart variables to override existing barcharts
-    // and avoid creating multiple charts
-    //   let radialBarChart1, radialBarChart2;
-
     // Function to handle sprint click
     function handleSprintClick(e) {
         const sprintId = parseInt(e.target.dataset.attrId);
@@ -164,6 +174,7 @@ getData().then(data => {
         // Currently sprint highlights array is not present so description is passed as an array
         renderHighlights(".sprint-hightlights-list", [clickedSprint.description], createListItem);
 
+        updateCharts(clickedSprint);
     }
 
     // Render project elements
@@ -176,4 +187,5 @@ getData().then(data => {
     // Initial call to render default data
     handleProjectClick({ target: { dataset: { attrId: projects[0].id } } })
     handleSprintClick({ target: { dataset: { attrId: projects[0].sprints[0].id } } })
+
 });

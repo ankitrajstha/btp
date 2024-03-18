@@ -43,6 +43,7 @@ const renderStoryPointsChart = (storyPointsData, storyPointsLabels) => {
             }
         );
     });
+    return storyPointsChart;
 }
 
 export default renderStoryPointsChart;

@@ -72,7 +72,7 @@ const renderTaskStatusChart = (taskStatusData, taskStatusLabels) => {
             }
         );
     });
-
+    return taskStatusChart;
 }
 
 export default renderTaskStatusChart;

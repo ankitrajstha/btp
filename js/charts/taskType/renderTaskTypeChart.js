@@ -72,6 +72,7 @@ const renderTaskTypeChart = (taskTypeData, taskTypeLabels) => {
             }
         );
     });
+    return taskTypeChart;
 }
 
 export default renderTaskTypeChart;
