@@ -1,6 +1,5 @@
 const chartTypeRender = (
     selectedChartType,
-    chartOption,
     dropdownOptions,
     selectedChartLabel,
     callback

@@ -41,7 +41,6 @@ const renderStoryPointsChart = (storyPointsData, storyPointsLabels) => {
             null,
             null,
             null,
-            null,
             (chartType) => {
 
             }

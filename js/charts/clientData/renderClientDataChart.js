@@ -41,7 +41,6 @@ const renderClientDataChart = (clientDataData, clientDataLabels) => {
             null,
             null,
             null,
-            null,
             (chartType) => {
 
             }

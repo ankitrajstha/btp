@@ -3,7 +3,6 @@ const openModal = (
     modal,
     chartType,
     selectedOptionText,
-    chartOptionModal,
     dropdownOptionsModal,
     selectedChartLabelModal,
     callback
@@ -44,7 +43,7 @@ const openModal = (
                 dropdownOptionsModal.removeEventListener("click", handleDropdownOptionClick);
             }
         }
-        if (dropdownOptionsModal && event.target !== chartOptionModal && event.target !== selectedChartLabelModal && event.target !== dropdownOptionsModal) {
+        if (dropdownOptionsModal && event.target !== selectedChartLabelModal && event.target !== dropdownOptionsModal) {
             dropdownOptionsModal.classList.remove('dropdown-chart-options-visibility');
         }
     });

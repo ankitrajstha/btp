@@ -41,7 +41,6 @@ const renderLogHoursChart = (logHoursData, logHoursLabels) => {
             null,
             null,
             null,
-            null,
             (chartType) => {
             }
         );
