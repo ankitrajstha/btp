@@ -9,6 +9,12 @@ const getChartConfig = (chartType, data, labels, inModal) => {
     // Initial configuration for all charts
     const chartConfig = {
         chart: {
+            toolbar: {
+                show: false
+            },
+            zoom: {
+                enabled: false,
+            },
             width: "100%",
             type: chartType,
             height: '90%',
