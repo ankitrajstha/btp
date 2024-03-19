@@ -1,4 +1,3 @@
-import * as drag_n_drop from './drag_n_drop/script.js';
 const resizableComponents = document.querySelectorAll('.resizable');
 
 const baseWidth = 449.33;
