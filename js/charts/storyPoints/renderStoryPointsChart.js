@@ -37,13 +37,6 @@ const renderStoryPointsChart = (storyPointsData, storyPointsLabels) => {
         // Null values since this chart has no options for different chart types
         openModal(
             storyPointsModal,
-            null,
-            null,
-            null,
-            null,
-            (chartType) => {
-
-            }
         );
     });
     return storyPointsChart;

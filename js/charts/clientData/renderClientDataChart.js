@@ -37,13 +37,6 @@ const renderClientDataChart = (clientDataData, clientDataLabels) => {
         // Null values since this chart has no options for different chart types
         openModal(
             clientDataModal,
-            null,
-            null,
-            null,
-            null,
-            (chartType) => {
-
-            }
         );
     });
     return clientDataChart;

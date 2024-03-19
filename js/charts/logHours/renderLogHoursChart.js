@@ -37,12 +37,6 @@ const renderLogHoursChart = (logHoursData, logHoursLabels) => {
         // Null values since this chart has no options for different chart types
         openModal(
             logHoursModal,
-            null,
-            null,
-            null,
-            null,
-            (chartType) => {
-            }
         );
     });
     return logHoursChart;
