@@ -3,6 +3,7 @@
 @import "./css/reset.css";
 @import "./css/base.css";
 @import "./css/chart.css";
+@import "./css/milestone.css";
 
 .project-sprint-container {
   display: flex;
@@ -342,11 +343,14 @@
   display: flex;
   gap: var(--spacing-2);
   margin-bottom: var(--spacing-1);
+  justify-content: space-between;
 }
 
-.title-capsule-container > span {
+.title-capsule-container > span,
+.title-capsule-heading > span {
   width: 60px;
   height: 24px;
   color: var(--g200);
   background-color: var(--neutral-color);
+  font-weight: 600;
 }
