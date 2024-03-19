@@ -28,6 +28,7 @@ const getChartConfig = (chartType, data, labels, inModal) => {
 
     // Chart configuration for pie chart, outlined and filled
     if (chartType !== "bar") {
+        chartConfig.chart.height = '95%';
         chartConfig.legend = {
             ...{
                 offsetX: inModal ? -30 : -2,
@@ -45,10 +46,10 @@ const getChartConfig = (chartType, data, labels, inModal) => {
         },
             chartConfig["plotOptions"] = {
                 pie: {
-                    offsetX: inModal ? -40 : -55,
-                    offsetY: inModal ? -5 : -30,
-                    customScale: inModal ? 0.95 : 0.75,
-                    size: 2,
+                    offsetX: inModal ? -40 : -75,
+                    offsetY: inModal ? -5 : -5,
+                    // customScale: inModal     ? 0.95 : 0.75,
+                    size: 0.1,
                     donut: {
                         size: 65
                     }
