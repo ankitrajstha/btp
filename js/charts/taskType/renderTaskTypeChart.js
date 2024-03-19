@@ -12,11 +12,11 @@ import {
 } from "./idSelector.js";
 
 let taskTypeModalChart;
+let taskTypeChart;
+let selectedChartTypeTaskType = 'donut';
+let selectedOptionText = taskTypeSelectedChartLabel.textContent;
 
 const renderTaskTypeChart = (taskTypeData, taskTypeLabels) => {
-    let taskTypeChart;
-    let selectedChartTypeTaskType = 'donut';
-    let selectedOptionText = taskTypeSelectedChartLabel.textContent;
 
     // Initial rendering of chart
     const chartConfig = getChartConfig(selectedChartTypeTaskType, taskTypeData, taskTypeLabels, false);
