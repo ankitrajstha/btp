@@ -7,6 +7,8 @@ import {
     logHoursModal, logHoursChartModalContainer,
 } from "./idSelector.js";
 
+let logHoursModalChart;
+
 const renderLogHoursChart = (logHoursData, logHoursLabels) => {
     let logHoursChart;
     let selectedChartTypelogHours = 'line';
@@ -19,7 +21,9 @@ const renderLogHoursChart = (logHoursData, logHoursLabels) => {
         chartConfig
     );
 
-    let logHoursModalChart;
+    if (logHoursModalChart) {
+        logHoursModalChart.destroy();
+    }
     logHoursOpenModalButton.addEventListener("click", () => {
         const chartConfigModal = getChartConfig(selectedChartTypelogHours, logHoursData, logHoursLabels, true);
 

@@ -7,6 +7,8 @@ import {
     storyPointsModal, storyPointsChartModalContainer,
 } from "./idSelector.js";
 
+let storyPointsModalChart;
+
 const renderStoryPointsChart = (storyPointsData, storyPointsLabels) => {
     let storyPointsChart;
     let selectedChartTypestoryPoints = 'line';
@@ -19,7 +21,9 @@ const renderStoryPointsChart = (storyPointsData, storyPointsLabels) => {
         chartConfig
     );
 
-    let storyPointsModalChart;
+    if (storyPointsModalChart) {
+        storyPointsModalChart.destroy();
+    }
     storyPointsOpenModalButton.addEventListener("click", () => {
         const chartConfigModal = getChartConfig(selectedChartTypestoryPoints, storyPointsData, storyPointsLabels, true);
 

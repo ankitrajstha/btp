@@ -7,6 +7,8 @@ import {
     clientDataModal, clientDataChartModalContainer,
 } from "./idSelector.js";
 
+let clientDataModalChart;
+
 const renderClientDataChart = (clientDataData, clientDataLabels) => {
     let clientDataChart;
     let selectedChartTypeclientData = 'bar';
@@ -19,7 +21,9 @@ const renderClientDataChart = (clientDataData, clientDataLabels) => {
         chartConfig
     );
 
-    let clientDataModalChart;
+    if (clientDataModalChart) {
+        clientDataModalChart.destroy();
+    }
     clientDataOpenModalButton.addEventListener("click", () => {
         const chartConfigModal = getChartConfig(selectedChartTypeclientData, clientDataData, clientDataLabels, true);
 

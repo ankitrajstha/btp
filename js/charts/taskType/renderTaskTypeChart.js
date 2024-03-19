@@ -10,6 +10,8 @@ import {
     taskTypeChartOptionModal, taskTypeDropdownOptionsModal, taskTypeSelectedChartLabelModal
 } from "./idSelector.js";
 
+let taskTypeModalChart;
+
 const renderTaskTypeChart = (taskTypeData, taskTypeLabels) => {
     let taskTypeChart;
     let selectedChartTypeTaskType = 'donut';
@@ -42,7 +44,9 @@ const renderTaskTypeChart = (taskTypeData, taskTypeLabels) => {
         }
     );
 
-    let taskTypeModalChart;
+    if (taskTypeModalChart) {
+        taskTypeModalChart.destroy();
+    }
     taskTypeOpenModalButton.addEventListener("click", () => {
         const chartConfigModal = getChartConfig(selectedChartTypeTaskType, taskTypeData, taskTypeLabels, true);
 
