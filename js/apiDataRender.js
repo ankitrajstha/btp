@@ -10,14 +10,28 @@ taskStatusModalDropdownToggle();
 taskTypeModalDropdownToggle();
 
 function toggleDropdown(dropdownSelector, optionsContainerSelector) {
+    let chevronDown = document.querySelector(dropdownSelector + " img"),
+        selectedProjectDiv = document.querySelector(dropdownSelector + " .selected-option-container"),
+        dropdownListOptions = document.querySelector(optionsContainerSelector);
+
+    console.log(selectedProjectDiv);
+
     document.querySelector(dropdownSelector).addEventListener('click', (e) => {
-        document.querySelector(optionsContainerSelector).classList.toggle('dropdown-option-container-visibility-toggler');
+        dropdownListOptions.classList.toggle('dropdown-option-container-visibility-toggler');
+    });
+
+    window.addEventListener("click", (event) => {
+        const isInside = chevronDown.contains(event.target) || selectedProjectDiv.contains(event.target);
+        
+        if (!isInside) {
+            dropdownListOptions.classList.remove('dropdown-option-container-visibility-toggler');
+        }
     });
 }
 
 function dropdownHandler() {
-    toggleDropdown(".project-dropdown", ".project-dropdown-options-container");
-    toggleDropdown(".sprint-dropdown", ".sprint-dropdown-options-container");
+    toggleDropdown(".project-container", ".project-dropdown-options-container");
+    toggleDropdown(".sprint-container", ".sprint-dropdown-options-container");
 }
 
 dropdownHandler();
