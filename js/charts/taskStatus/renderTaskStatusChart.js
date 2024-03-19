@@ -4,10 +4,11 @@ import openModal from "../../helpers/modal.js";
 import getChartConfig from "./chartconfig.js";
 
 import {
-    taskStatusContainer, 
+    taskStatusContainer, taskStatusChartOption, taskStatusChevron,
     taskStatusDropdownOptions, taskStatusSelectedChartLabel,
     taskStatusOpenModalButton, taskStatusModal, taskStatusChartModalContainer,
-    taskStatusDropdownOptionsModal, taskStatusSelectedChartLabelModal
+    taskStatusDropdownOptionsModal, taskStatusSelectedChartLabelModal,
+    taskStatusChartOptionModal, taskStatusModalChevron
 } from "./idSelector.js";
 
 let taskStatusModalChart;
@@ -30,6 +31,8 @@ const renderTaskStatusChart = (taskStatusData, taskStatusLabels) => {
         selectedChartTypeTaskStatus,
         taskStatusDropdownOptions,
         taskStatusSelectedChartLabel,
+        taskStatusChartOption,
+        taskStatusChevron,
         (chartType, optionText) => {
             selectedChartTypeTaskStatus = chartType;
             selectedOptionText = optionText;
@@ -62,6 +65,8 @@ const renderTaskStatusChart = (taskStatusData, taskStatusLabels) => {
             selectedOptionText,
             taskStatusDropdownOptionsModal,
             taskStatusSelectedChartLabelModal,
+            taskStatusChartOptionModal,
+            taskStatusModalChevron,
             // Handle re-rendering of chart when different chart type is selected inside modal
             (chartType) => {
                 const chartConfigModal = getChartConfig(chartType, taskStatusData, taskStatusLabels, true);

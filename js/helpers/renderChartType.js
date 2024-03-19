@@ -2,6 +2,8 @@ const chartTypeRender = (
     selectedChartType,
     dropdownOptions,
     selectedChartLabel,
+    chartOption,
+    chevron,
     callback
 ) => {
     let selectedOptionText = selectedChartLabel.textContent;
@@ -18,7 +20,7 @@ const chartTypeRender = (
     });
 
     window.addEventListener("click", (event) => {
-        if (event.target !== selectedChartLabel && event.target !== dropdownOptions) {
+        if (event.target !== chartOption && event.target !== chevron && event.target !== selectedChartLabel && event.target !== dropdownOptions) {
             dropdownOptions.classList.remove('dropdown-chart-options-visibility');
         }
     });
