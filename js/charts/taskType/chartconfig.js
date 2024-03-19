@@ -31,7 +31,7 @@ const getChartConfig = (chartType, data, labels, inModal) => {
         chartConfig.chart.height = '95%';
         chartConfig.legend = {
             ...{
-                offsetX: inModal ? -30 : -2,
+                offsetX: 30,
                 offsetY: inModal ? 10 : -2,
                 itemMargin: {
                     vertical: inModal ? 2.55 : -1,
@@ -46,7 +46,7 @@ const getChartConfig = (chartType, data, labels, inModal) => {
         },
             chartConfig["plotOptions"] = {
                 pie: {
-                    offsetX: inModal ? -40 : -75,
+                    offsetX: inModal ? -60 : -75,
                     offsetY: inModal ? -5 : -5,
                     // customScale: inModal     ? 0.95 : 0.75,
                     size: 0.1,
