@@ -1,5 +1,13 @@
 import getData from "./static/apiData.js";
 import updateCharts from "./charts.js";
+import { taskStatusDropdownToggle, taskStatusModalDropdownToggle } from "./charts/taskStatus/chartOptionDropdown.js";
+import { taskTypeDropdownToggle, taskTypeModalDropdownToggle } from "./charts/taskType/chartOptionDropdown.js";
+
+// Initialize event listeners for chart dropwdown menu 
+taskStatusDropdownToggle();
+taskTypeDropdownToggle();
+taskStatusModalDropdownToggle();
+taskTypeModalDropdownToggle();
 
 function toggleDropdown(dropdownSelector, optionsContainerSelector) {
     document.querySelector(dropdownSelector).addEventListener('click', (e) => {
