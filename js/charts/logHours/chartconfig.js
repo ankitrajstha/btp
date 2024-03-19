@@ -2,7 +2,7 @@ import shortLabel from "../../helpers/shortLabel.js";
 
 const getChartConfig = (chartType, data, labels, inModal) => {
     // Shorten labels for bar chart by taking the initals of long labels
-    var newLabels = shortLabel(labels);
+    var newLabels = shortLabel(labels, true);
     labels = Object.keys(newLabels);
 
     const colorArray = labels.map(() => '#ACACAC');

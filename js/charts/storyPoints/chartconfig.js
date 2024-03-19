@@ -34,6 +34,7 @@ const getChartConfig = (chartType, data, labels, inModal) => {
                 offsetX: -5,
                 radius: '4px'
             },
+            inverseOrder: true,
         },
         series: data,
         labels: labels,
