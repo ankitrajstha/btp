@@ -7,10 +7,6 @@ const chartTypeRender = (
 ) => {
     let selectedOptionText = selectedChartLabel.textContent;
 
-    // chartOption.addEventListener("click", function () {
-    //     dropdownOptions.classList.toggle('dropdown-chart-options-visibility');
-    // });
-
     dropdownOptions.addEventListener("click", function (event) {
         if (event.target.tagName === "LI") {
             selectedOptionText = event.target.textContent.trim();

@@ -16,9 +16,6 @@ const openModal = (
     modal.style.display = "block";
 
     // handle event for chart type selector 
-    // const handleDropdown = () => {
-    //     dropdownOptionsModal.classList.toggle('dropdown-chart-options-visibility');
-    // };
     const handleDropdownOptionClick = (event) => {
         if (event.target.tagName === "LI") {
             const selectedOptionTextModal = event.target.textContent.trim();
@@ -38,7 +35,6 @@ const openModal = (
         modal.style.display = "none";
         if (dropdownOptionsModal) {
             dropdownOptionsModal.removeEventListener("click", handleDropdownOptionClick);
-            // chartOptionModal.removeEventListener("click", handleDropdown);
         }
     });
     window.addEventListener("click", (event) => {
@@ -46,7 +42,6 @@ const openModal = (
             modal.style.display = "none";
             if (dropdownOptionsModal) {
                 dropdownOptionsModal.removeEventListener("click", handleDropdownOptionClick);
-                // chartOptionModal.removeEventListener("click", handleDropdown);
             }
         }
         if (dropdownOptionsModal && event.target !== chartOptionModal && event.target !== selectedChartLabelModal && event.target !== dropdownOptionsModal) {
@@ -55,7 +50,6 @@ const openModal = (
     });
     if (dropdownOptionsModal) {
         dropdownOptionsModal.addEventListener("click", handleDropdownOptionClick);
-        // chartOptionModal.addEventListener("click", handleDropdown);
     }
 };
 
