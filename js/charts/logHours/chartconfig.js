@@ -54,7 +54,7 @@ const getChartConfig = (chartType, data, labels, inModal) => {
             enabled: true,
             x: {
                 formatter: (val) => {
-                    return newLabels[val] || val;
+                    return newLabels[labels[val - 1]] || val;
                 },
             },
         },
