@@ -10,19 +10,20 @@ taskStatusModalDropdownToggle();
 taskTypeModalDropdownToggle();
 
 function toggleDropdown(dropdownSelector, optionsContainerSelector) {
+    // Select required values to close dropdown
     let chevronDown = document.querySelector(dropdownSelector + " img"),
         selectedProjectDiv = document.querySelector(dropdownSelector + " .selected-option-container"),
         dropdownListOptions = document.querySelector(optionsContainerSelector);
 
-    console.log(selectedProjectDiv);
-
+    // Toggle class to display and hid the dropdown
     document.querySelector(dropdownSelector).addEventListener('click', (e) => {
         dropdownListOptions.classList.toggle('dropdown-option-container-visibility-toggler');
     });
 
+    // Hide dropdown upon clicking anywhere outside of the toggler
     window.addEventListener("click", (event) => {
         const isInside = chevronDown.contains(event.target) || selectedProjectDiv.contains(event.target);
-        
+
         if (!isInside) {
             dropdownListOptions.classList.remove('dropdown-option-container-visibility-toggler');
         }
@@ -113,8 +114,8 @@ getData().then(data => {
     }
 
     // Function to render team members
-    function renderTeamMembers(teamMembers) {
-        const teamMembersList = document.querySelector('.team-members-list');
+    function renderTeamMembers(parentContainer, teamMembers) {
+        const teamMembersList = document.querySelector(parentContainer);
 
         // Clear previous content
         teamMembersList.innerHTML = '';
@@ -225,6 +226,28 @@ getData().then(data => {
         for (let i = 0; i < Object.entries(clickedProject.resources).length; i++) {
             resorcesContainer[i].innerHTML = Object.entries(clickedProject.resources)[i][1];
         }
+
+        // Select DOM Elements
+        const navbarSlider = document.querySelector('.navbar-slider');
+        const navSliderButtons = document.querySelectorAll('.nav-slider-button');
+
+        // Flatten Team Members Array
+        const projectTeamMembers = clickedProject.sprints.flatMap(sprint => sprint.team_members);
+
+        // Handle Slider Click Function
+        const handleSliderClick = () => {
+            const designation = document.querySelector('.nav-slider-item.selected p').innerHTML;
+            const filteredMembers = (designation === "All") ? projectTeamMembers : projectTeamMembers.filter(mem => mem.designation === designation);
+            renderTeamMembers(filteredMembers);
+        };
+        
+        // Add Event Listeners
+        navbarSlider.addEventListener('click', handleSliderClick);
+        navSliderButtons.forEach(button => button.addEventListener('click', handleSliderClick));
+        
+        // Initial Render
+        renderTeamMembers(flattenTeamMembers());
+
     }
 
     // Function to handle sprint click
@@ -249,7 +272,7 @@ getData().then(data => {
         renderHighlights(".sprint-hightlights-list", clickedSprint.description, createListItem);
 
         // Render Team Members
-        renderTeamMembers(clickedSprint.team_members);
+        renderTeamMembers('.team-members-list', clickedSprint.team_members);
         document.querySelector(".team-members h4 > span").innerHTML = `[${clickedSprint.team_members.length}]`;
 
         // Update Charts based on selected sprint
@@ -263,7 +286,6 @@ getData().then(data => {
         document.querySelector(".project-dropdown-options").appendChild(projectElement);
     });
 
-    console.log(projects)
     // Initial call to render default data
     handleProjectClick({ target: { dataset: { attrId: projects[0].id } } })
     handleSprintClick({ target: { dataset: { attrId: projects[0].sprints[0].id } } })

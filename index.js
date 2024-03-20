@@ -26,7 +26,6 @@ resizableComponents.forEach((component, index) => {
 
   component.addEventListener('mouseup', () => {
     const { offsetWidth, offsetHeight } = component;
-    console.log(component, offsetHeight, offsetWidth)
     localStorage.setItem(localStorageKey, JSON.stringify({ width: offsetWidth, height: offsetHeight }));
   });
 
