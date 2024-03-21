@@ -67,6 +67,15 @@ getData().then(data => {
         return li;
     }
 
+    // Function to create list item with highlight or milestone
+    function createGraphView(content) {
+        const li = document.createElement("li");
+        li.classList.add(content.completed === true ? "active" : "inactive");
+        li.innerHTML = content.name;
+        return li;
+    }
+
+
     // Function to create project or sprint element
     function createElement(container, item, clickHandler) {
         const elementDiv = document.createElement("div");
@@ -217,6 +226,8 @@ getData().then(data => {
 
         // Render project milestones
         renderHighlights(".milestones-list", clickedProject.milestones.map(milestone => milestone.name), createListItem);
+
+        renderHighlights('.timeline', clickedProject.milestones.map(milestone => milestone), createGraphView);
 
         // Render Technical debt
         renderTechnicalDebt(".technical-debt > p", clickedProject.technical_debt);
