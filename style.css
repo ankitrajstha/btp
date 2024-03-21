@@ -251,6 +251,26 @@ nav {
   position: absolute;
 }
 
+.project-dropdown-options-container,
+.sprint-dropdown-options-container {
+  border: 1px solid #a8a8a8;
+  height: 50vh;
+  overflow: hidden auto;
+  grid-template-columns: auto;
+  grid-template-rows: min-content auto;
+}
+
+.project-dropdown-options,
+.sprint-dropdown-options {
+  height: 100%;
+  overflow: inherit;
+}
+
+.dropdown-option-container-visibility-toggler {
+  display: grid;
+  z-index: 10001;
+}
+
 .project-dropdown-options-container .search-bar-container,
 .sprint-dropdown-options-container .search-bar-container {
   border: 1px solid var(--primary-black);
