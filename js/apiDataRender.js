@@ -237,19 +237,23 @@ getData().then(data => {
         // Handle Slider Click Function
         const handleSliderClick = () => {
             const designation = document.querySelector('.nav-slider-item.selected p').innerHTML;
-            const filteredMembers = (designation === "All") ? projectTeamMembers : projectTeamMembers.filter(mem => mem.designation === designation);
-            renderTeamMembers(filteredMembers);
+            const filteredMembers = (designation === "All") ? projectTeamMembers : projectTeamMembers.filter(mem => mem.designation.toLowerCase() === designation.toLowerCase());
+            renderTeamMembers(".members-list", filteredMembers);
         };
-        
+
         // Add Event Listeners
         navbarSlider.addEventListener('click', handleSliderClick);
         navSliderButtons.forEach(button => button.addEventListener('click', handleSliderClick));
-        
-        // Initial Render
-        renderTeamMembers(flattenTeamMembers());
 
+        // Render Team Members Initially
+        renderTeamMembers(".members-list", projectTeamMembers);
+
+        // let sliderItemsCounter = document.querySelectorAll('.nav-slider-item');
+        // for (let i = 0; i < sliderItemsCounter.length; i++) {
+        //     sliderItemsCounter[i].querySelector("span").innerHTML = projectTeamMembers.length;
+        //     console.log(sliderItemsCounter[i])
+        // }
     }
-
     // Function to handle sprint click
     function handleSprintClick(e) {
 
@@ -285,9 +289,8 @@ getData().then(data => {
         const projectElement = createElement("project", project, handleProjectClick);
         document.querySelector(".project-dropdown-options").appendChild(projectElement);
     });
-
+    
     // Initial call to render default data
     handleProjectClick({ target: { dataset: { attrId: projects[0].id } } })
     handleSprintClick({ target: { dataset: { attrId: projects[0].sprints[0].id } } })
-
 });
