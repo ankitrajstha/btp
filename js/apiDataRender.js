@@ -13,6 +13,7 @@ function toggleDropdown(dropdownSelector, optionsContainerSelector) {
     // Select required values to close dropdown
     let chevronDown = document.querySelector(dropdownSelector + " img"),
         selectedProjectDiv = document.querySelector(dropdownSelector + " .selected-option-container"),
+        searchBarContainer = document.querySelector(optionsContainerSelector + " .search-input"),
         dropdownListOptions = document.querySelector(optionsContainerSelector);
 
     // Toggle class to display and hid the dropdown
@@ -22,11 +23,15 @@ function toggleDropdown(dropdownSelector, optionsContainerSelector) {
 
     // Hide dropdown upon clicking anywhere outside of the toggler
     window.addEventListener("click", (event) => {
-        const isInside = chevronDown.contains(event.target) || selectedProjectDiv.contains(event.target);
-
+        const isInside = chevronDown.contains(event.target) || selectedProjectDiv.contains(event.target) ;
+        
         if (!isInside) {
             dropdownListOptions.classList.remove('dropdown-option-container-visibility-toggler');
         }
+    });
+    // Prevent closing dropdown when clicking inside the search input
+    searchBarContainer.addEventListener('click', (e) => {
+        e.stopPropagation();
     });
 }
 
