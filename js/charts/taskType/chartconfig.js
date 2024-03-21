@@ -11,7 +11,7 @@ const getChartConfig = (chartType, data, labels, inModal) => {
         labels: labels,
         dataLabels: {
             style: {
-                fontSize: inModal ? '20px' : '8px',
+                fontSize: inModal ? '15px' : '8px',
                 fontFamily: "Poppins",
                 fontWeight: '400',
             },
