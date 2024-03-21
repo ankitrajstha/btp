@@ -47,8 +47,15 @@ const getChartConfig = (chartType, data, labels, inModal) => {
                 width: 14,
                 height: 14,
                 offsetX: -5,
-                radius: '4px'
-            }
+                radius: '4px',
+            
+                onItemClick: {
+                    toggleDataSeries: false
+                },
+            },
+            onItemClick: {
+                toggleDataSeries: false
+            },
         },
         xaxis: {
             categories: labels,
