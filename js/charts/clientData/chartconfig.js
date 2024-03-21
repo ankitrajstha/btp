@@ -41,7 +41,7 @@ const getChartConfig = (chartType, data, labels, inModal) => {
             fontSize: inModal ? '12px' : '10px',
             fontFamily: "Poppins",
             itemMargin: {
-                horizontal: 40,
+                horizontal: inModal ? 20 : 40,
             },
             markers: {
                 width: 14,
