@@ -39,6 +39,9 @@ const getChartConfig = (chartType, data, labels, inModal) => {
                     offsetX: -5,
                     offsetY: 3,
                 },
+                onItemHover: {
+                    highlightDataSeries: false
+                },
         },
             chartConfig["plotOptions"] = {
                 pie: {
