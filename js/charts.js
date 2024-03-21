@@ -1,10 +1,10 @@
-import * as drag_n_drop from "../drag_n_drop/script.js";
 import renderTaskTypeChart from "./charts/taskType/renderTaskTypeChart.js";
 import renderTaskStatusChart from "./charts/taskStatus/renderTaskStatusChart.js";
 import renderStoryPointsChart from "./charts/storyPoints/renderStoryPointsChart.js";
 import renderLogHoursChart from "./charts/logHours/renderLogHoursChart.js";
 import renderClientDataChart from "./charts/clientData/renderClientDataChart.js";
 import renderRadialBarChart from "./charts/radialBarChart/renderRadialBarChart.js";
+import { reformatData, reformatLabel } from "./helpers/dataClean.js";
 
 // Global variables to store chart instances
 let clientSatisfactionChart,
@@ -47,26 +47,32 @@ function updateCharts(sprint) {
 
   // Extracting task type data and labels
   for (let [type, data] of Object.entries(taskTypeDataObj)) {
+    data = reformatData(data);
     taskTypeData.push(data);
+    type = reformatLabel(type);
     taskTypelabels.push(type);
   }
 
   // Extracting task status data and labels
   for (let [status, data] of Object.entries(taskStatusDataObj)) {
+    data = reformatData(data);
     taskStatusData.push(data);
+    status = reformatLabel(status);
     taskStatusLabels.push(status);
   }
 
   // Extracting story points and log hours data
   for (let member of sprint.team_members) {
-    storyPointsLabels.push(member.name);
-    logHoursLabels.push(member.name);
+
+    storyPointsLabels.push(reformatLabel(member.name));
+    logHoursLabels.push(reformatLabel(member.name));
     member.story_points.forEach((points, i) => {
       storyPointsData[i].data.push(points);
     });
     Object.values(member.logs)
       .slice(1)
       .forEach((value, i) => {
+        value = reformatData(value);
         logHoursData[i].data.push(value);
       });
   }
@@ -74,7 +80,9 @@ function updateCharts(sprint) {
   // Extracting client data
   for (let [label, data] of Object.entries(sprint.client_data)) {
     if (label !== "client_data_id") {
+      data = reformatData(data);
       clientDataData.push(data);
+      label = reformatLabel(label);
       clientDataLabels.push(label);
     }
   }
