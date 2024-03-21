@@ -7,15 +7,11 @@ const getChartConfig = (chartType, data, labels, inModal) => {
             width: "100%",
             type: chartType,
         },
-        legend: {
-            fontSize: inModal ? '12px' : '10px',
-            fontFamily: "Poppins",
-        },
         series: chartType === "bar" ? [{ name: "Data", data }] : data,
         labels: labels,
         dataLabels: {
             style: {
-                fontSize: inModal ? '20px' : '10px',
+                fontSize: inModal ? '20px' : '8px',
                 fontFamily: "Poppins",
                 fontWeight: '400',
             },
@@ -30,7 +26,8 @@ const getChartConfig = (chartType, data, labels, inModal) => {
     if (chartType !== "bar") {
         chartConfig.chart.height = '95%';
         chartConfig.legend = {
-            ...{
+                fontSize: inModal ? '12px' : '10px',
+                fontFamily: "Poppins",
                 offsetX: 30,
                 offsetY: inModal ? 10 : -2,
                 itemMargin: {
@@ -42,7 +39,6 @@ const getChartConfig = (chartType, data, labels, inModal) => {
                     offsetX: -5,
                     offsetY: 3,
                 },
-            }
         },
             chartConfig["plotOptions"] = {
                 pie: {
@@ -52,7 +48,10 @@ const getChartConfig = (chartType, data, labels, inModal) => {
                     size: 0.1,
                     donut: {
                         size: 65
-                    }
+                    },
+                    dataLabels: {
+                        offset: -2
+                    },
                 },
             };
     }
@@ -70,12 +69,12 @@ const getChartConfig = (chartType, data, labels, inModal) => {
             }
         }
         chartConfig.legend = {
-            ...{
+                fontSize: inModal ? '12px' : '10px',
+                fontFamily: "Poppins",
                 offsetX: 2,
                 itemMargin: {
                     horizontal: 12,
                 },
-            }
         }
         // Remove hamburger icon with download options in bar chart
         chartConfig.chart["toolbar"] = {
@@ -83,9 +82,7 @@ const getChartConfig = (chartType, data, labels, inModal) => {
         };
 
         chartConfig.dataLabels = {
-            ...{
                 enabledOnSeries: [1]
-            }
         }
         // X-axis labels for bar charts with custom styling
         chartConfig["xaxis"] = {
