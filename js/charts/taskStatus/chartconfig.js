@@ -46,7 +46,7 @@ const getChartConfig = (chartType, data, labels, inModal) => {
         },
             chartConfig["plotOptions"] = {
                 pie: {
-                    offsetX: inModal ? -60 : -75,
+                    offsetX: inModal ? -50 : -65,
                     offsetY: inModal ? -5 : -5,
                     // customScale: inModal     ? 0.95 : 0.75,
                     size: 0.1,
