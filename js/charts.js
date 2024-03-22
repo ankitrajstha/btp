@@ -1,3 +1,4 @@
+import * as drag_n_drop from "../drag_n_drop/script.js";
 import renderTaskTypeChart from "./charts/taskType/renderTaskTypeChart.js";
 import renderTaskStatusChart from "./charts/taskStatus/renderTaskStatusChart.js";
 import renderStoryPointsChart from "./charts/storyPoints/renderStoryPointsChart.js";

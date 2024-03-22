@@ -48,10 +48,6 @@ const getChartConfig = (chartType, data, labels, inModal) => {
                 height: 14,
                 offsetX: -5,
                 radius: '4px',
-            
-                onItemClick: {
-                    toggleDataSeries: false
-                },
             },
             onItemClick: {
                 toggleDataSeries: false
