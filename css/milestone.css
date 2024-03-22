@@ -1,5 +1,6 @@
 #milestonesListView {
-  display: block;
+  display: block; 
+  height: 65%; 
 }
 
 #milestonesGraphicalView {

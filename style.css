@@ -415,13 +415,6 @@ nav {
   overflow: hidden;
 }
 
-.project-hightlights-list.scrollable,
-.sprint-hightlights-list.scrollable,
-.milestones-list.scrollable {
-  overflow-y: auto;
-  height: 65px;
-}
-
 .project-hightlights-list li,
 .sprint-hightlights-list li,
 .milestones-list li {
@@ -461,6 +454,11 @@ nav {
 .technical-debt > p {
   font-size: var(--base-regular);
   color: var(--g200);
+}
+
+.technical-debt-paragraph {
+  overflow-y: auto;
+  height: 65%;
 }
 
 .team-members-list li {
