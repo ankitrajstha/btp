@@ -41,14 +41,21 @@ const getChartConfig = (chartType, data, labels, inModal) => {
             fontSize: inModal ? '12px' : '10px',
             fontFamily: "Poppins",
             itemMargin: {
-                horizontal: 40,
+                horizontal: inModal ? 20 : 40,
             },
             markers: {
                 width: 14,
                 height: 14,
                 offsetX: -5,
-                radius: '4px'
-            }
+                radius: '4px',
+            
+                onItemClick: {
+                    toggleDataSeries: false
+                },
+            },
+            onItemClick: {
+                toggleDataSeries: false
+            },
         },
         xaxis: {
             categories: labels,
