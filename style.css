@@ -503,6 +503,8 @@ nav {
 }
 
 .highlights-container > .chart-component {
+  padding: var(--spacing-4);
+  min-width: 450px;
   height: var(--chart-component-height);
   border-radius: var(--border-radius-2);
   background-color: var(--white);
