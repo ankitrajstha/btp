@@ -415,6 +415,13 @@ nav {
   overflow: hidden;
 }
 
+.project-hightlights-list.scrollable,
+.sprint-hightlights-list.scrollable,
+.milestones-list.scrollable {
+  overflow-y: auto;
+  height: 65px;
+}
+
 .project-hightlights-list li,
 .sprint-hightlights-list li,
 .milestones-list li {
